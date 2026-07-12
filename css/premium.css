@@ -1,6 +1,6 @@
-/* =========================================================
+﻿/* =========================================================
    Premium Kalamkari Canvas Experience
-   Loaded after styles.css — refined craft UI layer
+   Loaded after styles.css â€” refined craft UI layer
    ========================================================= */
 
 :root {
@@ -151,7 +151,7 @@ body::before {
   min-height: var(--ribbon-h, 38px) !important;
   padding: 0.5rem 1.25rem !important;
   overflow: hidden;
-  /* Rich madder · gold · indigo ribbon */
+  /* Rich madder Â· gold Â· indigo ribbon */
   background:
     linear-gradient(
       100deg,
@@ -359,7 +359,7 @@ body::before {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22) !important;
 }
 
-/* Glossy shining float bubbles — base in float-dock block below */
+/* Glossy shining float bubbles â€” base in float-dock block below */
 
 /* ----- Hero ----- */
 .hero__content {
@@ -463,7 +463,7 @@ body::before {
   letter-spacing: 0.1em !important;
 }
 
-/* ----- Section heads — single-line fluid titles ----- */
+/* ----- Section heads â€” single-line fluid titles ----- */
 .section-head {
   background: rgba(255, 250, 242, 0.94) !important;
   border: 1px solid var(--pk-line) !important;
@@ -506,7 +506,7 @@ body::before {
   margin-top: clamp(0.55rem, 1.2vw, 0.9rem) !important;
 }
 
-/* Shared section header icons — fluid size */
+/* Shared section header icons â€” fluid size */
 .sh-ico {
   display: inline-flex;
   align-items: center;
@@ -820,7 +820,7 @@ body::before {
   }
 }
 
-/* Remove View more — Canvas paintings is auto-slide only */
+/* Remove View more â€” Canvas paintings is auto-slide only */
 .gallery-more {
   display: none !important;
 }
@@ -869,7 +869,7 @@ body::before {
   aspect-ratio: 3 / 4 !important;
 }
 
-/* Landscape masterpiece — full row, centered */
+/* Landscape masterpiece â€” full row, centered */
 .gallery-grid .card--landscape,
 .card--landscape.card--featured {
   grid-column: 1 / -1 !important;
@@ -927,7 +927,7 @@ body::before {
   transform: scale(1.04) !important;
 }
 
-/* Landscape sliding gallery — premium craft */
+/* Landscape sliding gallery â€” premium craft */
 .land-slider {
   margin: 0 0 1.75rem;
   padding: 1.1rem 1rem 1.2rem;
@@ -1314,7 +1314,7 @@ body::before {
   color: var(--pk-madder);
 }
 
-/* Stories nav — SVG chevrons */
+/* Stories nav â€” SVG chevrons */
 .stories__nav {
   display: grid !important;
   place-items: center !important;
@@ -2077,7 +2077,7 @@ body::before {
 }
 
 /* =========================================================
-   MODAL — fully fluid painting viewer (PC + mobile)
+   MODAL â€” fully fluid painting viewer (PC + mobile)
    Desktop: side-by-side. Mobile: stacked, whole sheet scrolls
    so every detail and button is always reachable.
    ========================================================= */
@@ -2492,7 +2492,7 @@ body.modal-open {
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
 }
 
-/* WhatsApp — deep forest, gold icon */
+/* WhatsApp â€” deep forest, gold icon */
 .float-dock__btn--wa {
   background: linear-gradient(
     155deg,
@@ -2504,7 +2504,7 @@ body.modal-open {
   color: #e8d48b !important;
 }
 
-/* Instagram — deep plum, gold icon */
+/* Instagram â€” deep plum, gold icon */
 .float-dock__btn--ig {
   background: linear-gradient(
     155deg,
@@ -2611,7 +2611,7 @@ body.modal-open {
 .custom-card:nth-child(4) .custom-card__icon { animation-delay: 1.2s; }
 
 /* =========================================================
-   WHY BUY — centered lead + tight filled dashboard
+   WHY BUY â€” centered lead + tight filled dashboard
    ========================================================= */
 .section.why-buy {
   padding-top: clamp(1.15rem, 2.4vw, 1.65rem) !important;
@@ -2845,7 +2845,7 @@ body.modal-open {
   }
 }
 
-/* Equal centered cards — 3 columns x 2 rows */
+/* Equal centered cards â€” 3 columns x 2 rows */
 .why-buy__grid {
   position: relative;
   z-index: 1;
@@ -2977,7 +2977,7 @@ body.modal-open {
 }
 
 /* =========================================================
-   CUSTOM COMMISSION — landscape compact dashboard
+   CUSTOM COMMISSION â€” landscape compact dashboard
    ========================================================= */
 .section.custom {
   padding-top: clamp(1.6rem, 3.2vw, 2.4rem) !important;
@@ -3032,7 +3032,7 @@ body.modal-open {
   z-index: 1;
 }
 
-/* ===== Dashboard header — matches site section panels ===== */
+/* ===== Dashboard header â€” matches site section panels ===== */
 .commission__head {
   position: relative;
   text-align: center;
@@ -3179,7 +3179,7 @@ body.modal-open {
   /* kept for safety if old markup appears */
 }
 
-/* Promise strip — light elegant cards */
+/* Promise strip â€” light elegant cards */
 .commission__promise {
   list-style: none;
   margin: 0;
@@ -3260,7 +3260,7 @@ body.modal-open {
   box-shadow: 0 3px 8px rgba(166, 61, 61, 0.25);
 }
 
-/* Theme cards — refined */
+/* Theme cards â€” refined */
 .theme-card {
   padding: 0.9rem 0.95rem !important;
   border-radius: 14px !important;
@@ -3961,7 +3961,7 @@ a.wa-link:hover,
 /* (commission steps/footer/theme mobile rules defined earlier in this file) */
 
 /* =========================================================
-   CRAFT — real painting photo frame
+   CRAFT â€” real painting photo frame
    ========================================================= */
 .craft__panel--photo {
   background: transparent !important;
@@ -4201,7 +4201,7 @@ a.wa-link:hover,
 }
 
 /* =========================================================
-   JOURNEY — compact landscape strip
+   JOURNEY â€” compact landscape strip
    ========================================================= */
 .section.journey {
   padding-top: clamp(1.5rem, 3vw, 2.2rem) !important;
@@ -4361,7 +4361,7 @@ a.wa-link:hover,
   }
 }
 
-/* Craft list icons — keep icon and text side by side (no overlap) */
+/* Craft list icons â€” keep icon and text side by side (no overlap) */
 .craft__list {
   list-style: none !important;
   padding: 0 !important;
@@ -4400,7 +4400,7 @@ a.wa-link:hover,
 }
 
 /* =========================================================
-   FLUID PANELS — auto best-fit to any screen
+   FLUID PANELS â€” auto best-fit to any screen
    ========================================================= */
 /* Desktop / tablet landscape: responsive grid */
 /* Canvas paintings track: always one-by-one horizontal slider */
@@ -4437,7 +4437,7 @@ a.wa-link:hover,
 
 #gallery-grid .card,
 .portrait-slider .gallery-grid > .card {
-  /* Single fixed card size — one painting at a time */
+  /* Single fixed card size â€” one painting at a time */
   flex: 0 0 min(22rem, calc(100vw - 6.5rem)) !important;
   width: min(22rem, calc(100vw - 6.5rem)) !important;
   min-width: min(22rem, calc(100vw - 6.5rem)) !important;
@@ -4775,192 +4775,44 @@ body {
 }
 
 /* =========================================================
-   WHAT YOU CHOOSE � mobile auto-slider (must be last)
-   Fixes flex min-content expansion + scroll lock conflicts
+   ORDER SECTION — unified mobile (single source of truth)
+   Resolves all prior theme-slider / commission conflicts
    ========================================================= */
-@media (max-width: 900px) {
-  .section.custom .container,
-  .commission,
-  .commission__hero,
-  .theme-slider {
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
 
-  .theme-slider {
-    position: relative !important;
-    width: 100% !important;
-    overflow: hidden !important; /* clip nav area; track scrolls inside */
-    margin-bottom: 0.85rem !important;
-  }
+/* Base theme cards: row layout with body (desktop + mobile) */
+.theme-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 0.75rem !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+}
 
-  /* Nav always available on mobile (do not depend only on JS class) */
-  .theme-slider .theme-slider__nav,
-  .theme-slider.is-slider .theme-slider__nav {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: absolute !important;
-    top: 45% !important;
-    z-index: 5 !important;
-    width: 2.35rem !important;
-    height: 2.35rem !important;
-    border-radius: 50% !important;
-    border: 1px solid rgba(196, 163, 90, 0.55) !important;
-    background: rgba(255, 250, 242, 0.98) !important;
-    color: var(--pk-indigo, #1a2a4a) !important;
-    box-shadow: 0 8px 18px rgba(16, 28, 51, 0.12) !important;
-    cursor: pointer !important;
-    transform: translateY(-50%) !important;
-    padding: 0 !important;
-  }
+.theme-card__icon {
+  grid-row: auto !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
 
-  .theme-slider__nav--prev { left: 0.1rem !important; }
-  .theme-slider__nav--next { right: 0.1rem !important; }
+.theme-card__body {
+  min-width: 0;
+  flex: 1 1 auto;
+}
 
-  .theme-slider .theme-slider__dots,
-  .theme-slider.is-slider .theme-slider__dots {
-    display: flex !important;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 0.38rem !important;
-    margin-top: 0.7rem !important;
-    position: relative !important;
-    z-index: 2 !important;
-  }
+.theme-card p,
+.theme-card__tags {
+  grid-column: auto !important;
+}
 
-  .theme-slider__dot {
-    width: 0.45rem !important;
-    height: 0.45rem !important;
-    border-radius: 999px !important;
-    border: none !important;
-    padding: 0 !important;
-    background: rgba(26, 42, 74, 0.22) !important;
-    cursor: pointer !important;
-  }
-
-  .theme-slider__dot.is-active {
-    width: 1.1rem !important;
-    background: var(--pk-madder, #a63d3d) !important;
-  }
-
-  /* Critical: min-width:0 so track scrolls instead of expanding parent */
+@media (min-width: 901px) {
   .theme-slider .theme-grid,
-  #theme-grid.theme-grid,
   #theme-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    grid-template-columns: none !important;
-    grid-auto-flow: column !important;
-    align-items: stretch !important;
-    gap: 0.85rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0.3rem 2.55rem 0.45rem !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-padding-inline: 2.55rem !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior-x: contain !important;
-    scrollbar-width: none !important;
-    box-sizing: border-box !important;
-  }
-
-  .theme-slider .theme-grid::-webkit-scrollbar,
-  #theme-grid::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .theme-slider .theme-card,
-  #theme-grid .theme-card,
-  #theme-grid > .theme-card {
-    flex: 0 0 min(76vw, 300px) !important;
-    width: min(76vw, 300px) !important;
-    min-width: min(76vw, 300px) !important;
-    max-width: min(76vw, 300px) !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-  }
-}
-
-/* =========================================================
-   SLIDER FIRST-ITEM CENTERING (all horizontal tracks)
-   ========================================================= */
-@media (max-width: 900px) {
-  #gallery-grid.gallery-grid,
-  #why-buy-grid.why-buy__grid,
-  #theme-grid.theme-grid,
-  .stories__track {
-    scroll-snap-type: x mandatory !important;
-    scroll-padding-inline: max(2.4rem, calc(50% - min(38vw, 150px))) !important;
-  }
-
-  #gallery-grid > .card,
-  #why-buy-grid .why-card,
-  #theme-grid .theme-card,
-  .stories__track .story-card {
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-  }
-}
-
-/* =========================================================
-   BESPOKE DASHBOARD � final mobile polish (wins conflicts)
-   ========================================================= */
-@media (max-width: 900px) {
-  .commission--dash {
-    gap: 1.1rem !important;
-    padding: 1.05rem 0.9rem 1.1rem !important;
-  }
-
-  .commission__head {
-    text-align: center !important;
-    padding: 1rem 0.85rem 1.1rem !important;
-  }
-
-  .commission__title {
-    justify-content: center !important;
-  }
-
-  .commission__actions {
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 22rem !important;
-    margin-inline: auto !important;
-  }
-
-  .commission__actions .btn {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  .commission__promise {
+    display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-
-  .theme-slider .theme-grid,
-  #theme-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.6rem !important;
+    gap: 0.75rem !important;
     overflow: visible !important;
     padding: 0 !important;
-  }
-
-  .theme-slider .theme-card,
-  #theme-grid .theme-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    flex: none !important;
   }
 
   .theme-slider__nav,
@@ -4968,13 +4820,208 @@ body {
     display: none !important;
   }
 
+  .theme-card {
+    flex-direction: column !important;
+  }
+
   .commission__steps {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem !important;
+    border: 1px solid rgba(196, 163, 90, 0.25) !important;
+    background: rgba(251, 246, 238, 0.8) !important;
+    border-radius: 14px !important;
+  }
+
+  .commission__steps::before {
+    display: none !important;
+  }
+
+  .commission__steps li {
+    grid-template-columns: auto 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .section.custom .container,
+  .commission,
+  .commission--dash,
+  .theme-slider,
+  #theme-grid {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .commission--dash {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.1rem !important;
+    padding: 0.9rem 0.75rem 1.05rem !important;
+    border-radius: 16px !important;
+    overflow: visible !important;
+  }
+
+  /* Header panel */
+  .commission__head {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 1.05rem 0.85rem 1.15rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .commission__title {
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    margin: 0 auto 0.5rem !important;
+    font-size: clamp(1.08rem, 5vw, 1.4rem) !important;
+    white-space: normal !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  .commission__title .sh-text {
+    white-space: normal !important;
+  }
+
+  .commission__lead {
+    text-align: center !important;
+    margin: 0 auto 0.35rem !important;
+    font-size: 0.86rem !important;
+    max-width: 22rem !important;
+    padding: 0 0.25rem !important;
+  }
+
+  .commission__head .section-head__rule {
+    margin: 0.6rem auto 0.85rem !important;
+  }
+
+  .commission__actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 20rem !important;
+    margin: 0 auto !important;
+    gap: 0.5rem !important;
+  }
+
+  .commission__actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 2.65rem !important;
+  }
+
+  /* Promise: 3 equal compact cards */
+  .commission__promise {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .commission__promise li {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.2rem !important;
+    padding: 0.65rem 0.25rem 0.6rem !important;
+    min-width: 0 !important;
+  }
+
+  .commission__promise strong {
+    font-size: 0.76rem !important;
+  }
+
+  .commission__promise li > span:last-child {
+    font-size: 0.62rem !important;
+  }
+
+  .commission__block {
+    width: 100% !important;
+    gap: 0.55rem !important;
+  }
+
+  .commission__label {
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Theme: stacked full-width cards (no horizontal conflict) */
+  .theme-slider {
+    position: relative !important;
+    width: 100% !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .theme-slider__nav,
+  .theme-slider__dots,
+  .theme-slider .theme-slider__nav,
+  .theme-slider .theme-slider__dots,
+  .theme-slider.is-slider .theme-slider__nav,
+  .theme-slider.is-slider .theme-slider__dots {
+    display: none !important;
+  }
+
+  .theme-slider .theme-grid,
+  #theme-grid.theme-grid,
+  #theme-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    grid-auto-flow: row !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+
+  .theme-slider .theme-card,
+  #theme-grid .theme-card,
+  #theme-grid > .theme-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    scroll-snap-align: none !important;
+    padding: 0.85rem 0.9rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Steps timeline */
+  .commission__steps {
+    position: relative !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0.1rem 0 0 !important;
     border: none !important;
     background: transparent !important;
-    padding: 0 !important;
+    grid-template-columns: none !important;
   }
 
   .commission__steps::before {
@@ -4982,58 +5029,62 @@ body {
     content: "" !important;
     position: absolute !important;
     left: 1.05rem !important;
-    top: 1.1rem !important;
-    bottom: 1.1rem !important;
+    top: 1.15rem !important;
+    bottom: 1.15rem !important;
     width: 2px !important;
-    background: linear-gradient(180deg, rgba(196, 163, 90, 0.55), rgba(166, 61, 61, 0.25)) !important;
+    background: linear-gradient(180deg, rgba(196, 163, 90, 0.55), rgba(166, 61, 61, 0.22)) !important;
+    border-radius: 2px !important;
+    z-index: 0 !important;
   }
 
   .commission__steps li {
     display: grid !important;
     grid-template-columns: auto 1fr !important;
-    gap: 0.65rem !important;
+    column-gap: 0.7rem !important;
     align-items: center !important;
+    padding: 0.55rem 0.2rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .commission__step-n {
+    display: none !important;
   }
 
   .commission__step-ico {
+    position: relative !important;
+    z-index: 1 !important;
     width: 2.15rem !important;
     height: 2.15rem !important;
     border-radius: 50% !important;
+    flex-shrink: 0 !important;
   }
 
+  /* Footer */
   .commission__footer {
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     text-align: center !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    padding: 0.95rem 0.85rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .commission__footer-text {
+    align-items: center !important;
   }
 
   .commission__footer .btn {
     width: 100% !important;
-  }
-}
-
-/* Bespoke head � force dashboard alignment */
-.commission__head {
-  text-align: center !important;
-}
-
-.commission__title {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-@media (max-width: 900px) {
-  .commission__head {
-    padding: 1rem 0.8rem 1.1rem !important;
+    justify-content: center !important;
   }
 
-  .commission__actions {
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 20rem !important;
-  }
-
-  .commission__actions .btn {
-    width: 100% !important;
+  /* Do not apply horizontal snap centering to order theme cards */
+  #theme-grid.theme-grid,
+  #theme-grid .theme-card {
+    scroll-snap-type: none !important;
+    scroll-snap-align: none !important;
   }
 }
