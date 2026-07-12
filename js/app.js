@@ -737,10 +737,10 @@
  if (modalTitle) modalTitle.textContent = work.title;
  if (modalMeta) {
  modalMeta.textContent = work.featured
- ? "Masterpiece highlight | High detail"
+ ? "Masterpiece · High detail"
  : work.type === "video"
- ? `Studio video | ${instagramLabel}`
- : `Hand-painted | ${instagramLabel}`;
+ ? `Studio film · ${instagramLabel}`
+ : `Hand-painted canvas · ${instagramLabel}`;
  }
  if (modalDesc) modalDesc.textContent = work.description || "";
  if (modalSize) modalSize.textContent = work.size || "-";
@@ -784,7 +784,7 @@
 
  const tip = document.createElement("p");
  tip.className = "modal__zoom-tip";
- tip.textContent = "Drag to move | Scroll or pinch to zoom | + / - for detail";
+ tip.textContent = "Pinch or use + / − to explore detail";
 
  viewport.appendChild(img);
  modalMedia.appendChild(viewport);

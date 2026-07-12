@@ -623,11 +623,22 @@ body::before {
 }
 
 .land-slider__sub {
-  margin: 0.35rem auto 0;
-  max-width: min(36rem, 100%);
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
-  line-height: 1.45;
+  display: block !important;
+  margin: 0.4rem auto 0 !important;
+  width: 100% !important;
+  max-width: min(40rem, 100%) !important;
+  padding: 0 0.65rem !important;
+  box-sizing: border-box !important;
+  font-size: clamp(0.82rem, 2.6vw, 0.96rem) !important;
+  line-height: 1.55 !important;
   color: var(--pk-muted) !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  text-wrap: pretty !important;
+  hyphens: auto !important;
 }
 
 /* Subtle pulse on active dot while auto-scrolling */
@@ -777,9 +788,10 @@ body::before {
 }
 
 .land-slider__sub {
-  margin: 0;
-  font-size: 0.92rem;
+  margin: 0.35rem auto 0;
+  font-size: clamp(0.82rem, 2.6vw, 0.96rem);
   color: var(--pk-muted) !important;
+  white-space: normal !important;
 }
 
 .land-slider__shell {
@@ -1890,44 +1902,155 @@ body::before {
   }
 }
 
-/* Modal painting presentation */
+/* =========================================================
+   MODAL — responsive painting viewer (all breakpoints)
+   Media stays visible; body details always scrollable.
+   ========================================================= */
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+.modal {
+  padding: max(0.5rem, env(safe-area-inset-top, 0px))
+    max(0.5rem, env(safe-area-inset-right, 0px))
+    max(0.5rem, env(safe-area-inset-bottom, 0px))
+    max(0.5rem, env(safe-area-inset-left, 0px)) !important;
+  place-items: center !important;
+  align-content: center !important;
+  overflow: hidden !important;
+}
+
 .modal__dialog {
   border: 1px solid rgba(196, 163, 90, 0.4) !important;
-  border-radius: 16px !important;
-  overflow: hidden;
+  border-radius: clamp(12px, 2vw, 16px) !important;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35) !important;
+  width: min(960px, 100%) !important;
+  max-width: 100% !important;
+  max-height: min(92dvh, 92vh, 920px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
 .modal__media {
   background: #0a0908 !important;
   position: relative;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
 }
 
-/* Featured high-detail: drag pan + wheel/pinch zoom (no sideways slide) */
+.modal__body {
+  min-height: 0 !important;
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  padding: clamp(1rem, 2.5vw, 1.75rem) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+.modal__body h3,
+.modal__body p,
+.modal__body .eyebrow,
+.modal__facts,
+.modal__custom-note,
+.modal__actions {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+.modal__body h3 {
+  font-size: clamp(1.15rem, 3.2vw, 1.55rem) !important;
+  line-height: 1.25 !important;
+  margin: 0 0 0.65rem !important;
+}
+
+.modal__body p {
+  font-size: clamp(0.88rem, 2.4vw, 0.98rem) !important;
+  line-height: 1.55 !important;
+}
+
+.modal__facts {
+  display: grid !important;
+  gap: 0.55rem !important;
+}
+
+.modal__facts div {
+  grid-template-columns: minmax(4rem, 5rem) minmax(0, 1fr) !important;
+}
+
+.modal__actions {
+  margin-top: auto !important;
+  gap: 0.5rem !important;
+  padding-bottom: max(0.25rem, env(safe-area-inset-bottom, 0px));
+}
+
+.modal__actions .btn {
+  white-space: normal !important;
+  text-align: center !important;
+  height: auto !important;
+  min-height: 2.65rem;
+  padding-block: 0.7rem !important;
+  line-height: 1.3 !important;
+}
+
+.modal__close {
+  position: absolute !important;
+  top: 0.45rem !important;
+  right: 0.45rem !important;
+  z-index: 5 !important;
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+}
+
+/* Featured high-detail: stacked media + scrollable details */
 .modal.modal--zoomable .modal__dialog,
 .modal.modal--hires .modal__dialog,
 .modal.modal--landscape .modal__dialog {
   width: min(1180px, 100%) !important;
-  max-height: min(94vh, 980px) !important;
+  max-height: min(94dvh, 94vh, 980px) !important;
   grid-template-columns: 1fr !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
 }
 
 .modal.modal--zoomable .modal__media,
 .modal.modal--hires .modal__media,
 .modal.modal--landscape .modal__media {
-  min-height: auto !important;
-  max-height: none !important;
+  min-height: 0 !important;
+  max-height: min(52dvh, 52vh, 520px) !important;
+  flex: 0 0 auto !important;
   background: #070605 !important;
   border-bottom: 1px solid rgba(201, 162, 39, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+}
+
+.modal.modal--zoomable .modal__body,
+.modal.modal--hires .modal__body,
+.modal.modal--landscape .modal__body {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: clamp(0.95rem, 2.5vw, 1.4rem) clamp(1rem, 3vw, 1.5rem)
+    clamp(1rem, 2.5vw, 1.4rem) !important;
 }
 
 .modal__zoom-view {
   position: relative;
   width: 100%;
-  height: min(58vh, 560px);
+  flex: 1 1 auto;
+  height: min(42dvh, 42vh, 480px);
+  max-height: min(42dvh, 42vh, 480px);
   overflow: hidden;
   touch-action: none;
   cursor: grab;
@@ -1965,27 +2088,29 @@ body::before {
 
 .modal.modal--hires .modal__zoom-img,
 .modal__img--hires.modal__zoom-img {
-  max-width: min(100%, 1600px);
-  max-height: min(100%, 560px);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .modal__zoom-controls {
   display: flex;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.75rem 0.15rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem 0.15rem;
   background: #0a0908;
+  flex: 0 0 auto;
 }
 
 .modal__zoom-btn {
-  min-width: 2.4rem;
-  height: 2.15rem;
-  padding: 0 0.75rem;
+  min-width: 2.35rem;
+  height: 2.05rem;
+  padding: 0 0.7rem;
   border-radius: 999px;
   border: 1px solid rgba(196, 163, 90, 0.4);
   background: linear-gradient(160deg, #2a241c, #14110e);
   color: #f0d78a;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
@@ -2004,27 +2129,135 @@ body::before {
   position: relative !important;
   bottom: auto !important;
   margin: 0 !important;
-  padding: 0.45rem 1rem 0.65rem !important;
-  font-size: 0.68rem !important;
-  letter-spacing: 0.1em;
+  padding: 0.35rem 0.75rem 0.5rem !important;
+  font-size: clamp(0.6rem, 2vw, 0.68rem) !important;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
   color: rgba(246, 240, 228, 0.75) !important;
   background: #0a0908 !important;
   font-weight: 500 !important;
+  white-space: normal !important;
+  line-height: 1.4 !important;
+  flex: 0 0 auto;
 }
 
-.modal.modal--zoomable .modal__body,
-.modal.modal--landscape .modal__body {
-  padding: 1.35rem 1.5rem 1.4rem;
-  max-width: 720px;
-  margin-inline: auto;
-  width: 100%;
+.modal__media img,
+.modal__media video,
+.modal__media-scroll img {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: min(48dvh, 48vh, 520px) !important;
+  object-fit: contain !important;
 }
 
-@media (max-width: 720px) {
+/* Tablet and down: always stacked, details fully reachable by scroll */
+@media (max-width: 960px) {
+  .modal__dialog,
+  .modal.modal--zoomable .modal__dialog,
+  .modal.modal--hires .modal__dialog,
+  .modal.modal--landscape .modal__dialog {
+    width: min(100%, 640px) !important;
+    max-height: min(94dvh, 94vh) !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    border-radius: 14px !important;
+  }
+
+  .modal__media,
+  .modal.modal--zoomable .modal__media,
+  .modal.modal--hires .modal__media,
+  .modal.modal--landscape .modal__media {
+    max-height: min(38dvh, 38vh, 320px) !important;
+  }
+
   .modal__zoom-view {
-    height: min(48vh, 420px);
+    height: min(30dvh, 30vh, 260px) !important;
+    max-height: min(30dvh, 30vh, 260px) !important;
+  }
+
+  .modal__media img,
+  .modal__media video,
+  .modal__media-scroll img {
+    max-height: min(34dvh, 34vh, 300px) !important;
+  }
+
+  .modal__body,
+  .modal.modal--zoomable .modal__body,
+  .modal.modal--hires .modal__body,
+  .modal.modal--landscape .modal__body {
+    padding: 0.95rem 1rem 1.1rem !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 560px) {
+  .modal {
+    padding: 0.35rem !important;
+    place-items: end center !important;
+  }
+
+  .modal__dialog,
+  .modal.modal--zoomable .modal__dialog,
+  .modal.modal--hires .modal__dialog,
+  .modal.modal--landscape .modal__dialog {
+    width: 100% !important;
+    max-height: min(96dvh, 96vh) !important;
+    border-radius: 14px 14px 10px 10px !important;
+  }
+
+  .modal__media,
+  .modal.modal--zoomable .modal__media,
+  .modal.modal--hires .modal__media,
+  .modal.modal--landscape .modal__media {
+    max-height: min(34dvh, 34vh, 280px) !important;
+  }
+
+  .modal__zoom-view {
+    height: min(26dvh, 26vh, 220px) !important;
+    max-height: min(26dvh, 26vh, 220px) !important;
+  }
+
+  .modal__body {
+    padding: 0.85rem 0.9rem calc(0.95rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .modal__facts div {
+    grid-template-columns: 4.25rem minmax(0, 1fr) !important;
+    font-size: 0.85rem !important;
+  }
+
+  .modal__custom-note {
+    font-size: 0.95rem !important;
+    padding: 0.7rem 0.8rem !important;
+  }
+
+  .modal__close {
+    top: 0.35rem !important;
+    right: 0.35rem !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+  }
+}
+
+/* Very small / landscape phones */
+@media (max-height: 520px) {
+  .modal__media,
+  .modal.modal--zoomable .modal__media,
+  .modal.modal--hires .modal__media,
+  .modal.modal--landscape .modal__media {
+    max-height: min(32dvh, 32vh) !important;
+  }
+
+  .modal__zoom-view {
+    height: min(22dvh, 22vh) !important;
+    max-height: min(22dvh, 22vh) !important;
+  }
+
+  .modal__zoom-tip {
+    display: none !important;
   }
 }
 
@@ -2481,15 +2714,6 @@ body::before {
   .why-buy__from {
     letter-spacing: 0.06em;
     font-size: clamp(0.64rem, 2.8vw, 0.72rem);
-  }
-}
-
-/* Wide desktops: keep short lines neat; long line may still wrap if needed */
-@media (min-width: 1100px) {
-  .why-buy__line:first-child {
-    white-space: nowrap;
-    width: max-content;
-    max-width: 100%;
   }
 }
 
