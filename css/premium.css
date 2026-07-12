@@ -4921,9 +4921,13 @@ body {
     padding: 1.05rem 0.9rem 1.1rem !important;
   }
 
-  .commission__intro {
+  .commission__head {
     text-align: center !important;
-    align-items: center !important;
+    padding: 1rem 0.85rem 1.1rem !important;
+  }
+
+  .commission__title {
+    justify-content: center !important;
   }
 
   .commission__actions {
@@ -5008,7 +5012,7 @@ body {
   }
 }
 
-/* Bespoke head — force dashboard alignment */
+/* Bespoke head ï¿½ force dashboard alignment */
 .commission__head {
   text-align: center !important;
 }
