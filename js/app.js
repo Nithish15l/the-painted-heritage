@@ -1251,6 +1251,203 @@
 
  start();
  })();
+
+ /* Why-buy cards: auto-slide carousel on mobile */
+ (function initWhyCardsSlider() {
+ const shell = document.getElementById("why-cards-slider");
+ const track = document.getElementById("why-buy-grid");
+ const prev = document.getElementById("why-cards-prev");
+ const next = document.getElementById("why-cards-next");
+ const dotsWrap = document.getElementById("why-cards-dots");
+ if (!shell || !track) return;
+
+ const cards = () => Array.from(track.querySelectorAll(".why-card"));
+ let timer = null;
+ let reduceMotion = false;
+ let inView = true;
+ let pauseUntil = 0;
+
+ try {
+ reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ } catch (e) {
+ reduceMotion = false;
+ }
+
+ function isMobile() {
+ return window.matchMedia("(max-width: 900px)").matches;
+ }
+
+ function step() {
+ const card = track.querySelector(".why-card");
+ if (!card) return Math.round(track.clientWidth * 0.82);
+ const styles = window.getComputedStyle(track);
+ const gap = parseFloat(styles.columnGap || styles.gap || "12") || 12;
+ return Math.round(card.getBoundingClientRect().width + gap);
+ }
+
+ function activeIndex() {
+ const list = cards();
+ if (!list.length) return 0;
+ const mid = track.scrollLeft + track.clientWidth / 2;
+ let best = 0;
+ let bestDist = Infinity;
+ list.forEach((card, i) => {
+ const center = card.offsetLeft + card.offsetWidth / 2;
+ const dist = Math.abs(center - mid);
+ if (dist < bestDist) {
+ bestDist = dist;
+ best = i;
+ }
+ });
+ return best;
+ }
+
+ function paintDots() {
+ if (!dotsWrap) return;
+ const list = cards();
+ if (!isMobile() || !list.length) {
+ dotsWrap.innerHTML = "";
+ dotsWrap.hidden = true;
+ return;
+ }
+ dotsWrap.hidden = false;
+ const active = activeIndex();
+ if (dotsWrap.childElementCount !== list.length) {
+ dotsWrap.innerHTML = "";
+ list.forEach((_, i) => {
+ const b = document.createElement("button");
+ b.type = "button";
+ b.className = "why-cards-slider__dot";
+ b.setAttribute("aria-label", "Go to reason " + (i + 1));
+ b.addEventListener("click", () => {
+ goTo(i);
+ softPause();
+ });
+ dotsWrap.appendChild(b);
+ });
+ }
+ dotsWrap.querySelectorAll(".why-cards-slider__dot").forEach((d, i) => {
+ d.classList.toggle("is-active", i === active);
+ });
+ }
+
+ function updateNav() {
+ if (!isMobile()) {
+ shell.classList.remove("is-slider");
+ if (prev) prev.hidden = true;
+ if (next) next.hidden = true;
+ if (dotsWrap) {
+ dotsWrap.innerHTML = "";
+ dotsWrap.hidden = true;
+ }
+ return;
+ }
+ shell.classList.add("is-slider");
+ const list = cards();
+ const i = activeIndex();
+ if (prev) {
+ prev.hidden = false;
+ prev.disabled = i <= 0;
+ }
+ if (next) {
+ next.hidden = false;
+ next.disabled = i >= list.length - 1;
+ }
+ paintDots();
+ }
+
+ function goTo(index) {
+ const list = cards();
+ if (!list.length) return;
+ const target = list[Math.max(0, Math.min(index, list.length - 1))];
+ if (!target) return;
+ target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+ window.setTimeout(updateNav, 320);
+ }
+
+ function scrollByDir(dir) {
+ if (!isMobile()) return;
+ goTo(activeIndex() + dir);
+ }
+
+ function softPause() {
+ pauseUntil = Date.now() + 7000;
+ }
+
+ function stop() {
+ if (timer) {
+ clearInterval(timer);
+ timer = null;
+ }
+ }
+
+ function start() {
+ stop();
+ updateNav();
+ if (!isMobile() || reduceMotion || !inView) return;
+ timer = window.setInterval(() => {
+ if (Date.now() < pauseUntil) return;
+ if (document.hidden || !inView) return;
+ const list = cards();
+ if (list.length < 2) return;
+ const i = activeIndex();
+ const nextIndex = i >= list.length - 1 ? 0 : i + 1;
+ goTo(nextIndex);
+ }, 4500);
+ }
+
+ if (prev) prev.addEventListener("click", () => {
+ scrollByDir(-1);
+ softPause();
+ });
+ if (next) next.addEventListener("click", () => {
+ scrollByDir(1);
+ softPause();
+ });
+
+ track.addEventListener(
+ "scroll",
+ () => {
+ if (!isMobile()) return;
+ window.requestAnimationFrame(updateNav);
+ },
+ { passive: true }
+ );
+
+ track.addEventListener(
+ "touchstart",
+ () => {
+ softPause();
+ },
+ { passive: true }
+ );
+
+ if ("IntersectionObserver" in window) {
+ const io = new IntersectionObserver(
+ (entries) => {
+ entries.forEach((entry) => {
+ inView = entry.isIntersecting && entry.intersectionRatio > 0.2;
+ if (inView) start();
+ else stop();
+ });
+ },
+ { threshold: [0, 0.2, 0.5] }
+ );
+ io.observe(shell);
+ }
+
+ document.addEventListener("visibilitychange", () => {
+ if (document.hidden) stop();
+ else if (inView) start();
+ });
+
+ window.addEventListener("resize", () => {
+ window.clearTimeout(shell._whyCardsResize);
+ shell._whyCardsResize = window.setTimeout(start, 140);
+ });
+
+ start();
+ })();
 })();
 
   // --- Stories slider ---
