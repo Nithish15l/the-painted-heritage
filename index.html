@@ -320,7 +320,16 @@
  <button class="filter" data-filter="sacred" role="tab" aria-selected="false">Sacred</button>
  </div>
 
+ <div class="portrait-slider" id="portrait-slider">
+ <button type="button" class="portrait-slider__nav portrait-slider__nav--prev" id="port-prev" aria-label="Previous painting">
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </button>
  <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+ <button type="button" class="portrait-slider__nav portrait-slider__nav--next" id="port-next" aria-label="Next painting">
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </button>
+ <div class="portrait-slider__dots" id="port-dots" aria-hidden="true"></div>
+ </div>
  <p class="gallery-empty" id="gallery-empty" hidden>
  No works in this view yet. Try another filter.
  </p>

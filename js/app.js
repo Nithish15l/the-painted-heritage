@@ -181,16 +181,25 @@
  const moreWrap = document.getElementById("gallery-more");
  const moreBtn = document.getElementById("gallery-view-more");
  const moreCount = document.getElementById("gallery-more-count");
+ const portSlider = document.getElementById("portrait-slider");
+ const portPrev = document.getElementById("port-prev");
+ const portNext = document.getElementById("port-next");
+ const portDots = document.getElementById("port-dots");
  const landTrack = document.getElementById("land-track");
  const landDots = document.getElementById("land-dots");
  const landPrev = document.getElementById("land-prev");
  const landNext = document.getElementById("land-next");
  const landSlider = document.getElementById("land-slider");
  let activeFilter = "all";
- const PAGE_SIZE = 8; // portrait grid default
+ const PAGE_SIZE = 8; // portrait grid default (desktop)
  let visibleCount = PAGE_SIZE;
  let landIndex = 0;
  let landSlides = [];
+ let portScrollRaf = 0;
+
+ function isPortraitSliderMode() {
+ return window.matchMedia("(max-width: 900px)").matches;
+ }
 
  function isLandscape(work) {
  return work.orientation === "landscape";
@@ -461,6 +470,13 @@
  function updateMoreUI(total, shown) {
  if (!moreWrap || !moreBtn) return;
 
+ // Mobile uses horizontal sliding view — no page chunks
+ if (isPortraitSliderMode()) {
+ moreWrap.hidden = true;
+ moreBtn.dataset.mode = "more";
+ return;
+ }
+
  if (total <= PAGE_SIZE) {
  moreWrap.hidden = true;
  moreBtn.dataset.mode = "more";
@@ -484,19 +500,144 @@
  }
  }
 
+ function getCardStep() {
+ if (!grid) return 280;
+ const card = grid.querySelector(".card");
+ if (!card) return Math.round(grid.clientWidth * 0.82);
+ const styles = window.getComputedStyle(grid);
+ const gap = parseFloat(styles.columnGap || styles.gap || "12") || 12;
+ return Math.round(card.getBoundingClientRect().width + gap);
+ }
+
+ function getActivePortIndex() {
+ if (!grid) return 0;
+ const cards = grid.querySelectorAll(".card");
+ if (!cards.length) return 0;
+ const mid = grid.scrollLeft + grid.clientWidth / 2;
+ let best = 0;
+ let bestDist = Infinity;
+ cards.forEach((card, i) => {
+ const center = card.offsetLeft + card.offsetWidth / 2;
+ const dist = Math.abs(center - mid);
+ if (dist < bestDist) {
+ bestDist = dist;
+ best = i;
+ }
+ });
+ return best;
+ }
+
+ function updatePortDots(activeIndex) {
+ if (!portDots) return;
+ const cards = grid ? grid.querySelectorAll(".card") : [];
+ const n = cards.length;
+ if (!n || !isPortraitSliderMode()) {
+ portDots.innerHTML = "";
+ portDots.hidden = true;
+ return;
+ }
+ portDots.hidden = false;
+ if (portDots.childElementCount !== n) {
+ portDots.innerHTML = "";
+ for (let i = 0; i < n; i++) {
+ const b = document.createElement("button");
+ b.type = "button";
+ b.className = "portrait-slider__dot";
+ b.setAttribute("aria-label", "Go to painting " + (i + 1));
+ b.addEventListener("click", () => {
+ const cardsNow = grid.querySelectorAll(".card");
+ const target = cardsNow[i];
+ if (target) {
+ target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+ }
+ });
+ portDots.appendChild(b);
+ }
+ }
+ portDots.querySelectorAll(".portrait-slider__dot").forEach((dot, i) => {
+ dot.classList.toggle("is-active", i === activeIndex);
+ });
+ }
+
+ function updatePortNav() {
+ if (!isPortraitSliderMode() || !grid) {
+ if (portPrev) portPrev.hidden = true;
+ if (portNext) portNext.hidden = true;
+ if (portDots) portDots.hidden = true;
+ if (portSlider) portSlider.classList.remove("is-slider");
+ return;
+ }
+ if (portSlider) portSlider.classList.add("is-slider");
+ const maxScroll = Math.max(grid.scrollWidth - grid.clientWidth - 4, 0);
+ const atStart = grid.scrollLeft <= 4;
+ const atEnd = grid.scrollLeft >= maxScroll;
+ if (portPrev) {
+ portPrev.hidden = false;
+ portPrev.disabled = atStart;
+ }
+ if (portNext) {
+ portNext.hidden = false;
+ portNext.disabled = atEnd || maxScroll <= 0;
+ }
+ updatePortDots(getActivePortIndex());
+ }
+
+ function scrollPortBy(dir) {
+ if (!grid || !isPortraitSliderMode()) return;
+ const step = getCardStep();
+ grid.scrollBy({ left: dir * step, behavior: "smooth" });
+ }
+
+ function bindPortraitSlider() {
+ if (!grid) return;
+ if (portPrev) {
+ portPrev.addEventListener("click", () => scrollPortBy(-1));
+ }
+ if (portNext) {
+ portNext.addEventListener("click", () => scrollPortBy(1));
+ }
+ grid.addEventListener(
+ "scroll",
+ () => {
+ if (!isPortraitSliderMode()) return;
+ if (portScrollRaf) cancelAnimationFrame(portScrollRaf);
+ portScrollRaf = requestAnimationFrame(() => updatePortNav());
+ },
+ { passive: true }
+ );
+ window.addEventListener("resize", () => {
+ renderGallery(false);
+ requestAnimationFrame(() => {
+ if (grid && isPortraitSliderMode()) grid.scrollLeft = 0;
+ updatePortNav();
+ });
+ });
+ updatePortNav();
+ }
+
  function renderGallery(resetPage) {
  if (!grid) return;
- if (resetPage) visibleCount = PAGE_SIZE;
 
  const filtered = getPortraitWorks();
+ const sliderMode = isPortraitSliderMode();
+
+ if (sliderMode) {
+ visibleCount = filtered.length;
+ } else {
+ if (resetPage) visibleCount = PAGE_SIZE;
  visibleCount = Math.min(Math.max(visibleCount, 0), Math.max(filtered.length, PAGE_SIZE));
  if (filtered.length <= PAGE_SIZE) visibleCount = filtered.length || PAGE_SIZE;
+ }
 
  const slice = filtered.slice(0, visibleCount);
  grid.innerHTML = "";
  slice.forEach((work, i) => grid.appendChild(createCard(work, i)));
  if (empty) empty.hidden = filtered.length > 0;
  updateMoreUI(filtered.length, slice.length);
+ requestAnimationFrame(() => {
+ if (sliderMode && resetPage) grid.scrollLeft = 0;
+ updatePortNav();
+ });
  }
 
  function renderAllGallery(resetPage) {
@@ -930,6 +1071,7 @@
  return escapeHtml(str).replace(/'/g, "&#39;");
  }
 
+ bindPortraitSlider();
  renderAllGallery(true);
 })();
 
