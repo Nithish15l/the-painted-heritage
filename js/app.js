@@ -925,9 +925,13 @@
 
  const isLandscape = work.orientation === "landscape";
  const isHires = !!work.highRes || !!work.featured;
+ const isPortrait = !isLandscape && work.type !== "video";
+ // Same zoom viewer for wall masterworks AND canvas paintings
+ const useZoom = work.type !== "video";
  modal.classList.toggle("modal--landscape", isLandscape);
  modal.classList.toggle("modal--hires", isHires);
- modal.classList.toggle("modal--zoomable", isHires || isLandscape);
+ modal.classList.toggle("modal--portrait", isPortrait);
+ modal.classList.toggle("modal--zoomable", useZoom);
 
  if (modalTitle) modalTitle.textContent = work.title;
  if (modalMeta) {
@@ -951,8 +955,8 @@
  video.playsInline = true;
  video.setAttribute("controlsList", "nodownload");
  modalMedia.appendChild(video);
- } else if (isHires || isLandscape) {
- // Featured / high-detail: drag zoom viewer (no sideways slide)
+ } else {
+ // Drag / pinch / +− zoom for all paintings (landscape + canvas portraits)
  const viewport = document.createElement("div");
  viewport.className = "modal__zoom-view";
  viewport.setAttribute("role", "img");
@@ -966,7 +970,10 @@
  img.alt = work.title;
  img.decoding = "async";
  img.draggable = false;
- img.className = "modal__zoom-img" + (work.highRes ? " modal__img--hires" : "");
+ img.className =
+ "modal__zoom-img" +
+ (work.highRes || isLandscape ? " modal__img--hires" : "") +
+ (isPortrait ? " modal__zoom-img--portrait" : "");
  if (work.highRes) img.setAttribute("fetchpriority", "high");
 
  const controls = document.createElement("div");
@@ -995,15 +1002,6 @@
  if (action === "out") zoomState.zoomOut();
  if (action === "reset") zoomState.reset();
  });
- } else {
- const wrap = document.createElement("div");
- wrap.className = "modal__media-scroll";
- const img = document.createElement("img");
- img.src = work.media;
- img.alt = work.title;
- img.decoding = "async";
- wrap.appendChild(img);
- modalMedia.appendChild(wrap);
  }
  }
 
@@ -1050,7 +1048,12 @@
  modal.hidden = true;
  document.body.style.overflow = "";
  document.body.classList.remove("modal-open");
- modal.classList.remove("modal--landscape", "modal--hires", "modal--zoomable");
+ modal.classList.remove(
+ "modal--landscape",
+ "modal--hires",
+ "modal--portrait",
+ "modal--zoomable"
+ );
  if (modalMedia) {
  const vid = modalMedia.querySelector("video");
  if (vid) {

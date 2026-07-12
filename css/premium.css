@@ -2251,6 +2251,7 @@ body.modal-open {
 /* Featured / landscape / hires: stacked */
 .modal.modal--zoomable .modal__dialog,
 .modal.modal--hires .modal__dialog,
+.modal.modal--portrait .modal__dialog,
 .modal.modal--landscape .modal__dialog {
   width: min(1180px, 100%) !important;
   max-height: min(94dvh, 94vh, 980px) !important;
@@ -2260,6 +2261,7 @@ body.modal-open {
 
 .modal.modal--zoomable .modal__media,
 .modal.modal--hires .modal__media,
+.modal.modal--portrait .modal__media,
 .modal.modal--landscape .modal__media {
   max-height: min(50dvh, 50vh, 500px) !important;
   background: #070605 !important;
@@ -2269,6 +2271,7 @@ body.modal-open {
 
 .modal.modal--zoomable .modal__body,
 .modal.modal--hires .modal__body,
+.modal.modal--portrait .modal__body,
 .modal.modal--landscape .modal__body {
   max-width: 100% !important;
   width: 100% !important;
