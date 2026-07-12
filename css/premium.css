@@ -2946,33 +2946,41 @@ body.modal-open {
 }
 
 .section.custom .section-head {
-  padding: 1rem 1.25rem 1.1rem !important;
-  margin-bottom: 1rem !important;
+  padding: 0.75rem 1rem 0.85rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.section.custom {
+  padding-top: clamp(1.25rem, 2.5vw, 1.85rem) !important;
+  padding-bottom: clamp(1.25rem, 2.5vw, 1.85rem) !important;
 }
 
 .commission {
   position: relative;
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid rgba(196, 163, 90, 0.38);
   background: #fffaf2;
   box-shadow:
-    0 0 0 5px rgba(255, 250, 242, 0.5),
-    0 0 0 6px rgba(196, 163, 90, 0.12),
-    0 20px 44px rgba(16, 28, 51, 0.07);
-  padding: clamp(0.9rem, 1.8vw, 1.2rem);
-  /* visible so inner horizontal sliders can scroll; corners still clipped by radius */
+    0 0 0 4px rgba(255, 250, 242, 0.5),
+    0 0 0 5px rgba(196, 163, 90, 0.1),
+    0 14px 32px rgba(16, 28, 51, 0.06);
+  padding: clamp(0.75rem, 1.5vw, 1rem);
   overflow: visible;
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 
+.commission--compact {
+  padding: clamp(0.7rem, 1.4vw, 0.95rem);
+}
+
 .commission::before {
   content: "";
   position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(196, 163, 90, 0.16);
-  border-radius: 12px;
+  inset: 6px;
+  border: 1px solid rgba(196, 163, 90, 0.14);
+  border-radius: 10px;
   pointer-events: none;
   z-index: 0;
 }
@@ -2981,23 +2989,27 @@ body.modal-open {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: var(--pk-gap);
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
   align-items: stretch;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.7rem;
+}
+
+.commission__hero--compact {
+  margin-bottom: 0.55rem;
 }
 
 .commission__copy {
-  padding: 0.15rem 0.15rem;
+  padding: 0;
 }
 
 .commission__kicker {
   display: inline-block;
-  margin: 0 0 0.55rem;
-  padding: 0.32rem 0.8rem;
-  font-size: 0.64rem;
+  margin: 0 0 0.35rem;
+  padding: 0.26rem 0.65rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #fffaf2;
   background: var(--pk-indigo);
@@ -3005,9 +3017,9 @@ body.modal-open {
 }
 
 .commission__copy h3 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
   font-family: var(--pk-display) !important;
-  font-size: clamp(1.55rem, 2.6vw, 2rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   font-weight: 600;
   color: var(--pk-indigo) !important;
   line-height: 1.15;
@@ -3015,11 +3027,39 @@ body.modal-open {
 }
 
 .commission__lead {
-  margin: 0 0 0.85rem;
-  max-width: 34rem;
-  font-size: 0.95rem;
-  line-height: 1.55;
+  margin: 0 0 0.65rem;
+  max-width: 36rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
   color: var(--pk-muted) !important;
+}
+
+.commission__pills {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.commission__pills li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--pk-indigo);
+  background: rgba(255, 253, 248, 0.95);
+  border: 1px solid rgba(196, 163, 90, 0.32);
+}
+
+.commission__pills li svg {
+  flex-shrink: 0;
+  color: var(--pk-madder, #a63d3d);
 }
 
 .commission__label {
@@ -3156,8 +3196,14 @@ body.modal-open {
 .commission__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+.commission__actions .btn {
+  min-height: 2.45rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.86rem;
 }
 
 
@@ -3394,53 +3440,53 @@ a.wa-link:hover,
   position: relative;
   z-index: 1;
   list-style: none;
-  margin: 0 0 0.85rem;
-  padding: 0.7rem 0.75rem;
+  margin: 0 0 0.65rem;
+  padding: 0.55rem 0.6rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
-  gap: var(--pk-gap);
-  border-radius: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  gap: 0.55rem;
+  border-radius: 11px;
   border: 1px solid rgba(196, 163, 90, 0.25);
   background: rgba(251, 246, 238, 0.75);
 }
 
 .commission__steps li {
   display: flex;
-  gap: 0.55rem;
+  gap: 0.45rem;
   align-items: center;
-  padding: 0.2rem;
+  padding: 0.1rem;
 }
 
 .commission__step-ico {
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: grid;
   place-items: center;
-  border-radius: 9px;
+  border-radius: 8px;
   color: #fffaf2;
   background: linear-gradient(135deg, var(--pk-madder), var(--pk-madder-deep));
-  box-shadow: 0 4px 10px rgba(166, 61, 61, 0.22);
+  box-shadow: 0 3px 8px rgba(166, 61, 61, 0.2);
 }
 
 .commission__step-ico svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 .commission__steps strong {
   display: block;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.05rem;
   font-family: var(--pk-display) !important;
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--pk-indigo);
 }
 
 .commission__steps li > div > span {
   display: block;
-  font-size: 0.8rem;
-  line-height: 1.35;
+  font-size: 0.75rem;
+  line-height: 1.3;
   color: var(--pk-muted);
 }
 
@@ -3451,9 +3497,9 @@ a.wa-link:hover,
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  gap: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 11px;
   border: 1px solid rgba(196, 163, 90, 0.28);
   background: linear-gradient(135deg, rgba(22, 35, 56, 0.04), rgba(166, 61, 61, 0.05));
 }
@@ -3461,9 +3507,50 @@ a.wa-link:hover,
 .commission__footer p {
   margin: 0;
   font-family: var(--pk-display) !important;
-  font-size: 1.1rem;
+  font-size: 0.98rem;
   font-weight: 500;
   color: var(--pk-indigo) !important;
+}
+
+.commission__footer .btn {
+  min-height: 2.4rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.84rem;
+}
+
+.commission__label {
+  margin: 0 0 0.5rem !important;
+  font-size: 0.68rem !important;
+}
+
+.theme-slider {
+  margin-bottom: 0.7rem !important;
+}
+
+/* Hide large decorative aside if old markup remains */
+.commission__aside {
+  display: none !important;
+}
+
+@media (max-width: 560px) {
+  .commission__actions {
+    width: 100%;
+  }
+
+  .commission__actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .commission__footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .commission__footer .btn {
+    width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
