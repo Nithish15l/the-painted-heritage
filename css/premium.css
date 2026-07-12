@@ -2136,7 +2136,7 @@ body.modal-open {
 .modal__body h3,
 .modal__body p,
 .modal__body .eyebrow,
-.modal__facts,
+.modal__meta-list,
 .modal__custom-note,
 .modal__actions,
 .modal__actions .btn {
@@ -2144,6 +2144,12 @@ body.modal-open {
   overflow-wrap: anywhere !important;
   word-wrap: break-word !important;
   white-space: normal !important;
+}
+
+/* Never style Size/Medium as section headers */
+.modal__meta-label,
+.modal__meta-value {
+  font-family: var(--pk-body, "Source Sans 3", system-ui, sans-serif) !important;
 }
 
 .modal__body h3 {
@@ -2157,43 +2163,62 @@ body.modal-open {
   line-height: 1.55 !important;
 }
 
-/* Size | Medium side by side (not both stacked on the left) */
-.modal__facts {
+/* Size / Medium as compact meta rows (not headers) */
+.modal__meta-list {
+  list-style: none !important;
+  margin: 0.5rem 0 1rem !important;
+  padding: 0.7rem 0.85rem !important;
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 0.75rem 1rem !important;
-  margin: 0.35rem 0 1rem !important;
-  padding: 0.85rem 0 !important;
-  border-top: 1px solid rgba(196, 163, 90, 0.25) !important;
-  border-bottom: 1px solid rgba(196, 163, 90, 0.25) !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.45rem !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(196, 163, 90, 0.28) !important;
+  background: rgba(255, 250, 242, 0.75) !important;
+  box-sizing: border-box !important;
 }
 
-.modal__facts > div {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.28rem !important;
-  grid-template-columns: none !important;
-  min-width: 0 !important;
-}
-
-.modal__facts dt {
+.modal__meta-list li {
+  display: grid !important;
+  grid-template-columns: 4.75rem minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 0.55rem !important;
   margin: 0 !important;
-  font-size: 0.66rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  color: var(--pk-madder, #a63d3d) !important;
   padding: 0 !important;
+  font-family: var(--pk-body, inherit) !important;
 }
 
-.modal__facts dd {
+.modal__meta-label {
+  display: inline-block !important;
   margin: 0 !important;
-  font-size: 0.9rem !important;
-  font-weight: 500 !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  color: var(--pk-muted, #6b635a) !important;
   line-height: 1.35 !important;
+}
+
+.modal__meta-label::after {
+  content: ":" !important;
+}
+
+.modal__meta-value {
+  display: block !important;
+  margin: 0 !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
   color: var(--pk-indigo, #162338) !important;
+  line-height: 1.4 !important;
   overflow-wrap: anywhere !important;
+}
+
+/* Legacy facts (if any leftover markup) */
+.modal__facts {
+  display: none !important;
 }
 
 .modal__actions {
@@ -2424,12 +2449,15 @@ body.modal-open {
     padding: 0.85rem 0.85rem calc(1.1rem + env(safe-area-inset-bottom, 0px)) !important;
   }
 
-  .modal__facts {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.65rem 0.85rem !important;
+  .modal__meta-list {
+    padding: 0.65rem 0.75rem !important;
   }
 
-  .modal__facts dd {
+  .modal__meta-list li {
+    grid-template-columns: 4.25rem minmax(0, 1fr) !important;
+  }
+
+  .modal__meta-value {
     font-size: 0.84rem !important;
   }
 

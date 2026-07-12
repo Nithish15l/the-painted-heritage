@@ -2884,40 +2884,43 @@ h3 {
   margin: 0 0 1rem;
 }
 
-.modal__facts {
+.modal__meta-list {
+  list-style: none;
+  margin: 0.5rem 0 1.1rem;
+  padding: 0.7rem 0.85rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 1rem;
-  margin: 0 0 1.15rem;
-  padding: 1rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  gap: 0.45rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 253, 248, 0.9);
 }
 
-.modal__facts div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.28rem;
-  font-size: 0.9rem;
-  min-width: 0;
+.modal__meta-list li {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: baseline;
 }
 
-.modal__facts dt {
-  margin: 0;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--madder);
-  padding: 0;
+.modal__meta-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
 }
 
-.modal__facts dd {
-  margin: 0;
-  color: var(--indigo);
+.modal__meta-label::after {
+  content: ":";
+}
+
+.modal__meta-value {
+  font-size: 0.88rem;
   font-weight: 500;
-  line-height: 1.35;
+  color: var(--indigo);
+  line-height: 1.4;
+}
+
+.modal__facts {
+  display: none;
 }
 
 .modal__custom-note {
