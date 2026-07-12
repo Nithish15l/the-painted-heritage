@@ -2194,12 +2194,13 @@ body.modal-open {
   margin: 0 !important;
   padding: 0 !important;
   flex: 0 0 auto !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
   font-style: normal !important;
-  letter-spacing: 0.01em !important;
+  letter-spacing: 0.02em !important;
   text-transform: none !important;
-  color: var(--pk-muted, #6b635a) !important;
+  /* Coloured labels (not grey headers) */
+  color: var(--pk-madder, #a63d3d) !important;
 }
 
 .modal__meta-value {

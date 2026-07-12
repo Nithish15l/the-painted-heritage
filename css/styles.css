@@ -2907,9 +2907,9 @@ h3 {
 }
 
 .modal__meta-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--madder);
 }
 
 .modal__meta-value {
