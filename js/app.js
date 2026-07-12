@@ -178,9 +178,6 @@
  // --- Gallery ---
  const grid = document.getElementById("gallery-grid");
  const empty = document.getElementById("gallery-empty");
- const moreWrap = document.getElementById("gallery-more");
- const moreBtn = document.getElementById("gallery-view-more");
- const moreCount = document.getElementById("gallery-more-count");
  const portSlider = document.getElementById("portrait-slider");
  const portPrev = document.getElementById("port-prev");
  const portNext = document.getElementById("port-next");
@@ -191,15 +188,13 @@
  const landNext = document.getElementById("land-next");
  const landSlider = document.getElementById("land-slider");
  let activeFilter = "all";
- /** Initial batch for Canvas paintings (All + each filter): 2–4 cards */
- const PAGE_SIZE = 4;
- let visibleCount = PAGE_SIZE;
  let landIndex = 0;
  let landSlides = [];
  let portScrollRaf = 0;
 
+ /** Canvas paintings always use one-by-one auto-slide (All + filters) */
  function isPortraitSliderMode() {
- return window.matchMedia("(max-width: 900px)").matches;
+ return true;
  }
 
  function scrollTrackToIndex(track, itemSelector, index, opts) {
@@ -519,65 +514,6 @@
  }
  }
 
- function initialPageSize(total) {
- if (total <= 0) return 0;
- // First page: up to 4 paintings (or fewer if filter has less)
- return Math.min(PAGE_SIZE, total);
- }
-
- function updateMoreUI(total, shown) {
- if (!moreWrap || !moreBtn) return;
-
- if (total <= 0) {
- moreWrap.hidden = true;
- moreBtn.dataset.mode = "more";
- if (moreCount) moreCount.textContent = "";
- return;
- }
-
- const remaining = Math.max(total - shown, 0);
- const isExpanded = shown >= total;
- const base = initialPageSize(total);
-
- // Only show View more when there are more works than the first batch
- if (total <= base) {
- moreWrap.hidden = false;
- moreBtn.hidden = true;
- moreBtn.dataset.mode = "more";
- if (moreCount) {
- moreCount.textContent =
- total === 1
- ? "Showing 1 painting"
- : `Showing ${shown} of ${total} paintings`;
- }
- return;
- }
-
- moreWrap.hidden = false;
- moreBtn.hidden = false;
-
- if (isExpanded) {
- moreBtn.dataset.mode = "less";
- moreBtn.innerHTML = `View less <span class="btn__arrow" aria-hidden="true">&lt;</span>`;
- moreBtn.setAttribute("aria-label", "Show fewer paintings");
- if (moreCount) moreCount.textContent = `Showing all ${total} paintings`;
- } else {
- moreBtn.dataset.mode = "more";
- moreBtn.innerHTML = `View more paintings <span class="gallery-more__n">+${remaining}</span> <span class="btn__arrow" aria-hidden="true">&gt;</span>`;
- moreBtn.setAttribute("aria-label", `Show ${remaining} more paintings`);
- if (moreCount) moreCount.textContent = `Showing ${shown} of ${total} paintings`;
- }
- }
-
- function getCardStep() {
- if (!grid) return 280;
- const card = grid.querySelector(".card");
- if (!card) return Math.round(grid.clientWidth * 0.82);
- const styles = window.getComputedStyle(grid);
- const gap = parseFloat(styles.columnGap || styles.gap || "12") || 12;
- return Math.round(card.getBoundingClientRect().width + gap);
- }
-
  function getActivePortIndex() {
  if (!grid) return 0;
  const cards = grid.querySelectorAll(".card");
@@ -600,7 +536,7 @@
  if (!portDots) return;
  const cards = grid ? grid.querySelectorAll(".card") : [];
  const n = cards.length;
- if (!n || !isPortraitSliderMode()) {
+ if (!n) {
  portDots.innerHTML = "";
  portDots.hidden = true;
  return;
@@ -626,13 +562,7 @@
  }
 
  function updatePortNav() {
- if (!isPortraitSliderMode() || !grid) {
- if (portPrev) portPrev.hidden = true;
- if (portNext) portNext.hidden = true;
- if (portDots) portDots.hidden = true;
- if (portSlider) portSlider.classList.remove("is-slider");
- return;
- }
+ if (!grid) return;
  if (portSlider) portSlider.classList.add("is-slider");
  if (portPrev) {
  portPrev.hidden = false;
@@ -646,7 +576,7 @@
  }
 
  function scrollPortBy(dir) {
- if (!grid || !isPortraitSliderMode()) return;
+ if (!grid) return;
  const n = grid.querySelectorAll(".card").length;
  if (!n) return;
  scrollTrackToIndex(grid, ".card", getActivePortIndex() + dir);
@@ -665,18 +595,23 @@
  clearInterval(portTimer);
  portTimer = null;
  }
+ if (portSlider) portSlider.classList.remove("is-autoplaying");
  }
 
  function startPortAuto() {
  stopPortAuto();
  updatePortNav();
- if (!isPortraitSliderMode() || !grid || !portInView) return;
- portTimer = window.setInterval(() => {
- if (Date.now() < portPauseUntil || document.hidden || !portInView) return;
+ if (!grid || !portInView) return;
  const n = grid.querySelectorAll(".card").length;
  if (n < 2) return;
+ if (portSlider) portSlider.classList.add("is-autoplaying");
+ // One-by-one auto-slide for All + every filter
+ portTimer = window.setInterval(() => {
+ if (Date.now() < portPauseUntil || document.hidden || !portInView) return;
+ const count = grid.querySelectorAll(".card").length;
+ if (count < 2) return;
  scrollTrackToIndex(grid, ".card", getActivePortIndex() + 1);
- }, 5000);
+ }, 4200);
  }
 
  function bindPortraitSlider() {
@@ -696,32 +631,21 @@
  grid.addEventListener(
  "scroll",
  () => {
- if (!isPortraitSliderMode()) return;
  if (portScrollRaf) cancelAnimationFrame(portScrollRaf);
  portScrollRaf = requestAnimationFrame(() => updatePortNav());
  },
  { passive: true }
  );
  grid.addEventListener("touchstart", softPausePort, { passive: true });
+ grid.addEventListener("pointerdown", softPausePort, { passive: true });
 
- let lastMode = isPortraitSliderMode();
  let resizeTimer = 0;
  const onViewportChange = () => {
  clearTimeout(resizeTimer);
  resizeTimer = setTimeout(() => {
- const nowSlider = isPortraitSliderMode();
- document.documentElement.classList.toggle("is-port-slider", nowSlider);
- if (nowSlider !== lastMode) {
- lastMode = nowSlider;
- renderGallery(true);
- requestAnimationFrame(() => {
- if (grid && nowSlider) centerTrackStart(grid, ".card");
+ document.documentElement.classList.add("is-port-slider");
+ centerTrackStart(grid, ".card");
  startPortAuto();
- });
- } else {
- if (nowSlider) centerTrackStart(grid, ".card");
- updatePortNav();
- }
  }, 140);
  };
  window.addEventListener("resize", onViewportChange);
@@ -731,17 +655,17 @@
  const io = new IntersectionObserver(
  (entries) => {
  entries.forEach((entry) => {
- portInView = entry.isIntersecting && entry.intersectionRatio > 0.2;
+ portInView = entry.isIntersecting && entry.intersectionRatio > 0.15;
  if (portInView) startPortAuto();
  else stopPortAuto();
  });
  },
- { threshold: [0, 0.2, 0.5] }
+ { threshold: [0, 0.15, 0.4] }
  );
  io.observe(portSlider);
  }
 
- document.documentElement.classList.toggle("is-port-slider", isPortraitSliderMode());
+ document.documentElement.classList.add("is-port-slider");
  startPortAuto();
  }
 
@@ -752,53 +676,39 @@
  const lockScroll = !!options.lockScroll;
  const scrollY = lockScroll ? window.scrollY : 0;
 
+ // Always load full filtered set for one-by-one auto-slide (All + filters)
  const filtered = getPortraitWorks();
  const total = filtered.length;
- const sliderMode = isPortraitSliderMode();
- const base = initialPageSize(total);
+ const slice = filtered;
 
- if (resetPage || visibleCount < 1) {
- visibleCount = base;
- } else {
- // Keep expansion within current filtered set
- visibleCount = Math.min(Math.max(visibleCount, base), total || 0);
- }
-
- // If filter has fewer items than current visible, clamp
- if (visibleCount > total) visibleCount = total;
- if (total > 0 && visibleCount < 1) visibleCount = base;
-
- const slice = filtered.slice(0, visibleCount);
-
- // Keep grid height while swapping cards so the page does not jump
  const prevHeight = grid.offsetHeight;
  if (prevHeight > 0 && lockScroll) {
  grid.style.minHeight = prevHeight + "px";
  }
 
+ stopPortAuto();
  grid.innerHTML = "";
  slice.forEach((work, i) =>
  grid.appendChild(createCard(work, i, { animate: animate }))
  );
  if (empty) empty.hidden = total > 0;
- updateMoreUI(total, slice.length);
 
  const finish = () => {
- if (sliderMode && slice.length) {
+ if (slice.length) {
  scrollTrackToIndex(grid, ".card", 0, { behavior: "auto" });
- updatePortNav();
- } else {
- updatePortNav();
  }
+ updatePortNav();
  grid.style.minHeight = "";
  if (lockScroll) {
  window.scrollTo(0, scrollY);
  }
+ startPortAuto();
  };
 
  requestAnimationFrame(() => {
  requestAnimationFrame(() => {
  finish();
+ centerTrackStart(grid, ".card");
  if (lockScroll) {
  window.setTimeout(() => window.scrollTo(0, scrollY), 0);
  }
@@ -812,40 +722,17 @@
  startLandAuto();
  }
 
- if (moreBtn) {
- moreBtn.addEventListener("click", () => {
- const filtered = getPortraitWorks();
- const total = filtered.length;
- const mode = moreBtn.dataset.mode || "more";
- const base = initialPageSize(total);
-
- if (mode === "less" || visibleCount >= total) {
- visibleCount = base;
- renderGallery(false, { animate: false, lockScroll: true });
- moreBtn.focus({ preventScroll: true });
- return;
- }
-
- // Reveal next batch (up to PAGE_SIZE), or the rest if fewer remain
- const remaining = total - visibleCount;
- visibleCount = Math.min(total, visibleCount + Math.min(PAGE_SIZE, remaining));
- renderGallery(false, { animate: false, lockScroll: true });
- moreBtn.focus({ preventScroll: true });
- });
- }
-
  document.querySelectorAll(".filter").forEach((btn) => {
  btn.addEventListener("click", (e) => {
  e.preventDefault();
- // Filters apply only to Canvas paintings (portrait grid), not wall slider
+ // Filters apply only to Canvas paintings auto-slide
  activeFilter = btn.dataset.filter || "all";
  document.querySelectorAll(".filter").forEach((b) => {
  const on = b === btn;
  b.classList.toggle("is-active", on);
  b.setAttribute("aria-selected", String(on));
  });
- // Reset to first page (2–4) for this filter; lock scroll; fixed card size
- visibleCount = PAGE_SIZE;
+ // Rebuild filtered set, center first painting, restart auto-slide
  renderGallery(true, { animate: false, lockScroll: true });
  btn.focus({ preventScroll: true });
  });

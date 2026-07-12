@@ -703,15 +703,64 @@ body::before {
   text-align: center;
 }
 
-/* ----- Canvas paintings: grid on desktop, slider on mobile ----- */
+/* ----- Canvas paintings: always one-by-one auto-slide ----- */
 .portrait-slider {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
-.portrait-slider__nav,
-.portrait-slider__dots {
-  display: none;
+.portrait-slider.is-slider .portrait-slider__nav {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 42%;
+  z-index: 4;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 163, 90, 0.55);
+  background: rgba(255, 250, 242, 0.96);
+  color: var(--pk-indigo, #1a2a4a);
+  box-shadow: 0 8px 18px rgba(16, 28, 51, 0.12);
+  cursor: pointer;
+  transform: translateY(-50%);
+  padding: 0;
+}
+
+.portrait-slider__nav--prev {
+  left: 0.25rem;
+}
+
+.portrait-slider__nav--next {
+  right: 0.25rem;
+}
+
+.portrait-slider.is-slider .portrait-slider__dots {
+  display: flex !important;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  padding: 0 0.75rem;
+}
+
+.portrait-slider__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: rgba(26, 42, 74, 0.22);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.portrait-slider__dot.is-active {
+  width: 1.1rem;
+  background: var(--pk-madder, #a63d3d);
 }
 
 .portrait-slider__nav:disabled {
@@ -719,9 +768,8 @@ body::before {
   pointer-events: none;
 }
 
-/* Portrait mobile nav chrome (layout track rules live at file end) */
+/* Why-cards nav (mobile only) */
 @media (max-width: 900px) {
-  .portrait-slider.is-slider .portrait-slider__nav,
   .why-cards-slider.is-slider .why-cards-slider__nav {
     display: inline-flex !important;
     align-items: center;
@@ -740,27 +788,22 @@ body::before {
     transform: translateY(-50%);
   }
 
-  .portrait-slider__nav--prev,
   .why-cards-slider__nav--prev {
     left: 0.2rem;
   }
 
-  .portrait-slider__nav--next,
   .why-cards-slider__nav--next {
     right: 0.2rem;
   }
 
-  .portrait-slider.is-slider .portrait-slider__dots,
   .why-cards-slider.is-slider .why-cards-slider__dots {
     display: flex !important;
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.35rem;
     margin-top: 0.75rem;
-    padding: 0 0.75rem;
   }
 
-  .portrait-slider__dot,
   .why-cards-slider__dot {
     width: 0.42rem;
     height: 0.42rem;
@@ -769,14 +812,17 @@ body::before {
     padding: 0;
     background: rgba(26, 42, 74, 0.22);
     cursor: pointer;
-    transition: width 0.2s ease, background 0.2s ease;
   }
 
-  .portrait-slider__dot.is-active,
   .why-cards-slider__dot.is-active {
     width: 1.05rem;
     background: var(--pk-madder, #a63d3d);
   }
+}
+
+/* Remove View more — Canvas paintings is auto-slide only */
+.gallery-more {
+  display: none !important;
 }
 
 .section-head .eyebrow {
@@ -4283,21 +4329,47 @@ a.wa-link:hover,
    FLUID PANELS — auto best-fit to any screen
    ========================================================= */
 /* Desktop / tablet landscape: responsive grid */
-.gallery-grid {
-  display: grid !important;
-  /* auto-fill keeps empty tracks so 1–3 cards stay the same size as a full row */
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)) !important;
-  gap: clamp(0.75rem, 2vw, 1.5rem) !important;
-  width: 100%;
-  align-items: stretch !important;
-  justify-content: start !important;
-}
-
-#gallery-grid .card,
-.gallery-grid > .card {
+/* Canvas paintings track: always one-by-one horizontal slider */
+.portrait-slider .gallery-grid,
+#gallery-grid.gallery-grid,
+#gallery-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  grid-template-columns: none !important;
+  gap: 1rem !important;
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: 0.65rem 3rem 1rem !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-padding-inline: 3rem !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain !important;
+  scrollbar-width: none !important;
+  box-sizing: border-box !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+
+.portrait-slider .gallery-grid::-webkit-scrollbar,
+#gallery-grid::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+}
+
+#gallery-grid .card,
+.portrait-slider .gallery-grid > .card {
+  /* Single fixed card size — one painting at a time */
+  flex: 0 0 min(22rem, calc(100vw - 6.5rem)) !important;
+  width: min(22rem, calc(100vw - 6.5rem)) !important;
+  min-width: min(22rem, calc(100vw - 6.5rem)) !important;
+  max-width: min(22rem, calc(100vw - 6.5rem)) !important;
+  scroll-snap-align: center !important;
+  scroll-snap-stop: always !important;
   box-sizing: border-box !important;
 }
 
@@ -4310,8 +4382,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Mobile / narrow: Canvas paintings MUST be a horizontal slider
-   (this block is last so it wins over grid rules above) */
+/* Mobile / narrow refinements for sliders */
 @media (max-width: 900px) {
   .portrait-slider,
   .why-cards-slider {
@@ -4327,30 +4398,9 @@ body {
   .portrait-slider .gallery-grid,
   #gallery-grid.gallery-grid,
   #gallery-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    grid-template-columns: none !important;
-    grid-auto-flow: column !important;
+    padding: 0.55rem 2.5rem 1rem !important;
+    scroll-padding-inline: 2.5rem !important;
     gap: 0.85rem !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0.55rem 2.6rem 1rem !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-padding-inline: 2.6rem !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior-x: contain !important;
-    scrollbar-width: none !important;
-  }
-
-  .portrait-slider .gallery-grid::-webkit-scrollbar,
-  #gallery-grid::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
   }
 
   .why-cards-slider .why-buy__grid,
@@ -4393,31 +4443,10 @@ body {
   .portrait-slider .gallery-grid > .card,
   #gallery-grid > .card,
   #gallery-grid .card {
-    /* Fixed card width — same size no matter how many filters return */
-    flex: 0 0 16.5rem !important;
-    width: 16.5rem !important;
-    min-width: 16.5rem !important;
-    max-width: 16.5rem !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-  }
-
-  .portrait-slider.is-slider .portrait-slider__nav {
-    display: inline-flex !important;
-  }
-
-  .portrait-slider.is-slider .portrait-slider__dots {
-    display: flex !important;
-  }
-
-  /* View more stays available under Canvas paintings on mobile */
-  .gallery-more {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    margin-top: 1rem !important;
-    padding-top: 0.5rem !important;
+    flex: 0 0 min(18rem, calc(100vw - 5.5rem)) !important;
+    width: min(18rem, calc(100vw - 5.5rem)) !important;
+    min-width: min(18rem, calc(100vw - 5.5rem)) !important;
+    max-width: min(18rem, calc(100vw - 5.5rem)) !important;
   }
 }
 
@@ -4431,14 +4460,13 @@ body {
     scroll-padding-inline: 2.35rem !important;
   }
 
-  /* Keep Canvas painting cards a single fixed size */
   .portrait-slider .gallery-grid > .card,
   #gallery-grid > .card,
   #gallery-grid .card {
-    flex: 0 0 15.25rem !important;
-    width: 15.25rem !important;
-    min-width: 15.25rem !important;
-    max-width: 15.25rem !important;
+    flex: 0 0 min(16.5rem, calc(100vw - 5rem)) !important;
+    width: min(16.5rem, calc(100vw - 5rem)) !important;
+    min-width: min(16.5rem, calc(100vw - 5rem)) !important;
+    max-width: min(16.5rem, calc(100vw - 5rem)) !important;
   }
 
   .why-cards-slider .why-card,
