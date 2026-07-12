@@ -2163,60 +2163,58 @@ body.modal-open {
   line-height: 1.55 !important;
 }
 
-/* Size / Medium as compact meta rows (not headers) */
+/* Size: Medium  /  Medium: Hand-painted…  (one line each, not headers) */
 .modal__meta-list {
-  list-style: none !important;
   margin: 0.5rem 0 1rem !important;
-  padding: 0.7rem 0.85rem !important;
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 0.45rem !important;
+  padding: 0.65rem 0.85rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.35rem !important;
   border-radius: 10px !important;
   border: 1px solid rgba(196, 163, 90, 0.28) !important;
-  background: rgba(255, 250, 242, 0.75) !important;
+  background: rgba(255, 250, 242, 0.8) !important;
   box-sizing: border-box !important;
 }
 
-.modal__meta-list li {
-  display: grid !important;
-  grid-template-columns: 4.75rem minmax(0, 1fr) !important;
+.modal__meta-line {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
   align-items: baseline !important;
-  gap: 0.55rem !important;
+  gap: 0.35rem !important;
   margin: 0 !important;
   padding: 0 !important;
-  font-family: var(--pk-body, inherit) !important;
+  font-family: var(--pk-body, "Source Sans 3", system-ui, sans-serif) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
 }
 
 .modal__meta-label {
-  display: inline-block !important;
+  display: inline !important;
   margin: 0 !important;
-  font-size: 0.72rem !important;
+  padding: 0 !important;
+  flex: 0 0 auto !important;
+  font-size: 0.9rem !important;
   font-weight: 600 !important;
   font-style: normal !important;
-  letter-spacing: 0.04em !important;
+  letter-spacing: 0.01em !important;
   text-transform: none !important;
   color: var(--pk-muted, #6b635a) !important;
-  line-height: 1.35 !important;
-}
-
-.modal__meta-label::after {
-  content: ":" !important;
 }
 
 .modal__meta-value {
-  display: block !important;
+  display: inline !important;
   margin: 0 !important;
-  font-size: 0.88rem !important;
+  padding: 0 !important;
+  flex: 1 1 auto !important;
+  font-size: 0.9rem !important;
   font-weight: 500 !important;
   font-style: normal !important;
   letter-spacing: 0.01em !important;
   text-transform: none !important;
   color: var(--pk-indigo, #162338) !important;
-  line-height: 1.4 !important;
-  overflow-wrap: anywhere !important;
 }
 
-/* Legacy facts (if any leftover markup) */
 .modal__facts {
   display: none !important;
 }
@@ -2450,15 +2448,13 @@ body.modal-open {
   }
 
   .modal__meta-list {
-    padding: 0.65rem 0.75rem !important;
+    padding: 0.6rem 0.75rem !important;
   }
 
-  .modal__meta-list li {
-    grid-template-columns: 4.25rem minmax(0, 1fr) !important;
-  }
-
+  .modal__meta-line,
+  .modal__meta-label,
   .modal__meta-value {
-    font-size: 0.84rem !important;
+    font-size: 0.86rem !important;
   }
 
   .modal__custom-note {

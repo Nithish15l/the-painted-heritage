@@ -2885,38 +2885,37 @@ h3 {
 }
 
 .modal__meta-list {
-  list-style: none;
   margin: 0.5rem 0 1.1rem;
-  padding: 0.7rem 0.85rem;
-  display: grid;
-  gap: 0.45rem;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: rgba(255, 253, 248, 0.9);
 }
 
-.modal__meta-list li {
-  display: grid;
-  grid-template-columns: 4.75rem minmax(0, 1fr);
-  gap: 0.55rem;
+.modal__meta-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: baseline;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .modal__meta-label {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--muted);
 }
 
-.modal__meta-label::after {
-  content: ":";
-}
-
 .modal__meta-value {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--indigo);
-  line-height: 1.4;
 }
 
 .modal__facts {

@@ -14,7 +14,7 @@ window.KALAMKARI_WORKS = [
     featured: true,
     highRes: true,
     category: "mythic",
-    size: "Large wall canvas",
+    size: "Large",
     medium: "Traditional Kalamkari | hand-painted on canvas",
     description:
       "Master canvas of the divine wedding - ceremony, ornament, and devotion across the full scene.",
@@ -29,7 +29,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/landscape/04-srinivasa-studio.jpg",
     orientation: "landscape",
     category: "mythic",
-    size: "Detail study",
+    size: "Small",
     medium: "Hand-painted canvas",
     description:
       "Close view of a finished Srinivasa canvas — texture, dye, and freehand kalam line.",
@@ -44,7 +44,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/landscape/05-srinivasa-detail.jpg",
     orientation: "landscape",
     category: "mythic",
-    size: "Ornament study",
+    size: "Small",
     medium: "Traditional Kalamkari",
     description:
       "Jewel tones, arches, and sacred figures - pure painting, free of text.",
@@ -59,7 +59,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/landscape/06-srinivasa-custom.jpg",
     orientation: "landscape",
     category: "mythic",
-    size: "Custom wall work",
+    size: "Large",
     medium: "Hand-painted Kalamkari canvas",
     description:
       "Full ceremonial composition on cloth — tailored for the collector's wall.",
@@ -74,7 +74,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/landscape/07-pattabhishekam.jpg",
     orientation: "landscape",
     category: "mythic",
-    size: "Wall canvas",
+    size: "Large",
     medium: "Traditional Kalamkari on canvas",
     description:
       "Coronation of Rama - pure painted figures, no overlay text.",
@@ -89,7 +89,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/landscape/08-ganesha.jpg",
     orientation: "landscape",
     category: "sacred",
-    size: "Wall presentation",
+    size: "Medium",
     medium: "Hand-painted Kalamkari",
     description:
       "Lord Ganesha - auspicious form painted for home and mandir.",
@@ -104,7 +104,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/landscape/09-tapestry.jpg",
     orientation: "landscape",
     category: "mythic",
-    size: "Detail study",
+    size: "Small",
     medium: "Hand-painted textile art",
     description:
       "Fine line and colour on canvas - a close study of divine presence.",
@@ -121,7 +121,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/07-DaYDH7nz6nQ.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Hand-painted canvas",
+    size: "Medium",
     medium: "Traditional Kalamkari on canvas",
     description:
       "Lord Rama, Sita Devi, Lakshmana, and Hanuman - a radiant coronation of justice and harmony.",
@@ -136,7 +136,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/06-DaZPPB2TBaJ.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Home statement canvas",
+    size: "Medium",
     medium: "Hand-painted Kalamkari",
     description:
       "Divine wedding of Lord Venkateswara and Padmavati - tradition and devotion for your wall.",
@@ -151,7 +151,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/09-DaFiCsVz8vm.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Ready canvas",
+    size: "Medium",
     medium: "Traditional Kalamkari | natural dyes",
     description:
       "A timeless sacred union - rich colour, fine line, and temple-story atmosphere.",
@@ -211,7 +211,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/10-DaAv0mPtePE.jpg",
     orientation: "portrait",
     category: "sacred",
-    size: "Ready canvas",
+    size: "Medium",
     medium: "Hand-painted Kalamkari",
     description:
       "Lord Ganesha - gentle presence painted with traditional line and colour.",
@@ -316,7 +316,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/10-fabric-close.jpg",
     orientation: "portrait",
     category: "floral",
-    size: "Detail study",
+    size: "Small",
     medium: "Hand-painted textile art",
     description:
       "Intricate florals, borders, and dye depth that reward a closer look.",
