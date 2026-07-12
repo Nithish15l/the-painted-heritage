@@ -2960,7 +2960,11 @@ body.modal-open {
     0 0 0 6px rgba(196, 163, 90, 0.12),
     0 20px 44px rgba(16, 28, 51, 0.07);
   padding: clamp(0.9rem, 1.8vw, 1.2rem);
-  overflow: hidden;
+  /* visible so inner horizontal sliders can scroll; corners still clipped by radius */
+  overflow: visible;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .commission::before {
@@ -3041,7 +3045,10 @@ body.modal-open {
   position: relative;
   z-index: 1;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-bottom: 0.95rem;
+  box-sizing: border-box;
 }
 
 .theme-slider__nav,
@@ -3061,6 +3068,9 @@ body.modal-open {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: var(--pk-gap);
   margin-bottom: 0;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .theme-card {
@@ -3141,91 +3151,7 @@ body.modal-open {
   border: 1px solid rgba(196, 163, 90, 0.28);
 }
 
-@media (max-width: 900px) {
-  .theme-slider.is-slider .theme-slider__nav {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 42%;
-    z-index: 4;
-    width: 2.3rem;
-    height: 2.3rem;
-    border-radius: 50%;
-    border: 1px solid rgba(196, 163, 90, 0.55);
-    background: rgba(255, 250, 242, 0.96);
-    color: var(--pk-indigo, #1a2a4a);
-    box-shadow: 0 8px 18px rgba(16, 28, 51, 0.12);
-    cursor: pointer;
-    transform: translateY(-50%);
-  }
-
-  .theme-slider__nav--prev {
-    left: 0.15rem;
-  }
-
-  .theme-slider__nav--next {
-    right: 0.15rem;
-  }
-
-  .theme-slider.is-slider .theme-slider__dots {
-    display: flex !important;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-top: 0.7rem;
-  }
-
-  .theme-slider__dot {
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 999px;
-    border: none;
-    padding: 0;
-    background: rgba(26, 42, 74, 0.2);
-    cursor: pointer;
-    transition: width 0.2s ease, background 0.2s ease;
-  }
-
-  .theme-slider__dot.is-active {
-    width: 1.05rem;
-    background: var(--pk-madder, #a63d3d);
-  }
-
-  .theme-slider .theme-grid,
-  #theme-grid.theme-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    grid-template-columns: none !important;
-    gap: 0.85rem !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-padding-inline: 2.5rem !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior-x: contain !important;
-    scrollbar-width: none !important;
-    padding: 0.25rem 2.5rem 0.35rem !important;
-    margin: 0 !important;
-  }
-
-  .theme-slider .theme-grid::-webkit-scrollbar,
-  #theme-grid::-webkit-scrollbar {
-    display: none !important;
-    height: 0 !important;
-  }
-
-  .theme-slider .theme-card,
-  #theme-grid .theme-card {
-    flex: 0 0 min(78vw, 300px) !important;
-    width: min(78vw, 300px) !important;
-    min-width: min(78vw, 300px) !important;
-    max-width: min(78vw, 300px) !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-  }
-}
+/* Mobile rules for theme slider live at end of file (wins all conflicts) */
 
 .commission__actions {
   display: flex;
@@ -4364,5 +4290,122 @@ body {
   .sh-ico--lg {
     width: 1.35rem;
     height: 1.35rem;
+  }
+}
+
+/* =========================================================
+   WHAT YOU CHOOSE — mobile auto-slider (must be last)
+   Fixes flex min-content expansion + scroll lock conflicts
+   ========================================================= */
+@media (max-width: 900px) {
+  .section.custom .container,
+  .commission,
+  .commission__hero,
+  .theme-slider {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .theme-slider {
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important; /* clip nav area; track scrolls inside */
+    margin-bottom: 0.85rem !important;
+  }
+
+  /* Nav always available on mobile (do not depend only on JS class) */
+  .theme-slider .theme-slider__nav,
+  .theme-slider.is-slider .theme-slider__nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 45% !important;
+    z-index: 5 !important;
+    width: 2.35rem !important;
+    height: 2.35rem !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(196, 163, 90, 0.55) !important;
+    background: rgba(255, 250, 242, 0.98) !important;
+    color: var(--pk-indigo, #1a2a4a) !important;
+    box-shadow: 0 8px 18px rgba(16, 28, 51, 0.12) !important;
+    cursor: pointer !important;
+    transform: translateY(-50%) !important;
+    padding: 0 !important;
+  }
+
+  .theme-slider__nav--prev { left: 0.1rem !important; }
+  .theme-slider__nav--next { right: 0.1rem !important; }
+
+  .theme-slider .theme-slider__dots,
+  .theme-slider.is-slider .theme-slider__dots {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.38rem !important;
+    margin-top: 0.7rem !important;
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .theme-slider__dot {
+    width: 0.45rem !important;
+    height: 0.45rem !important;
+    border-radius: 999px !important;
+    border: none !important;
+    padding: 0 !important;
+    background: rgba(26, 42, 74, 0.22) !important;
+    cursor: pointer !important;
+  }
+
+  .theme-slider__dot.is-active {
+    width: 1.1rem !important;
+    background: var(--pk-madder, #a63d3d) !important;
+  }
+
+  /* Critical: min-width:0 so track scrolls instead of expanding parent */
+  .theme-slider .theme-grid,
+  #theme-grid.theme-grid,
+  #theme-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    grid-auto-flow: column !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0.3rem 2.55rem 0.45rem !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-inline: 2.55rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .theme-slider .theme-grid::-webkit-scrollbar,
+  #theme-grid::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .theme-slider .theme-card,
+  #theme-grid .theme-card,
+  #theme-grid > .theme-card {
+    flex: 0 0 min(76vw, 300px) !important;
+    width: min(76vw, 300px) !important;
+    min-width: min(76vw, 300px) !important;
+    max-width: min(76vw, 300px) !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+    box-sizing: border-box !important;
   }
 }

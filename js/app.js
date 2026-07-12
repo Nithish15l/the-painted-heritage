@@ -1522,6 +1522,7 @@
  let reduceMotion = false;
  let inView = true;
  let pauseUntil = 0;
+ let index = 0;
 
  try {
  reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1536,6 +1537,8 @@
  function activeIndex() {
  const list = cards();
  if (!list.length) return 0;
+ // Prefer scroll position when track is scrollable
+ if (track.scrollWidth > track.clientWidth + 4) {
  const mid = track.scrollLeft + track.clientWidth / 2;
  let best = 0;
  let bestDist = Infinity;
@@ -1548,6 +1551,8 @@
  }
  });
  return best;
+ }
+ return index;
  }
 
  function paintDots() {
@@ -1594,21 +1599,38 @@
  if (prev) {
  prev.hidden = false;
  prev.disabled = false;
+ prev.removeAttribute("hidden");
  }
  if (next) {
  next.hidden = false;
  next.disabled = false;
+ next.removeAttribute("hidden");
  }
  paintDots();
  }
 
- function goTo(index) {
- scrollTrackToIndex(track, ".theme-card", index);
- window.setTimeout(updateNav, 300);
+ function goTo(nextIndex) {
+ const list = cards();
+ if (!list.length) return;
+ index = ((nextIndex % list.length) + list.length) % list.length;
+ // Prefer direct scrollLeft for reliability inside overflow parents
+ const target = list[index];
+ if (target) {
+ const left = Math.max(
+ 0,
+ target.offsetLeft - (track.clientWidth - target.offsetWidth) / 2
+ );
+ if (typeof track.scrollTo === "function") {
+ track.scrollTo({ left: left, behavior: "smooth" });
+ } else {
+ track.scrollLeft = left;
+ }
+ }
+ window.setTimeout(updateNav, 280);
  }
 
  function softPause() {
- pauseUntil = Date.now() + 7000;
+ pauseUntil = Date.now() + 6500;
  }
 
  function stop() {
@@ -1621,44 +1643,78 @@
  function start() {
  stop();
  updateNav();
- if (!isMobile() || reduceMotion || !inView) return;
+ if (!isMobile() || reduceMotion) return;
+ // Always start autoplay on mobile; IO only pauses when clearly off-screen
  timer = window.setInterval(() => {
- if (Date.now() < pauseUntil || document.hidden || !inView) return;
+ if (!isMobile() || document.hidden) return;
+ if (Date.now() < pauseUntil) return;
+ if (!inView) return;
  const list = cards();
  if (list.length < 2) return;
  goTo(activeIndex() + 1);
- }, 4500);
+ }, 4000);
  }
 
- if (prev) prev.addEventListener("click", () => { goTo(activeIndex() - 1); softPause(); });
- if (next) next.addEventListener("click", () => { goTo(activeIndex() + 1); softPause(); });
- track.addEventListener("scroll", () => {
+ if (prev) {
+ prev.addEventListener("click", (e) => {
+ e.preventDefault();
+ goTo(activeIndex() - 1);
+ softPause();
+ });
+ }
+ if (next) {
+ next.addEventListener("click", (e) => {
+ e.preventDefault();
+ goTo(activeIndex() + 1);
+ softPause();
+ });
+ }
+
+ track.addEventListener(
+ "scroll",
+ () => {
  if (!isMobile()) return;
- window.requestAnimationFrame(updateNav);
- }, { passive: true });
+ window.requestAnimationFrame(() => {
+ index = activeIndex();
+ updateNav();
+ });
+ },
+ { passive: true }
+ );
  track.addEventListener("touchstart", softPause, { passive: true });
+ track.addEventListener("pointerdown", softPause, { passive: true });
 
  if ("IntersectionObserver" in window) {
- const io = new IntersectionObserver((entries) => {
+ const io = new IntersectionObserver(
+ (entries) => {
  entries.forEach((entry) => {
- inView = entry.isIntersecting && entry.intersectionRatio > 0.2;
+ inView = entry.isIntersecting;
  if (inView) start();
  else stop();
  });
- }, { threshold: [0, 0.2, 0.5] });
+ },
+ { threshold: 0.05, rootMargin: "40px 0px" }
+ );
  io.observe(shell);
+ } else {
+ inView = true;
  }
 
  document.addEventListener("visibilitychange", () => {
  if (document.hidden) stop();
- else if (inView) start();
+ else start();
  });
  window.addEventListener("resize", () => {
  window.clearTimeout(shell._themeResize);
- shell._themeResize = window.setTimeout(start, 140);
+ shell._themeResize = window.setTimeout(start, 120);
  });
 
+ // Ensure layout is slider-ready after paint
+ window.requestAnimationFrame(() => {
+ shell.classList.add("is-slider");
  start();
+ goTo(0);
+ });
  })();
 })();
 
