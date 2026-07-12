@@ -70,7 +70,7 @@
  function bindWhatsAppLinks(message) {
  const url = whatsappUrl(message);
  bindExternal(
- "#nav-whatsapp, #contact-whatsapp, #custom-instagram, #custom-whatsapp-secondary, #modal-whatsapp, #float-whatsapp, #hint-whatsapp, a.wa-link",
+ "#nav-whatsapp, #contact-whatsapp, #custom-instagram, #custom-whatsapp-secondary, #modal-whatsapp, #float-whatsapp, a.wa-link",
  url
  );
  }
