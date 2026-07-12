@@ -166,7 +166,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/11-DZ7nzYwjSlw.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Studio capture",
+    size: "Medium",
     medium: "Hand-painted Kalamkari canvas",
     description:
       "Fresh from the atelier - painted texture and living colour of a finished canvas.",
@@ -181,7 +181,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/12-DZxa1cozWRE.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Gallery canvas",
+    size: "Medium",
     medium: "Traditional Kalamkari",
     description:
       "Ornament, jewel tones, and sacred figures from the Tirupati - Sri Kalahasti tradition.",
@@ -196,7 +196,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/02-Dao48bnRnDz.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Custom commission",
+    size: "Large",
     medium: "Hand-painted Kalamkari canvas",
     description:
       "Custom Srinivasa Kalyanam — made to the collector's wall, size, and devotion.",
@@ -226,7 +226,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/04-DaiS_RRTii4.jpg",
     orientation: "portrait",
     category: "narrative",
-    size: "Narrative canvas",
+    size: "Large",
     medium: "Traditional Kalamkari storytelling",
     description:
       "A timeless Ramayana vision - layered motifs and sacred narrative.",
@@ -241,7 +241,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/01-Dar9K9ORmSA.jpg",
     orientation: "portrait",
     category: "process",
-    size: "Work in progress",
+    size: "Medium",
     medium: "Kalamkari pen & colour on canvas",
     description:
       "Sundarakanda taking shape - epic story emerging stroke by stroke.",
@@ -271,7 +271,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/03-DaktUt3zR83.jpg",
     orientation: "portrait",
     category: "narrative",
-    size: "Work in progress",
+    size: "Medium",
     medium: "Traditional Kalamkari",
     description:
       "Gajendra Moksham taking form - sacred rescue story painted with devotion.",
@@ -286,7 +286,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/08-DaNy879Ny3Y.jpg",
     orientation: "portrait",
     category: "process",
-    size: "Studio detail",
+    size: "Small",
     medium: "Hand-drawn Kalamkari line work",
     description:
       "Where the kalam begins - fine black outlines that give every motif its soul.",
@@ -301,7 +301,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/01-seetha-srama.jpg",
     orientation: "portrait",
     category: "mythic",
-    size: "Narrative canvas",
+    size: "Large",
     medium: "Kalamkari on canvas",
     description:
       "Richly detailed sacred narrative - layered motifs and classic storytelling style.",
@@ -331,7 +331,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/03-map-poster.jpg",
     orientation: "portrait",
     category: "narrative",
-    size: "Statement piece",
+    size: "Large",
     medium: "Kalamkari illustration on canvas",
     description:
       "Cartographic storytelling - geography, myth, and ornament on one surface.",
@@ -346,7 +346,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/12-lace-border.jpg",
     orientation: "portrait",
     category: "floral",
-    size: "Border & pattern study",
+    size: "Small",
     medium: "Kalamkari ornamental painting",
     description:
       "Fine lace-like borders and repeating florals of the Kalamkari vocabulary.",
@@ -361,7 +361,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/11-studio-work.jpg",
     orientation: "portrait",
     category: "process",
-    size: "In-studio capture",
+    size: "Medium",
     medium: "Hand-painted Kalamkari canvas",
     description:
       "Authentic process energy and living texture from the studio floor.",
