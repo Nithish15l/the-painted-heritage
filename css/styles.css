@@ -567,8 +567,12 @@ body.modal-open .float-dock {
 }
 
 .eyebrow__dot {
+  display: block;
+  flex: 0 0 6px;
   width: 6px;
   height: 6px;
+  min-width: 6px;
+  min-height: 6px;
   border-radius: 50%;
   background: var(--ochre);
   box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.18);
