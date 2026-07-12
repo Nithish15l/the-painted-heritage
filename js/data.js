@@ -256,7 +256,7 @@ window.KALAMKARI_WORKS = [
     media: "assets/gallery/ig/05-DaYQsiETO6G.jpg",
     orientation: "portrait",
     category: "process",
-    size: "WIP | epic series",
+    size: "Medium",
     medium: "Kalamkari on canvas",
     description:
       "Further progress on Sundarakanda - fine outline and the living hand of the kalam.",
