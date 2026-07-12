@@ -1718,67 +1718,167 @@
  })();
 })();
 
-  // --- Stories slider ---
+  // --- Stories slider (aligned, smooth, auto) ---
   (function initStories() {
     const track = document.getElementById("stories-track");
     const prev = document.getElementById("stories-prev");
     const next = document.getElementById("stories-next");
     const dotsWrap = document.getElementById("stories-dots");
+    const shell = track && track.closest(".stories");
     if (!track) return;
 
-    const cards = Array.from(track.querySelectorAll(".story-card"));
-    if (!cards.length) return;
+    const cards = () => Array.from(track.querySelectorAll(".story-card"));
+    if (!cards().length) return;
 
-    function cardStep() {
-      const card = cards[0];
-      const style = window.getComputedStyle(track);
-      const gap = parseFloat(style.columnGap || style.gap || "16") || 16;
-      return card.getBoundingClientRect().width + gap;
+    let index = 0;
+    let timer = null;
+    let pauseUntil = 0;
+    let inView = true;
+    let reduceMotion = false;
+
+    try {
+      reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (e) {
+      reduceMotion = false;
     }
 
-    function scrollByDir(dir) {
-      track.scrollBy({ left: dir * cardStep(), behavior: "smooth" });
-    }
-
-    if (prev) prev.addEventListener("click", () => scrollByDir(-1));
-    if (next) next.addEventListener("click", () => scrollByDir(1));
-
-    if (dotsWrap) {
-      dotsWrap.innerHTML = "";
-      cards.forEach((_, i) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "stories__dot" + (i === 0 ? " is-active" : "");
-        b.setAttribute("aria-label", "Go to story " + (i + 1));
-        b.addEventListener("click", () => {
-          track.scrollTo({ left: i * cardStep(), behavior: "smooth" });
-        });
-        dotsWrap.appendChild(b);
+    function activeIndex() {
+      const list = cards();
+      if (!list.length) return 0;
+      const mid = track.scrollLeft + track.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      list.forEach((card, i) => {
+        const center = card.offsetLeft + card.offsetWidth / 2;
+        const dist = Math.abs(center - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
       });
-
-      const dots = () => Array.from(dotsWrap.querySelectorAll(".stories__dot"));
-      track.addEventListener(
-        "scroll",
-        () => {
-          const i = Math.round(track.scrollLeft / cardStep());
-          dots().forEach((d, idx) => d.classList.toggle("is-active", idx === i));
-        },
-        { passive: true }
-      );
+      return best;
     }
 
-    // Gentle auto-slide
-    let auto = setInterval(() => {
-      if (document.hidden) return;
-      const max = track.scrollWidth - track.clientWidth - 4;
-      if (track.scrollLeft >= max) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollByDir(1);
+    function paintDots() {
+      if (!dotsWrap) return;
+      const list = cards();
+      const active = activeIndex();
+      if (dotsWrap.childElementCount !== list.length) {
+        dotsWrap.innerHTML = "";
+        list.forEach((_, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "stories__dot";
+          b.setAttribute("aria-label", "Go to story " + (i + 1));
+          b.addEventListener("click", () => {
+            goTo(i);
+            softPause();
+          });
+          dotsWrap.appendChild(b);
+        });
       }
-    }, 4500);
+      Array.from(dotsWrap.querySelectorAll(".stories__dot")).forEach((d, i) => {
+        d.classList.toggle("is-active", i === active);
+      });
+    }
 
-    track.addEventListener("pointerdown", () => {
-      clearInterval(auto);
+    function goTo(nextIndex) {
+      const list = cards();
+      if (!list.length) return;
+      index = ((nextIndex % list.length) + list.length) % list.length;
+      const target = list[index];
+      if (!target) return;
+      const left = Math.max(
+        0,
+        target.offsetLeft - (track.clientWidth - target.offsetWidth) / 2
+      );
+      if (typeof track.scrollTo === "function") {
+        track.scrollTo({ left: left, behavior: reduceMotion ? "auto" : "smooth" });
+      } else {
+        track.scrollLeft = left;
+      }
+      window.setTimeout(paintDots, 280);
+    }
+
+    function softPause() {
+      pauseUntil = Date.now() + 6500;
+    }
+
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function start() {
+      stop();
+      paintDots();
+      if (reduceMotion || !inView) return;
+      timer = window.setInterval(() => {
+        if (document.hidden || !inView) return;
+        if (Date.now() < pauseUntil) return;
+        goTo(activeIndex() + 1);
+      }, 4200);
+    }
+
+    if (prev) {
+      prev.addEventListener("click", (e) => {
+        e.preventDefault();
+        goTo(activeIndex() - 1);
+        softPause();
+      });
+    }
+    if (next) {
+      next.addEventListener("click", (e) => {
+        e.preventDefault();
+        goTo(activeIndex() + 1);
+        softPause();
+      });
+    }
+
+    track.addEventListener(
+      "scroll",
+      () => {
+        window.requestAnimationFrame(() => {
+          index = activeIndex();
+          paintDots();
+        });
+      },
+      { passive: true }
+    );
+    track.addEventListener("touchstart", softPause, { passive: true });
+    track.addEventListener("pointerdown", softPause, { passive: true });
+
+    if (shell && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            inView = entry.isIntersecting;
+            if (inView) start();
+            else stop();
+          });
+        },
+        { threshold: 0.12, rootMargin: "30px 0px" }
+      );
+      io.observe(shell);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    window.addEventListener("resize", () => {
+      window.clearTimeout(track._storiesResize);
+      track._storiesResize = window.setTimeout(() => {
+        goTo(activeIndex());
+        start();
+      }, 140);
+    });
+
+    window.requestAnimationFrame(() => {
+      goTo(0);
+      start();
     });
   })();

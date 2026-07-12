@@ -3142,6 +3142,10 @@ h3 {
   border: 1px solid rgba(201, 162, 39, 0.28);
   border-radius: 18px;
   box-shadow: 0 16px 40px rgba(26, 20, 16, 0.06);
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .stories__head {
@@ -3167,29 +3171,45 @@ h3 {
 .stories__viewport {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0.5rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .stories__track {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
   gap: 1rem;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 0.35rem 0.25rem 0.85rem;
+  padding: 0.35rem 0.15rem 0.85rem;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .stories__track::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }
 
 .story-card {
   flex: 0 0 min(280px, 78vw);
-  scroll-snap-align: start;
+  width: min(280px, 78vw);
+  min-width: min(280px, 78vw);
+  max-width: min(280px, 78vw);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   padding: 1.25rem 1.2rem 1.35rem;
   border-radius: 14px;
   border: 1px solid rgba(201, 162, 39, 0.25);
@@ -3198,7 +3218,11 @@ h3 {
     url("../assets/kalamkari-doodle.svg");
   background-size: auto, 260px;
   box-shadow: 0 10px 28px rgba(26, 20, 16, 0.05);
-  min-height: 170px;
+  min-height: 11.5rem;
+  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .story-card__badge {
@@ -3212,14 +3236,16 @@ h3 {
   color: #fffdf8;
   border-radius: 999px;
   background: linear-gradient(135deg, #1b2a4a, #9c2f2f);
+  align-self: flex-start;
 }
 
 .story-card h4 {
   margin: 0 0 0.45rem;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #152238;
+  line-height: 1.25;
 }
 
 .story-card p {
@@ -3227,10 +3253,12 @@ h3 {
   font-size: 0.9rem;
   color: #4a433c;
   line-height: 1.55;
+  flex: 1;
 }
 
 .stories__nav {
   flex-shrink: 0;
+  align-self: center;
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
@@ -3252,6 +3280,7 @@ h3 {
 .stories__dots {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: 0.5rem;
 }
@@ -3264,12 +3293,57 @@ h3 {
   padding: 0;
   background: rgba(27, 42, 74, 0.2);
   cursor: pointer;
+  transition: width 0.25s ease, background 0.25s ease;
 }
 
 .stories__dot.is-active {
   background: linear-gradient(135deg, #9c2f2f, #c9a227);
   width: 18px;
   border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .stories {
+    padding: 1.25rem 0.85rem 1.15rem;
+    margin-top: 2rem;
+  }
+
+  .stories__viewport {
+    gap: 0;
+  }
+
+  .stories__nav {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.2rem;
+    height: 2.2rem;
+    background: rgba(255, 253, 248, 0.96);
+  }
+
+  .stories__nav--prev {
+    left: 0.1rem;
+  }
+
+  .stories__nav--next {
+    right: 0.1rem;
+  }
+
+  .stories__track {
+    gap: 0.85rem;
+    padding: 0.35rem 2.4rem 0.75rem;
+    scroll-padding-inline: 2.4rem;
+  }
+
+  .story-card {
+    flex: 0 0 min(82vw, 300px);
+    width: min(82vw, 300px);
+    min-width: min(82vw, 300px);
+    max-width: min(82vw, 300px);
+    min-height: 12rem;
+    padding: 1.1rem 1rem 1.15rem;
+  }
 }
 
 /* ===== End guide ===== */
