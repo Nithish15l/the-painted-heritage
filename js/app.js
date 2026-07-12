@@ -198,7 +198,10 @@
  let portScrollRaf = 0;
 
  function isPortraitSliderMode() {
- return window.matchMedia("(max-width: 900px)").matches;
+ // Prefer CSS layout mode: narrow screens + common mobile phones
+ const narrow = window.matchMedia("(max-width: 900px)").matches;
+ const coarse = window.matchMedia("(pointer: coarse)").matches && window.innerWidth <= 1024;
+ return narrow || coarse;
  }
 
  function isLandscape(work) {
@@ -605,13 +608,24 @@
  },
  { passive: true }
  );
- window.addEventListener("resize", () => {
- renderGallery(false);
+
+ let resizeTimer = 0;
+ const onViewportChange = () => {
+ clearTimeout(resizeTimer);
+ resizeTimer = setTimeout(() => {
+ const wasSlider = portSlider && portSlider.classList.contains("is-slider");
+ const nowSlider = isPortraitSliderMode();
+ document.documentElement.classList.toggle("is-port-slider", nowSlider);
+ renderGallery(!wasSlider && nowSlider);
  requestAnimationFrame(() => {
- if (grid && isPortraitSliderMode()) grid.scrollLeft = 0;
+ if (grid && nowSlider && !wasSlider) grid.scrollLeft = 0;
  updatePortNav();
  });
- });
+ }, 120);
+ };
+ window.addEventListener("resize", onViewportChange);
+ window.addEventListener("orientationchange", onViewportChange);
+ document.documentElement.classList.toggle("is-port-slider", isPortraitSliderMode());
  updatePortNav();
  }
 
