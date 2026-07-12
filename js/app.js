@@ -1565,11 +1565,16 @@
  return window.matchMedia("(max-width: 900px)").matches;
  }
 
+ function canSlide() {
+ // Only horizontal carousel when track actually overflows
+ return track.scrollWidth > track.clientWidth + 12;
+ }
+
  function activeIndex() {
  const list = cards();
  if (!list.length) return 0;
  // Prefer scroll position when track is scrollable
- if (track.scrollWidth > track.clientWidth + 4) {
+ if (canSlide()) {
  const mid = track.scrollLeft + track.clientWidth / 2;
  let best = 0;
  let bestDist = Infinity;
@@ -1616,7 +1621,8 @@
  }
 
  function updateNav() {
- if (!isMobile()) {
+ // Stacked layout (all cards visible): no carousel chrome
+ if (!canSlide()) {
  shell.classList.remove("is-slider");
  if (prev) prev.hidden = true;
  if (next) next.hidden = true;
@@ -1641,6 +1647,7 @@
  }
 
  function goTo(nextIndex, opts) {
+ if (!canSlide()) return;
  const list = cards();
  if (!list.length) return;
  index = ((nextIndex % list.length) + list.length) % list.length;
@@ -1662,12 +1669,11 @@
  function start() {
  stop();
  updateNav();
- if (!isMobile() || reduceMotion) return;
- // Always start autoplay on mobile; IO only pauses when clearly off-screen
+ // Auto-slide only when horizontal carousel is active
+ if (!canSlide() || reduceMotion || !inView) return;
  timer = window.setInterval(() => {
- if (!isMobile() || document.hidden) return;
+ if (document.hidden || !inView || !canSlide()) return;
  if (Date.now() < pauseUntil) return;
- if (!inView) return;
  const list = cards();
  if (list.length < 2) return;
  goTo(activeIndex() + 1);
@@ -1731,11 +1737,10 @@
  }, 120);
  });
 
- // Ensure layout is slider-ready after paint; first card centered
+ // Layout-ready: stack or carousel depending on overflow
  window.requestAnimationFrame(() => {
- shell.classList.add("is-slider");
  start();
- if (isMobile()) centerTrackStart(track, ".theme-card");
+ if (canSlide()) centerTrackStart(track, ".theme-card");
  });
  })();
 
