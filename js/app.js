@@ -191,7 +191,8 @@
  const landNext = document.getElementById("land-next");
  const landSlider = document.getElementById("land-slider");
  let activeFilter = "all";
- const PAGE_SIZE = 8; // portrait grid default (desktop)
+ /** Initial batch for Canvas paintings (All + each filter): 2–4 cards */
+ const PAGE_SIZE = 4;
  let visibleCount = PAGE_SIZE;
  let landIndex = 0;
  let landSlides = [];
@@ -518,25 +519,42 @@
  }
  }
 
+ function initialPageSize(total) {
+ if (total <= 0) return 0;
+ // First page: up to 4 paintings (or fewer if filter has less)
+ return Math.min(PAGE_SIZE, total);
+ }
+
  function updateMoreUI(total, shown) {
  if (!moreWrap || !moreBtn) return;
 
- // Mobile uses horizontal sliding view — no page chunks
- if (isPortraitSliderMode()) {
+ if (total <= 0) {
  moreWrap.hidden = true;
  moreBtn.dataset.mode = "more";
+ if (moreCount) moreCount.textContent = "";
  return;
  }
 
- if (total <= PAGE_SIZE) {
- moreWrap.hidden = true;
+ const remaining = Math.max(total - shown, 0);
+ const isExpanded = shown >= total;
+ const base = initialPageSize(total);
+
+ // Only show View more when there are more works than the first batch
+ if (total <= base) {
+ moreWrap.hidden = false;
+ moreBtn.hidden = true;
  moreBtn.dataset.mode = "more";
+ if (moreCount) {
+ moreCount.textContent =
+ total === 1
+ ? "Showing 1 painting"
+ : `Showing ${shown} of ${total} paintings`;
+ }
  return;
  }
 
  moreWrap.hidden = false;
- const remaining = Math.max(total - shown, 0);
- const isExpanded = shown >= total;
+ moreBtn.hidden = false;
 
  if (isExpanded) {
  moreBtn.dataset.mode = "less";
@@ -735,21 +753,26 @@
  const scrollY = lockScroll ? window.scrollY : 0;
 
  const filtered = getPortraitWorks();
+ const total = filtered.length;
  const sliderMode = isPortraitSliderMode();
+ const base = initialPageSize(total);
 
- if (sliderMode) {
- visibleCount = filtered.length;
+ if (resetPage || visibleCount < 1) {
+ visibleCount = base;
  } else {
- if (resetPage) visibleCount = PAGE_SIZE;
- visibleCount = Math.min(Math.max(visibleCount, 0), Math.max(filtered.length, PAGE_SIZE));
- if (filtered.length <= PAGE_SIZE) visibleCount = filtered.length || PAGE_SIZE;
+ // Keep expansion within current filtered set
+ visibleCount = Math.min(Math.max(visibleCount, base), total || 0);
  }
+
+ // If filter has fewer items than current visible, clamp
+ if (visibleCount > total) visibleCount = total;
+ if (total > 0 && visibleCount < 1) visibleCount = base;
 
  const slice = filtered.slice(0, visibleCount);
 
  // Keep grid height while swapping cards so the page does not jump
  const prevHeight = grid.offsetHeight;
- if (prevHeight > 0) {
+ if (prevHeight > 0 && lockScroll) {
  grid.style.minHeight = prevHeight + "px";
  }
 
@@ -757,12 +780,11 @@
  slice.forEach((work, i) =>
  grid.appendChild(createCard(work, i, { animate: animate }))
  );
- if (empty) empty.hidden = filtered.length > 0;
- updateMoreUI(filtered.length, slice.length);
+ if (empty) empty.hidden = total > 0;
+ updateMoreUI(total, slice.length);
 
  const finish = () => {
- if (sliderMode) {
- // Instant center only — never smooth-scroll the page
+ if (sliderMode && slice.length) {
  scrollTrackToIndex(grid, ".card", 0, { behavior: "auto" });
  updatePortNav();
  } else {
@@ -774,7 +796,6 @@
  }
  };
 
- // Double rAF: wait for DOM + layout, then unlock height and restore scroll
  requestAnimationFrame(() => {
  requestAnimationFrame(() => {
  finish();
@@ -796,24 +817,18 @@
  const filtered = getPortraitWorks();
  const total = filtered.length;
  const mode = moreBtn.dataset.mode || "more";
- const scrollY = window.scrollY;
+ const base = initialPageSize(total);
 
  if (mode === "less" || visibleCount >= total) {
- visibleCount = PAGE_SIZE;
+ visibleCount = base;
  renderGallery(false, { animate: false, lockScroll: true });
  moreBtn.focus({ preventScroll: true });
- // Soft scroll only if user is far below the filters
- const filtersEl = document.querySelector(".filters");
- if (filtersEl) {
- const top = filtersEl.getBoundingClientRect().top + window.scrollY - 80;
- if (scrollY > top + 120) {
- window.scrollTo({ top: top, behavior: "smooth" });
- }
- }
  return;
  }
 
- visibleCount = total;
+ // Reveal next batch (up to PAGE_SIZE), or the rest if fewer remain
+ const remaining = total - visibleCount;
+ visibleCount = Math.min(total, visibleCount + Math.min(PAGE_SIZE, remaining));
  renderGallery(false, { animate: false, lockScroll: true });
  moreBtn.focus({ preventScroll: true });
  });
@@ -829,7 +844,8 @@
  b.classList.toggle("is-active", on);
  b.setAttribute("aria-selected", String(on));
  });
- // Re-render portraits only — no landscape rebuild, no enter animation, lock scroll
+ // Reset to first page (2–4) for this filter; lock scroll; fixed card size
+ visibleCount = PAGE_SIZE;
  renderGallery(true, { animate: false, lockScroll: true });
  btn.focus({ preventScroll: true });
  });
