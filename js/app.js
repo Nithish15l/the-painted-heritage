@@ -259,11 +259,10 @@
  ? "Video"
  : "Canvas";
 
- const pos = work.objectPosition || "center 20%";
  const mediaInner = isVideo
- ? `<img src="${escapeAttr(work.poster || work.media)}" alt="" loading="lazy" decoding="async" style="object-position:${escapeAttr(pos)}" />
+ ? `<img src="${escapeAttr(work.poster || work.media)}" alt="" loading="lazy" decoding="async" />
  <span class="card__play">${playIconSvg()}</span>`
- : `<img src="${escapeAttr(work.media)}" alt="${escapeAttr(work.title)}" loading="${index < 6 ? "eager" : "lazy"}" decoding="async" style="object-position:${escapeAttr(pos)}" />`;
+ : `<img src="${escapeAttr(work.media)}" alt="${escapeAttr(work.title)}" loading="${index < 6 ? "eager" : "lazy"}" decoding="async" />`;
 
  btn.innerHTML = `
  <div class="card__frame">
@@ -1504,6 +1503,159 @@
  window.addEventListener("resize", () => {
  window.clearTimeout(shell._whyCardsResize);
  shell._whyCardsResize = window.setTimeout(start, 140);
+ });
+
+ start();
+ })();
+
+ /* Theme / What you choose: auto-slide on mobile */
+ (function initThemeSlider() {
+ const shell = document.getElementById("theme-slider");
+ const track = document.getElementById("theme-grid");
+ const prev = document.getElementById("theme-prev");
+ const next = document.getElementById("theme-next");
+ const dotsWrap = document.getElementById("theme-dots");
+ if (!shell || !track) return;
+
+ const cards = () => Array.from(track.querySelectorAll(".theme-card"));
+ let timer = null;
+ let reduceMotion = false;
+ let inView = true;
+ let pauseUntil = 0;
+
+ try {
+ reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ } catch (e) {
+ reduceMotion = false;
+ }
+
+ function isMobile() {
+ return window.matchMedia("(max-width: 900px)").matches;
+ }
+
+ function activeIndex() {
+ const list = cards();
+ if (!list.length) return 0;
+ const mid = track.scrollLeft + track.clientWidth / 2;
+ let best = 0;
+ let bestDist = Infinity;
+ list.forEach((card, i) => {
+ const center = card.offsetLeft + card.offsetWidth / 2;
+ const dist = Math.abs(center - mid);
+ if (dist < bestDist) {
+ bestDist = dist;
+ best = i;
+ }
+ });
+ return best;
+ }
+
+ function paintDots() {
+ if (!dotsWrap) return;
+ const list = cards();
+ if (!isMobile() || !list.length) {
+ dotsWrap.innerHTML = "";
+ dotsWrap.hidden = true;
+ return;
+ }
+ dotsWrap.hidden = false;
+ const active = activeIndex();
+ if (dotsWrap.childElementCount !== list.length) {
+ dotsWrap.innerHTML = "";
+ list.forEach((_, i) => {
+ const b = document.createElement("button");
+ b.type = "button";
+ b.className = "theme-slider__dot";
+ b.setAttribute("aria-label", "Go to choice " + (i + 1));
+ b.addEventListener("click", () => {
+ goTo(i);
+ softPause();
+ });
+ dotsWrap.appendChild(b);
+ });
+ }
+ dotsWrap.querySelectorAll(".theme-slider__dot").forEach((d, i) => {
+ d.classList.toggle("is-active", i === active);
+ });
+ }
+
+ function updateNav() {
+ if (!isMobile()) {
+ shell.classList.remove("is-slider");
+ if (prev) prev.hidden = true;
+ if (next) next.hidden = true;
+ if (dotsWrap) {
+ dotsWrap.innerHTML = "";
+ dotsWrap.hidden = true;
+ }
+ return;
+ }
+ shell.classList.add("is-slider");
+ if (prev) {
+ prev.hidden = false;
+ prev.disabled = false;
+ }
+ if (next) {
+ next.hidden = false;
+ next.disabled = false;
+ }
+ paintDots();
+ }
+
+ function goTo(index) {
+ scrollTrackToIndex(track, ".theme-card", index);
+ window.setTimeout(updateNav, 300);
+ }
+
+ function softPause() {
+ pauseUntil = Date.now() + 7000;
+ }
+
+ function stop() {
+ if (timer) {
+ clearInterval(timer);
+ timer = null;
+ }
+ }
+
+ function start() {
+ stop();
+ updateNav();
+ if (!isMobile() || reduceMotion || !inView) return;
+ timer = window.setInterval(() => {
+ if (Date.now() < pauseUntil || document.hidden || !inView) return;
+ const list = cards();
+ if (list.length < 2) return;
+ goTo(activeIndex() + 1);
+ }, 4500);
+ }
+
+ if (prev) prev.addEventListener("click", () => { goTo(activeIndex() - 1); softPause(); });
+ if (next) next.addEventListener("click", () => { goTo(activeIndex() + 1); softPause(); });
+ track.addEventListener("scroll", () => {
+ if (!isMobile()) return;
+ window.requestAnimationFrame(updateNav);
+ }, { passive: true });
+ track.addEventListener("touchstart", softPause, { passive: true });
+
+ if ("IntersectionObserver" in window) {
+ const io = new IntersectionObserver((entries) => {
+ entries.forEach((entry) => {
+ inView = entry.isIntersecting && entry.intersectionRatio > 0.2;
+ if (inView) start();
+ else stop();
+ });
+ }, { threshold: [0, 0.2, 0.5] });
+ io.observe(shell);
+ }
+
+ document.addEventListener("visibilitychange", () => {
+ if (document.hidden) stop();
+ else if (inView) start();
+ });
+ window.addEventListener("resize", () => {
+ window.clearTimeout(shell._themeResize);
+ shell._themeResize = window.setTimeout(start, 140);
  });
 
  start();
