@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none" preserveAspectRatio="xMidYMax meet">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8c9df" stop-opacity="0.45"/>
+      <stop offset="35%" stop-color="#e6d4b8" stop-opacity="0.28"/>
+      <stop offset="70%" stop-color="#f3e8d4" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f7f1e7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a8f78" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#556b54" stop-opacity="0.48"/>
+    </linearGradient>
+    <linearGradient id="hillMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5f7a5a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#3a5238" stop-opacity="0.62"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a6646" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#243522" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="namaW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffef9" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#efe8d8" stop-opacity="0.88"/>
+    </linearGradient>
+    <filter id="soft" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <!-- Far range — Tirumala silhouette -->
+  <path fill="url(#hillFar)" d="M0 480
+    C60 450 120 400 200 385
+    C280 370 340 410 420 390
+    C500 370 560 320 650 330
+    C740 340 800 385 880 365
+    C960 345 1020 300 1120 315
+    C1220 330 1280 370 1360 355
+    C1440 340 1520 375 1600 400
+    L1600 900 L0 900 Z"/>
+
+  <!-- Mid peaks (main Tirumala massif feel) -->
+  <path fill="url(#hillMid)" d="M0 560
+    C90 520 160 470 260 455
+    C350 442 410 490 500 465
+    C590 440 650 390 740 400
+    C830 410 890 460 980 440
+    C1070 420 1130 370 1220 385
+    C1310 400 1380 450 1480 435
+    C1540 428 1580 450 1600 465
+    L1600 900 L0 900 Z"/>
+
+  <!-- Near foothills -->
+  <path fill="url(#hillNear)" d="M0 640
+    C110 600 200 555 320 545
+    C440 535 520 585 640 565
+    C760 545 840 500 950 515
+    C1060 530 1140 575 1260 560
+    C1380 545 1480 580 1600 600
+    L1600 900 L0 900 Z"/>
+
+  <!-- Ridge detail lines -->
+  <g stroke="#2c3f2a" stroke-opacity="0.12" stroke-width="1.2" fill="none">
+    <path d="M40 560 C200 520 360 540 520 500 C680 460 840 510 1000 480 C1160 450 1320 500 1560 470"/>
+    <path d="M0 620 C180 580 360 600 540 570 C720 540 900 590 1080 560 C1260 530 1440 570 1600 550"/>
+  </g>
+
+  <!-- Sacred Namams — abundant, Tirumala-style white U marks -->
+  <g fill="url(#namaW)">
+    <!-- Large central nama (iconic) -->
+    <g transform="translate(700,390)">
+      <path d="M0 0 L12 95 L28 95 L16 0 Z"/>
+      <path d="M52 0 L40 95 L56 95 L68 0 Z"/>
+      <path d="M12 88 Q34 112 56 88 L54 98 Q34 118 14 98 Z"/>
+      <path d="M30 8 L34 88" stroke="#9c2f2f" stroke-opacity="0.45" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- Left slope cluster -->
+    <g transform="translate(180,450) scale(0.72)">
+      <path d="M0 0 L12 95 L28 95 L16 0 Z"/>
+      <path d="M52 0 L40 95 L56 95 L68 0 Z"/>
+      <path d="M12 88 Q34 112 56 88 L54 98 Q34 118 14 98 Z"/>
+      <path d="M30 10 L34 86" stroke="#9c2f2f" stroke-opacity="0.35" stroke-width="2.5" fill="none"/>
+    </g>
+    <g transform="translate(280,480) scale(0.5)">
+      <path d="M0 0 L10 80 L24 80 L14 0 Z"/>
+      <path d="M44 0 L34 80 L48 80 L58 0 Z"/>
+      <path d="M10 74 Q29 94 48 74"/>
+    </g>
+    <g transform="translate(380,430) scale(0.58)">
+      <path d="M0 0 L11 88 L25 88 L14 0 Z"/>
+      <path d="M48 0 L37 88 L51 88 L62 0 Z"/>
+      <path d="M11 82 Q31 104 51 82"/>
+      <path d="M28 8 L32 80" stroke="#9c2f2f" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    </g>
+
+    <!-- Mid-left ridge -->
+    <g transform="translate(480,420) scale(0.65)">
+      <path d="M0 0 L12 92 L26 92 L14 0 Z"/>
+      <path d="M50 0 L38 92 L52 92 L64 0 Z"/>
+      <path d="M12 86 Q32 108 52 86"/>
+    </g>
+    <g transform="translate(560,470) scale(0.42)">
+      <path d="M0 0 L9 72 L20 72 L11 0 Z"/>
+      <path d="M38 0 L29 72 L40 72 L49 0 Z"/>
+      <path d="M9 68 Q24 86 40 68"/>
+    </g>
+
+    <!-- Right of center -->
+    <g transform="translate(900,400) scale(0.68)">
+      <path d="M0 0 L12 94 L27 94 L15 0 Z"/>
+      <path d="M52 0 L40 94 L55 94 L67 0 Z"/>
+      <path d="M12 88 Q33 112 55 88"/>
+      <path d="M30 8 L34 86" stroke="#9c2f2f" stroke-opacity="0.4" stroke-width="2.5" fill="none"/>
+    </g>
+    <g transform="translate(1000,450) scale(0.48)">
+      <path d="M0 0 L10 78 L22 78 L12 0 Z"/>
+      <path d="M42 0 L32 78 L44 78 L54 0 Z"/>
+      <path d="M10 72 Q27 92 44 72"/>
+    </g>
+
+    <!-- Far right slopes -->
+    <g transform="translate(1180,415) scale(0.7)">
+      <path d="M0 0 L12 96 L27 96 L15 0 Z"/>
+      <path d="M52 0 L40 96 L55 96 L67 0 Z"/>
+      <path d="M12 90 Q33 114 55 90"/>
+      <path d="M30 6 L34 88" stroke="#9c2f2f" stroke-opacity="0.38" stroke-width="2.5" fill="none"/>
+    </g>
+    <g transform="translate(1300,460) scale(0.52)">
+      <path d="M0 0 L10 82 L23 82 L13 0 Z"/>
+      <path d="M44 0 L34 82 L47 82 L57 0 Z"/>
+      <path d="M10 76 Q28 96 47 76"/>
+    </g>
+    <g transform="translate(1420,490) scale(0.4)">
+      <path d="M0 0 L9 70 L20 70 L11 0 Z"/>
+      <path d="M38 0 L29 70 L40 70 L49 0 Z"/>
+      <path d="M9 66 Q24 84 40 66"/>
+    </g>
+
+    <!-- Scattered small namas -->
+    <g transform="translate(640,500) scale(0.35)" opacity="0.9">
+      <path d="M0 0 L8 60 L18 60 L10 0 Z"/>
+      <path d="M34 0 L26 60 L36 60 L44 0 Z"/>
+      <path d="M8 56 Q22 72 36 56"/>
+    </g>
+    <g transform="translate(820,510) scale(0.32)" opacity="0.85">
+      <path d="M0 0 L8 58 L17 58 L9 0 Z"/>
+      <path d="M32 0 L24 58 L33 58 L41 0 Z"/>
+      <path d="M8 54 Q20 68 33 54"/>
+    </g>
+    <g transform="translate(1080,500) scale(0.36)" opacity="0.88">
+      <path d="M0 0 L8 62 L18 62 L10 0 Z"/>
+      <path d="M34 0 L26 62 L36 62 L44 0 Z"/>
+      <path d="M8 58 Q22 74 36 58"/>
+    </g>
+  </g>
+
+  <!-- Kalahasti Shiva Tripundra on lower slopes -->
+  <g opacity="0.7">
+    <g transform="translate(520,520)">
+      <rect x="0" y="0" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="12" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="24" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <circle cx="35" cy="15.5" r="4.5" fill="#9c2f2f" fill-opacity="0.65"/>
+    </g>
+    <g transform="translate(980,500)">
+      <rect x="0" y="0" width="62" height="6" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="11" width="62" height="6" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="22" width="62" height="6" rx="2" fill="#f2ebe0"/>
+      <circle cx="31" cy="14" r="4" fill="#9c2f2f" fill-opacity="0.65"/>
+    </g>
+    <g transform="translate(220,540) scale(0.85)">
+      <rect x="0" y="0" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="12" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="24" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <circle cx="35" cy="15.5" r="4.5" fill="#9c2f2f" fill-opacity="0.6"/>
+    </g>
+    <g transform="translate(1280,530) scale(0.8)">
+      <rect x="0" y="0" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="12" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <rect x="0" y="24" width="70" height="7" rx="2" fill="#f2ebe0"/>
+      <circle cx="35" cy="15.5" r="4.5" fill="#9c2f2f" fill-opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- Soft forest dots on ridges -->
+  <g fill="#1e2e1c" opacity="0.18">
+    <ellipse cx="150" cy="545" rx="16" ry="26"/>
+    <ellipse cx="320" cy="530" rx="12" ry="20"/>
+    <ellipse cx="540" cy="510" rx="14" ry="22"/>
+    <ellipse cx="780" cy="490" rx="18" ry="28"/>
+    <ellipse cx="1050" cy="505" rx="15" ry="24"/>
+    <ellipse cx="1250" cy="520" rx="17" ry="27"/>
+    <ellipse cx="1480" cy="545" rx="13" ry="21"/>
+  </g>
+
+  <!-- Parchment blend at base -->
+  <path fill="#f7f1e7" fill-opacity="0.35" d="M0 720 Q400 680 800 705 T1600 720 L1600 900 L0 900 Z"/>
+  <path fill="#f7f1e7" fill-opacity="0.55" d="M0 780 Q500 750 1000 770 T1600 780 L1600 900 L0 900 Z"/>
+  <path fill="#f7f1e7" fill-opacity="0.78" d="M0 840 Q600 820 1200 835 T1600 840 L1600 900 L0 900 Z"/>
+</svg>

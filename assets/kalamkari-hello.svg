@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+  <!--
+    Elegant thin-line sacred marks
+    Tirumala U-Namam + Shiva Tripundra
+    Delicate kalam pen weight for dark UI
+  -->
+  <defs>
+    <linearGradient id="tGold" x1="24" y1="18" x2="136" y2="142" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0d78a"/>
+      <stop offset="1" stop-color="#c4a35a"/>
+    </linearGradient>
+    <linearGradient id="tMadder" x1="80" y1="40" x2="80" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c45a5a"/>
+      <stop offset="1" stop-color="#8b2e2e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Thin medallion rings -->
+  <circle cx="80" cy="80" r="68" stroke="url(#tGold)" stroke-width="0.9" opacity="0.75"/>
+  <circle cx="80" cy="80" r="62" stroke="url(#tMadder)" stroke-width="0.55" opacity="0.35"/>
+  <circle cx="80" cy="80" r="56" stroke="url(#tGold)" stroke-width="0.45" stroke-dasharray="1.2 2.4" opacity="0.35"/>
+
+  <!-- Tiny cardinal dots -->
+  <g fill="url(#tGold)" opacity="0.55">
+    <circle cx="80" cy="16" r="1.3"/>
+    <circle cx="80" cy="144" r="1.3"/>
+    <circle cx="16" cy="80" r="1.3"/>
+    <circle cx="144" cy="80" r="1.3"/>
+  </g>
+
+  <!-- SHIVA TRIPUNDRA — three thin vibhuti strokes -->
+  <g stroke="#f2e8d4" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.92">
+    <path d="M42 56 C54 52 66 50 80 50 C94 50 106 52 118 56"/>
+    <path d="M40 70 C54 66 66 64 80 64 C94 64 106 66 120 70"/>
+    <path d="M42 84 C54 80 66 78 80 78 C94 78 106 80 118 84"/>
+  </g>
+  <!-- Fine gold hairline on each vibhuti -->
+  <g stroke="url(#tGold)" stroke-width="0.55" stroke-linecap="round" fill="none" opacity="0.55">
+    <path d="M42 56 C54 52 66 50 80 50 C94 50 106 52 118 56"/>
+    <path d="M40 70 C54 66 66 64 80 64 C94 64 106 66 120 70"/>
+    <path d="M42 84 C54 80 66 78 80 78 C94 78 106 80 118 84"/>
+  </g>
+
+  <!-- TIRUMALA U-NAMAM — thin elegant U -->
+  <path
+    d="M58 40
+       L58 90
+       C58 104 66 112 80 112
+       C94 112 102 104 102 90
+       L102 40"
+    stroke="#f5efe3"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.95"
+  />
+  <!-- Gold outline of U -->
+  <path
+    d="M58 40 L58 90 C58 104 66 112 80 112 C94 112 102 104 102 90 L102 40"
+    stroke="url(#tGold)"
+    stroke-width="0.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.7"
+  />
+
+  <!-- Srichurnam — thin central madder line -->
+  <path
+    d="M80 42 L80 106"
+    stroke="url(#tMadder)"
+    stroke-width="1.6"
+    stroke-linecap="round"
+  />
+  <!-- Soft gold hairline on red -->
+  <path
+    d="M80 44 L80 104"
+    stroke="#f0d78a"
+    stroke-width="0.4"
+    stroke-linecap="round"
+    opacity="0.4"
+  />
+
+  <!-- Thin bindu at base -->
+  <circle cx="80" cy="116" r="3.4" fill="none" stroke="url(#tMadder)" stroke-width="1.2"/>
+  <circle cx="80" cy="116" r="1.2" fill="url(#tGold)" opacity="0.8"/>
+
+  <!-- Delicate third-eye accent on middle vibhuti -->
+  <circle cx="80" cy="70" r="2.2" fill="none" stroke="url(#tMadder)" stroke-width="0.9"/>
+  <circle cx="80" cy="70" r="0.7" fill="url(#tGold)" opacity="0.75"/>
+</svg>

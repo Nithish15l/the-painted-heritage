@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta
+ name="description"
+ content="Premium hand-painted Kalamkari canvas paintings from Tirupati - Sri Kalahasti. Browse the catalogue. Custom commissions. Worldwide shipping."
+ />
+ <title>The Painted Heritage | Premium Kalamkari Canvas Paintings</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link
+ href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+ rel="stylesheet"
+ />
+ <link rel="stylesheet" href="css/styles.css" />
+ <link rel="stylesheet" href="css/premium.css" />
+ </head>
+ <body>
+ <div class="page-frame" aria-hidden="true"></div>
+
+ <!-- Elegant Tirumala + Kalahasti namas as Kalamkari doodle -->
+ <div class="tirumala-bg" aria-hidden="true">
+ <div class="tirumala-bg__sky"></div>
+ <div class="tirumala-bg__glow"></div>
+ <img
+ class="tirumala-bg__hills tirumala-bg__hills--far"
+ src="assets/tirumala-hills.svg"
+ alt=""
+ width="1600"
+ height="900"
+ decoding="async"
+ />
+ <div class="tirumala-bg__doodle tirumala-bg__doodle--a"></div>
+ <div class="tirumala-bg__doodle tirumala-bg__doodle--b"></div>
+ <div class="tirumala-bg__veil"></div>
+ <div class="tirumala-bg__mist"></div>
+ </div>
+
+ <div class="scroll-progress" id="scroll-progress" aria-hidden="true">
+ <div class="scroll-progress__bar" id="scroll-progress-bar"></div>
+ </div>
+
+ <!-- Top bar: international shipping -->
+ <div class="shipping-top" role="status">
+ <div class="shipping-top__doodle" aria-hidden="true"></div>
+ <span class="shipping-top__ornament" aria-hidden="true">
+ <!-- Kalamkari pen doodle -->
+ <svg viewBox="0 0 48 24" width="42" height="20" fill="none">
+ <path d="M4 16c3-1 5-4 8-4s4 3 7 3 5-3 8-3 5 3 8 3 5-2 7-4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.85"/>
+ <path d="M36 6l6 6-2.2 1.2-1.2 2.2L32.5 9.5 36 6z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
+ <path d="M36.8 6.8l4.4 4.4" stroke="currentColor" stroke-width="0.9" opacity="0.7"/>
+ <circle cx="10" cy="12" r="1.3" fill="currentColor" opacity="0.75"/>
+ <path d="M14 8c1.5 1 2 2.5 1.5 4" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.65"/>
+ <path d="M22 18c2-.8 3.5-1 5-.2" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/>
+ </svg>
+ </span>
+ <span class="shipping-top__text">International shipping available worldwide</span>
+ <span class="shipping-top__ornament shipping-top__ornament--flip" aria-hidden="true">
+ <svg viewBox="0 0 48 24" width="42" height="20" fill="none">
+ <path d="M4 16c3-1 5-4 8-4s4 3 7 3 5-3 8-3 5 3 8 3 5-2 7-4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.85"/>
+ <path d="M36 6l6 6-2.2 1.2-1.2 2.2L32.5 9.5 36 6z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
+ <path d="M36.8 6.8l4.4 4.4" stroke="currentColor" stroke-width="0.9" opacity="0.7"/>
+ <circle cx="10" cy="12" r="1.3" fill="currentColor" opacity="0.75"/>
+ <path d="M14 8c1.5 1 2 2.5 1.5 4" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.65"/>
+ <path d="M22 18c2-.8 3.5-1 5-.2" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/>
+ </svg>
+ </span>
+ </div>
+
+ <header class="site-header" id="top">
+ <div class="container header-inner">
+ <a href="#top" class="logo">
+ <span class="logo__mark" aria-hidden="true">
+ <svg class="logo__namas" viewBox="0 0 48 48" width="28" height="28" fill="none">
+ <circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="0.9" opacity="0.55"/>
+ <!-- tripundra -->
+ <path d="M12 18.5h24M11.5 23h25M12 27.5h24" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" opacity="0.8"/>
+ <!-- Tirumala U -->
+ <path d="M17.5 13.5v17c0 4 2.8 6.5 6.5 6.5s6.5-2.5 6.5-6.5v-17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+ <path d="M24 14.5v20.5" stroke="#a63d3d" stroke-width="1.15" stroke-linecap="round"/>
+ <circle cx="24" cy="36.5" r="1.35" fill="#a63d3d"/>
+ </svg>
+ </span>
+ <span class="logo__stack">
+ <span class="logo__text" id="brand-name">The Painted Heritage</span>
+ <span class="logo__sub">Tirupati - Sri Kalahasti</span>
+ </span>
+ </a>
+ <nav class="nav" id="main-nav" aria-label="Primary">
+ <a href="#gallery">Gallery</a>
+ <a href="#why">Why buy</a>
+ <a href="#custom">Custom</a>
+ <a href="#contact">Contact</a>
+ <a
+ class="nav__cta nav__cta--wa"
+ id="nav-whatsapp"
+ href="#"
+ target="_blank"
+ rel="noopener noreferrer"
+ >WhatsApp</a
+ >
+ </nav>
+ <button
+ class="nav-toggle"
+ id="nav-toggle"
+ aria-label="Open menu"
+ aria-expanded="false"
+ aria-controls="main-nav"
+ >
+ <span></span><span></span><span></span>
+ </button>
+ </div>
+ </header>
+
+ <main>
+ <!-- Hero -->
+ <section class="hero">
+ <div class="hero__pattern" aria-hidden="true"></div>
+ <div class="container hero__layout">
+ <div class="hero__content reveal">
+ <p class="eyebrow">
+ <span class="eyebrow__dot"></span>
+ Masterpiece Kalamkari on canvas
+ </p>
+ <h1 id="hero-title">Kalamkari canvas<br /><em>paintings</em></h1>
+ <p class="hero__lead" id="hero-tagline">Hand-painted Kalamkari canvas paintings from Tirupati and Sri Kalahasti. Explore the collection or order a custom artwork.</p>
+ <div class="hero__actions">
+ <a href="#gallery" class="btn btn--primary">
+ <span>View gallery</span>
+ <span class="btn__arrow" aria-hidden="true">&gt;</span>
+ </a>
+ <a href="#custom" class="btn btn--ghost">Order custom art</a>
+ </div>
+ <ul class="hero__pills" aria-label="Highlights">
+ <li>Hand-painted</li>
+ <li>Custom on request</li>
+ <li>Tirupati - Sri Kalahasti</li>
+ <li>Ships worldwide</li>
+ </ul>
+ </div>
+
+ <div class="hero__showcase hero__showcase--portrait reveal reveal--delay">
+ <div class="hero__frame">
+ <div class="hero__frame-glow" aria-hidden="true"></div>
+ <img
+ src="assets/gallery/07-srirama-pattabhishekam.jpg"
+ alt="Srirama Pattabhishekam - hand-painted Kalamkari canvas"
+ class="hero__image"
+ width="640"
+ height="800"
+ />
+ <div class="hero__caption">
+ <span class="hero__caption-label">Featured painting</span>
+ <strong>Srirama Pattabhishekam</strong>
+ <span>Traditional Kalamkari | Canvas</span>
+ </div>
+ </div>
+ <div class="hero__float hero__float--a" aria-hidden="true">Sacred stories</div>
+ <div class="hero__float hero__float--b" aria-hidden="true">Made to order</div>
+ </div>
+ </div>
+
+ <!-- Landscape highlight: Srinivasa Kalyanam -->
+ <div class="container highlight-landscape reveal" id="highlight">
+ <div class="highlight-landscape__shell">
+ <span class="highlight-landscape__corner highlight-landscape__corner--tl" aria-hidden="true"></span>
+ <span class="highlight-landscape__corner highlight-landscape__corner--tr" aria-hidden="true"></span>
+ <span class="highlight-landscape__corner highlight-landscape__corner--bl" aria-hidden="true"></span>
+ <span class="highlight-landscape__corner highlight-landscape__corner--br" aria-hidden="true"></span>
+ <span class="highlight-landscape__ornament highlight-landscape__ornament--top" aria-hidden="true">*</span>
+ <span class="highlight-landscape__ornament highlight-landscape__ornament--bottom" aria-hidden="true">*</span>
+
+ <div class="highlight-landscape__head">
+ <p class="eyebrow">Masterpiece highlight</p>
+ <h2>
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="26" height="26" fill="none"><rect x="2" y="8" width="24" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="11" width="18" height="6" stroke="currentColor" stroke-width="1.2"/><path d="M12 4l2 3h-4l2-3z" stroke="currentColor" stroke-width="1.2"/></svg></span>
+ <span class="sh-text">Srinivasa Kalyanam</span>
+ </h2>
+ <p class="highlight-landscape__sub">
+ Full Kalamkari in high detail - the divine wedding, painted for a wall that holds ceremony and light.
+ </p>
+ <a
+ href="#gallery"
+ class="btn btn--ghost highlight-landscape__cta"
+ id="open-highlight"
+ data-open-work="land-srinivasa-master"
+ >
+ View in full detail
+ <span class="btn__arrow" aria-hidden="true">&gt;</span>
+ </a>
+ </div>
+
+ <button
+ type="button"
+ class="highlight-landscape__stage"
+ id="highlight-stage"
+ data-open-work="land-srinivasa-master"
+ aria-label="Open Srinivasa Kalyanam in full detail"
+ >
+ <span class="highlight-landscape__ribbon">Featured | High detail</span>
+ <span class="highlight-landscape__frame">
+ <img
+ src="assets/gallery/Srinivasa_Kalyanam.jpg"
+ alt="Srinivasa Kalyanam - panoramic hand-painted Kalamkari canvas"
+ class="highlight-landscape__img"
+ width="3014"
+ height="1208"
+ decoding="async"
+ fetchpriority="high"
+ />
+ <span class="highlight-landscape__shine" aria-hidden="true"></span>
+ </span>
+ <span class="highlight-landscape__meta">
+ <span class="highlight-landscape__meta-text">
+ <strong>Srinivasa Kalyanam</strong>
+ <em>Hand-painted | Canvas | Studio masterwork</em>
+ </span>
+ <span class="highlight-landscape__hint">Tap for full detail</span>
+ </span>
+ </button>
+ </div>
+ </div>
+ </section>
+
+ <!-- Trust strip -->
+ <section class="trust" aria-label="Why collectors choose us">
+ <div class="container trust__grid">
+ <article class="trust__item reveal">
+ <span class="trust__icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 15.9l-5.25 2.75 1-5.85L3.5 8.7l5.9-.9L12 2.5z" fill="currentColor"/></svg>
+ </span>
+ <h3>Authentic craft</h3>
+ <p>Traditional Kalamkari spirit - freehand lines, layered colour, temple storytelling.</p>
+ </article>
+ <article class="trust__item reveal">
+ <span class="trust__icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 15.9l-5.25 2.75 1-5.85L3.5 8.7l5.9-.9L12 2.5z" fill="currentColor"/></svg>
+ </span>
+ <h3>Custom art</h3>
+ <p>Size, deity, palette, and theme tailored to your home, mandir, or gifting moment.</p>
+ </article>
+ <article class="trust__item reveal">
+ <span class="trust__icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 15.9l-5.25 2.75 1-5.85L3.5 8.7l5.9-.9L12 2.5z" fill="currentColor"/></svg>
+ </span>
+ <h3>Collector-ready</h3>
+ <p>Gallery-worthy canvas works, carefully packed and shipped across the world.</p>
+ </article>
+ <article class="trust__item reveal">
+ <span class="trust__icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 15.9l-5.25 2.75 1-5.85L3.5 8.7l5.9-.9L12 2.5z" fill="currentColor"/></svg>
+ </span>
+ <h3>Personal atelier</h3>
+ <p>Every inquiry is handled on Instagram - warm, direct, and made for you.</p>
+ </article>
+ </div>
+ </section>
+
+ <!-- Gallery -->
+ <section class="section gallery" id="gallery">
+ <div class="container">
+ <header class="section-head reveal">
+ <p class="eyebrow">The collection</p>
+ <h2>
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="28" height="28" fill="none"><rect x="4" y="3" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="7" y="6" width="10" height="9" stroke="currentColor" stroke-width="1.3"/><path d="M9 20h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="12" y="8" width="12" height="16" rx="1.5" stroke="currentColor" stroke-width="1.3" opacity="0.45"/></svg></span>
+ <span class="sh-text">Canvas collection</span>
+ </h2>
+ <p class="section-head__sub">
+ Hand-painted Kalamkari canvas paintings. Open any work to view details, then message us to buy or custom-order.
+ </p>
+ <div class="section-head__rule" aria-hidden="true"></div>
+ </header>
+
+ <!-- Landscape sliding gallery -->
+ <div class="land-slider reveal" id="land-slider">
+ <div class="land-slider__head">
+ <p class="eyebrow">Featured works</p>
+ <h3 class="land-slider__title">
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="26" height="26" fill="none"><rect x="2" y="7" width="24" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="5" y="10" width="18" height="8" stroke="currentColor" stroke-width="1.2"/><path d="M8 21h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+ <span class="sh-text">Wall masterworks</span>
+ </h3>
+ <p class="land-slider__sub">Hand-painted Kalamkari for your wall | auto-scrolls — hover to pause, arrows to explore.</p>
+ </div>
+ <div class="land-slider__shell">
+ <span class="land-slider__corner land-slider__corner--tl" aria-hidden="true"></span>
+ <span class="land-slider__corner land-slider__corner--tr" aria-hidden="true"></span>
+ <span class="land-slider__corner land-slider__corner--bl" aria-hidden="true"></span>
+ <span class="land-slider__corner land-slider__corner--br" aria-hidden="true"></span>
+ <div class="land-slider__stage">
+ <button type="button" class="land-slider__nav land-slider__nav--prev" id="land-prev" aria-label="Previous landscape">
+ <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </button>
+ <div class="land-slider__viewport" id="land-viewport">
+ <div class="land-slider__track" id="land-track"></div>
+ </div>
+ <button type="button" class="land-slider__nav land-slider__nav--next" id="land-next" aria-label="Next landscape">
+ <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </button>
+ </div>
+ <div class="land-slider__dots" id="land-dots" aria-hidden="true"></div>
+ </div>
+ </div>
+
+ <div class="portrait-head reveal">
+ <p class="eyebrow">The collection</p>
+ <h3 class="portrait-head__title">
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="26" height="26" fill="none"><rect x="6" y="3" width="16" height="22" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="6" width="10" height="11" stroke="currentColor" stroke-width="1.3"/><path d="M10 21h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+ <span class="sh-text">Canvas paintings</span>
+ </h3>
+ </div>
+
+ <div class="filters" role="tablist" aria-label="Filter gallery">
+ <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+ <button class="filter" data-filter="mythic" role="tab" aria-selected="false">Mythic</button>
+ <button class="filter" data-filter="floral" role="tab" aria-selected="false">Floral</button>
+ <button class="filter" data-filter="process" role="tab" aria-selected="false">Process</button>
+ <button class="filter" data-filter="narrative" role="tab" aria-selected="false">Narrative</button>
+ <button class="filter" data-filter="sacred" role="tab" aria-selected="false">Sacred</button>
+ </div>
+
+ <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+ <p class="gallery-empty" id="gallery-empty" hidden>
+ No works in this view yet. Try another filter.
+ </p>
+ <div class="gallery-more" id="gallery-more" hidden>
+ <button type="button" class="btn btn--ghost gallery-more__btn" id="gallery-view-more">
+ View more paintings
+ <span class="btn__arrow" aria-hidden="true">&gt;</span>
+ </button>
+ <p class="gallery-more__count" id="gallery-more-count"></p>
+ </div>
+ </div>
+ </section>
+
+ <!-- Why buy -->
+ <section class="section why-buy" id="why">
+ <div class="container">
+ <header class="section-head reveal">
+ <p class="eyebrow">Why collectors choose us</p>
+ <h2>
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="28" height="28" fill="none"><path d="M14 4l2.8 5.7 6.3.9-4.55 4.4 1.05 6.3L14 18.2l-5.6 2.9 1.05-6.3L4.9 10.6l6.3-.9L14 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="14" cy="13" r="2.2" stroke="currentColor" stroke-width="1.3"/></svg></span>
+ <span class="sh-text">Why buy from <em>The Painted Heritage</em></span>
+ </h2>
+ <p class="section-head__sub">
+ Not a print. Not a mass product. A living Kalamkari canvas - painted by hand, rooted in Tirupati and Sri Kalahasti, made for the wall that holds your faith and story.
+ </p>
+ <div class="section-head__rule" aria-hidden="true"></div>
+ </header>
+
+ <div class="why-buy__shell reveal">
+ <div class="why-buy__lead">
+ <p class="why-buy__quote">
+ <span class="why-buy__line">Every line is drawn freehand. Every colour is layered with patience.</span>
+ <span class="why-buy__line">When this painting reaches your home, it brings centuries of craft and a piece of sacred Andhra soil with it.</span>
+ </p>
+ <p class="why-buy__from">From the atelier corridor of <strong>Tirupati - Sri Kalahasti</strong></p>
+ </div>
+
+ <div class="why-buy__grid">
+ <article class="why-card">
+ <div class="why-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 40 40" width="32" height="32" fill="none"><path d="M24 6l10 10-16 16H8V22L24 6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 26l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="33" r="3" fill="currentColor"/></svg>
+ </div>
+ <span class="why-card__num" aria-hidden="true">01</span>
+ <h3>Truly hand-painted</h3>
+ <p>No machine prints. Fine freehand lines and traditional Kalamkari spirit on canvas - art you can feel, not just hang.</p>
+ </article>
+ <article class="why-card">
+ <div class="why-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 40 40" width="32" height="32" fill="none"><path d="M20 4l3 8h8l-6.5 5 2.5 8L20 20l-7 5 2.5-8L9 12h8l3-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="20" cy="28" r="6" stroke="currentColor" stroke-width="1.6"/></svg>
+ </div>
+ <span class="why-card__num" aria-hidden="true">02</span>
+ <h3>Sacred lineage</h3>
+ <p>Born where temple art still lives - Tirupati and Sri Kalahasti - so devotion and craftsmanship arrive together.</p>
+ </article>
+ <article class="why-card">
+ <div class="why-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 40 40" width="32" height="32" fill="none"><rect x="8" y="6" width="24" height="28" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="12" y="10" width="16" height="14" stroke="currentColor" stroke-width="1.5"/><path d="M14 30h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+ </div>
+ <span class="why-card__num" aria-hidden="true">03</span>
+ <h3>Made for your wall</h3>
+ <p>Choose ready works or commission your theme, size, and palette. A painting that belongs to your home alone.</p>
+ </article>
+ <article class="why-card">
+ <div class="why-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 40 40" width="32" height="32" fill="none"><path d="M4 14h20v16H4V14z" stroke="currentColor" stroke-width="1.8"/><path d="M24 18h6l4 4v8H24V18z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="11" cy="32" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="29" cy="32" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+ </div>
+ <span class="why-card__num" aria-hidden="true">04</span>
+ <h3>Ships the world over</h3>
+ <p>Carefully packed canvas art, tracked delivery, and warm support - from our studio to collectors everywhere.</p>
+ </article>
+ <article class="why-card">
+ <div class="why-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 40 40" width="32" height="32" fill="none"><path d="M32 8H8c-1.1 0-2 .9-2 2v20l5-4h21c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z" stroke="currentColor" stroke-width="1.8"/><path d="M12 16h16M12 21h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+ </div>
+ <span class="why-card__num" aria-hidden="true">05</span>
+ <h3>Speak to the maker</h3>
+ <p>Message us directly on WhatsApp or Instagram. No cold checkout - a personal atelier conversation.</p>
+ </article>
+ <article class="why-card">
+ <div class="why-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 40 40" width="32" height="32" fill="none"><rect x="6" y="16" width="28" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M6 16h28v5H6z" stroke="currentColor" stroke-width="1.5"/><path d="M20 16v16M20 16c0-5 3-8 6-8s3 3 0 6c-1.5 1.5-4 2-6 2zm0 0c0-5-3-8-6-8s-3 3 0 6c1.5 1.5 4 2 6 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+ </div>
+ <span class="why-card__num" aria-hidden="true">06</span>
+ <h3>Gift that lasts</h3>
+ <p>Weddings, housewarmings, pooja rooms, corporate grace - heritage art that becomes part of a family story.</p>
+ </article>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Custom commission -->
+ <section class="section custom" id="custom">
+ <div class="container">
+ <header class="section-head reveal">
+ <p class="eyebrow">Bespoke canvas</p>
+ <h2>
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="28" height="28" fill="none"><path d="M16 4l8 8-12 12H4v-8L16 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 20l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="5.5" cy="23.5" r="1.4" fill="currentColor"/><path d="M14 6l8 8" stroke="currentColor" stroke-width="1.2" opacity="0.5"/></svg></span>
+ <span class="sh-text">Order a custom painting</span>
+ </h2>
+ <p class="section-head__sub">
+ Share your idea. We hand-paint an original Kalamkari canvas for your home, mandir, or gift - and ship it worldwide.
+ </p>
+ <div class="section-head__rule" aria-hidden="true"></div>
+ </header>
+
+ <div class="commission reveal">
+ <div class="commission__hero">
+ <div class="commission__copy">
+ <p class="commission__kicker">Private commission</p>
+ <h3>Your story on canvas</h3>
+ <p class="commission__lead">
+ Choose a theme, size, and palette. We design with you, paint with care, and bring a one-of-a-kind Kalamkari canvas to your wall.
+ </p>
+ <div class="commission__actions">
+ <a class="btn btn--whatsapp" id="custom-instagram" href="#" target="_blank" rel="noopener noreferrer">
+ Start on WhatsApp
+ <span class="btn__arrow" aria-hidden="true">&gt;</span>
+ </a>
+ <a href="#gallery" class="btn btn--ghost">Browse gallery first</a>
+ </div>
+ <p class="commission__hint">WhatsApp <a class="wa-link" id="hint-whatsapp" href="https://wa.me/919381435570" target="_blank" rel="noopener noreferrer">+91 93814 35570</a> - share theme, size, and colours</p>
+ </div>
+ <aside class="commission__aside" aria-hidden="true">
+ <div class="commission__aside-inner">
+ <span class="commission__aside-corner commission__aside-corner--tl"></span>
+ <span class="commission__aside-corner commission__aside-corner--tr"></span>
+ <span class="commission__aside-corner commission__aside-corner--bl"></span>
+ <span class="commission__aside-corner commission__aside-corner--br"></span>
+ <div class="commission__aside-doodle"></div>
+
+ <div class="commission__aside-motif">
+ <svg class="commission__aside-namas" viewBox="0 0 64 64" width="52" height="52" fill="none">
+ <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
+ <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="0.45" stroke-dasharray="1.2 2" opacity="0.35"/>
+ <!-- thin tripundra -->
+ <path d="M16 24h32M15 30h34M16 36h32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+ <!-- thin U namam -->
+ <path d="M24 18v22c0 5 3.5 8 8 8s8-3 8-8V18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+ <path d="M32 19v27" stroke="#c45a5a" stroke-width="1.1" stroke-linecap="round"/>
+ <circle cx="32" cy="48" r="1.6" fill="#c45a5a" opacity="0.9"/>
+ </svg>
+ </div>
+
+ <span class="commission__aside-label">The Painted Heritage</span>
+ <p class="commission__aside-quote">Your wall.<br /><em>Your story.</em><br />Our kalam.</p>
+
+ <div class="commission__aside-divider">
+ <span></span>
+ <i class="commission__aside-star" aria-hidden="true">
+ <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M8 1.5l1.6 3.3 3.6.5-2.6 2.5.6 3.6L8 9.7 4.8 11.4l.6-3.6L2.8 5.3l3.6-.5L8 1.5z" fill="currentColor"/></svg>
+ </i>
+ <span></span>
+ </div>
+
+ <ul class="commission__aside-grid">
+ <li>
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5" stroke="currentColor" stroke-width="1.4"/><rect x="8" y="6" width="8" height="7" stroke="currentColor" stroke-width="1.2"/></svg>
+ <span>Your wall</span>
+ </li>
+ <li>
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M4 18c3-6 6-9 8-9s5 3 8 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 10c1-2 2.5-3 4-3s3 1 4 3" stroke="currentColor" stroke-width="1.2" opacity="0.7"/><circle cx="12" cy="6" r="1.4" fill="currentColor"/></svg>
+ <span>Your story</span>
+ </li>
+ <li>
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M14 4l6 6-10 10H4v-6L14 4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 18l3 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="5.5" cy="20.5" r="1.2" fill="currentColor"/></svg>
+ <span>Our kalam</span>
+ </li>
+ </ul>
+
+ <span class="commission__aside-tag">Hand-painted | Tirupati - Sri Kalahasti</span>
+ </div>
+ </aside>
+ </div>
+
+ <p class="commission__label">
+ <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.3 7.2 17l.9-5.4L4.2 7.7l5.4-.8L12 2z"/></svg>
+ What you choose
+ </p>
+ <div class="theme-grid">
+ <article class="theme-card">
+ <div class="theme-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="40" height="40" fill="none">
+ <circle cx="24" cy="16" r="7" stroke="currentColor" stroke-width="2"/>
+ <path d="M12 40c2-8 8-12 12-12s10 4 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ <path d="M24 9v2M18 12l-1.5-1.5M30 12l1.5-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+ <path d="M16 22c2-2 5-3 8-3s6 1 8 3" stroke="currentColor" stroke-width="1.5" opacity="0.45"/>
+ </svg>
+ </div>
+ <h4>Theme</h4>
+ <p>Gods, Tree of Life, temple stories, florals - or your own idea.</p>
+ <ul class="theme-card__tags">
+ <li>Gods</li>
+ <li>Tree of Life</li>
+ <li>Temple</li>
+ <li>Florals</li>
+ </ul>
+ </article>
+ <article class="theme-card">
+ <div class="theme-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="40" height="40" fill="none">
+ <rect x="10" y="8" width="20" height="26" rx="2" stroke="currentColor" stroke-width="2"/>
+ <rect x="18" y="14" width="20" height="26" rx="2" stroke="currentColor" stroke-width="2" opacity="0.55"/>
+ <path d="M14 38h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ </div>
+ <h4>Size</h4>
+ <p>Small accent, large statement piece, or a long wall format for a full scene.</p>
+ <ul class="theme-card__tags">
+ <li>Small</li>
+ <li>Large</li>
+ <li>Long wall</li>
+ </ul>
+ </article>
+ <article class="theme-card">
+ <div class="theme-card__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="40" height="40" fill="none">
+ <path d="M24 6c-10 0-18 7-18 16 0 6 4 11 10 14 1 .5 2-.3 2-1.4V32c0-3 2.5-5.5 5.5-5.5H28c8 0 14-5 14-11.5C42 12 34 6 24 6z" stroke="currentColor" stroke-width="2"/>
+ <circle cx="16" cy="18" r="2.8" fill="#a63d3d"/>
+ <circle cx="24" cy="14" r="2.8" fill="#c4a35a"/>
+ <circle cx="32" cy="18" r="2.8" fill="#162338"/>
+ <circle cx="28" cy="24" r="2.8" fill="#2c4a3e"/>
+ </svg>
+ </div>
+ <h4>Colours</h4>
+ <p>Traditional reds, indigo, gold, and earth - matched to your room.</p>
+ <ul class="theme-card__tags">
+ <li>Red</li>
+ <li>Indigo</li>
+ <li>Gold</li>
+ <li>Earth</li>
+ </ul>
+ </article>
+ </div>
+
+ <p class="commission__label">
+ <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M3 13h2v-2H3v2zm4 0h14v-2H7v2zM3 17h2v-2H3v2zm4 0h14v-2H7v2zM3 9h2V7H3v2zm4 0h14V7H7v2z"/></svg>
+ How ordering works
+ </p>
+ <ol class="commission__steps">
+ <li>
+ <span class="commission__step-ico" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12zM7 9h10v2H7V9zm0 3h7v2H7v-2z"/></svg>
+ </span>
+ <div>
+ <strong>Message us</strong>
+ <span>Send your theme, size, and colour notes on WhatsApp.</span>
+ </div>
+ </li>
+ <li>
+ <span class="commission__step-ico" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+ </span>
+ <div>
+ <strong>We plan together</strong>
+ <span>We agree on theme, composition, and finish before painting begins.</span>
+ </div>
+ </li>
+ <li>
+ <span class="commission__step-ico" aria-hidden="true">
+ <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ </span>
+ <div>
+ <strong>Painted for you</strong>
+ <span>Your canvas is hand-finished, then packed and shipped worldwide.</span>
+ </div>
+ </li>
+ </ol>
+
+ <div class="commission__footer">
+ <p>Ready for a painting made only for you?</p>
+ <a class="btn btn--primary" id="custom-whatsapp-secondary" href="https://wa.me/919381435570" target="_blank" rel="noopener noreferrer">
+ WhatsApp +91 93814 35570
+ </a>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- From studio to your wall -->
+ <section class="section journey" id="journey">
+ <div class="container">
+ <header class="section-head reveal">
+ <p class="eyebrow">Care &amp; delivery</p>
+ <h2>
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="28" height="28" fill="none"><path d="M4 8h13v12H4V8z" stroke="currentColor" stroke-width="1.5"/><path d="M17 11h5l2 3.5V20h-7V11z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8.5" cy="22" r="1.8" stroke="currentColor" stroke-width="1.3"/><circle cx="20.5" cy="22" r="1.8" stroke="currentColor" stroke-width="1.3"/><path d="M7 12h7M7 15h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.55"/></svg></span>
+ <span class="sh-text">From painting to <em>your wall</em></span>
+ </h2>
+ <p class="section-head__sub">
+ How your Kalamkari canvas travels - from the studio brush to the place it will live in your home.
+ </p>
+ <div class="section-head__rule" aria-hidden="true"></div>
+ </header>
+
+ <div class="journey__track reveal">
+ <article class="journey-step">
+ <div class="journey-step__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="36" height="36" fill="none">
+ <path d="M30 6l12 12-18 18H12V24L30 6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M12 30l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ <circle cx="12" cy="38" r="4" fill="currentColor"/>
+ </svg>
+ </div>
+ <span class="journey-step__n">01</span>
+ <h3>Hand-painted</h3>
+ <p>Freehand lines and layered colour on canvas in our Tirupati - Sri Kalahasti atelier.</p>
+ </article>
+ <span class="journey__arrow" aria-hidden="true">
+ <svg viewBox="0 0 40 16" width="40" height="16"><path d="M0 8h32m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+ </span>
+ <article class="journey-step">
+ <div class="journey-step__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="36" height="36" fill="none">
+ <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/>
+ <path d="M24 16v9l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ </div>
+ <span class="journey-step__n">02</span>
+ <h3>Dried &amp; finished</h3>
+ <p>Paint settles. Edges checked. Your work is studio-ready before it leaves our hands.</p>
+ </article>
+ <span class="journey__arrow" aria-hidden="true">
+ <svg viewBox="0 0 40 16" width="40" height="16"><path d="M0 8h32m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+ </span>
+ <article class="journey-step">
+ <div class="journey-step__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="36" height="36" fill="none">
+ <path d="M8 16h32v22H8V16z" stroke="currentColor" stroke-width="2"/>
+ <path d="M8 16l4-8h24l4 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M18 28h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ </div>
+ <span class="journey-step__n">03</span>
+ <h3>Packed with care</h3>
+ <p>Protected layers and sturdy packing so fine line work stays safe in transit.</p>
+ </article>
+ <span class="journey__arrow" aria-hidden="true">
+ <svg viewBox="0 0 40 16" width="40" height="16"><path d="M0 8h32m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+ </span>
+ <article class="journey-step">
+ <div class="journey-step__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="36" height="36" fill="none">
+ <path d="M6 16h22v18H6V16z" stroke="currentColor" stroke-width="2"/>
+ <path d="M28 20h8l6 6v8h-14V20z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+ <circle cx="14" cy="36" r="3.5" stroke="currentColor" stroke-width="2"/>
+ <circle cx="36" cy="36" r="3.5" stroke="currentColor" stroke-width="2"/>
+ </svg>
+ </div>
+ <span class="journey-step__n">04</span>
+ <h3>Shipped worldwide</h3>
+ <p>International delivery with tracking after dispatch - from India to your door.</p>
+ </article>
+ <span class="journey__arrow" aria-hidden="true">
+ <svg viewBox="0 0 40 16" width="40" height="16"><path d="M0 8h32m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+ </span>
+ <article class="journey-step">
+ <div class="journey-step__icon" aria-hidden="true">
+ <svg viewBox="0 0 48 48" width="36" height="36" fill="none">
+ <rect x="10" y="8" width="28" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+ <rect x="15" y="13" width="18" height="16" stroke="currentColor" stroke-width="1.8"/>
+ <path d="M18 36h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ <path d="M24 4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+ </svg>
+ </div>
+ <span class="journey-step__n">05</span>
+ <h3>On your wall</h3>
+ <p>Hang, gift, or place in your mandir - heritage art that has finally come home.</p>
+ </article>
+ </div>
+ </div>
+ </section>
+
+ <!-- Craft + stories -->
+ <section class="section craft" id="craft">
+ <div class="container">
+ <div class="craft__grid">
+ <div class="craft__copy reveal">
+ <span class="craft__copy-corner craft__copy-corner--tl" aria-hidden="true"></span>
+ <span class="craft__copy-corner craft__copy-corner--tr" aria-hidden="true"></span>
+ <span class="craft__copy-corner craft__copy-corner--bl" aria-hidden="true"></span>
+ <span class="craft__copy-corner craft__copy-corner--br" aria-hidden="true"></span>
+ <div class="craft__copy-doodle" aria-hidden="true"></div>
+
+ <p class="eyebrow">About the art</p>
+ <h2>
+ <span class="sh-ico sh-ico--lg sh-ico--kalam" aria-hidden="true">
+ <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+ <!-- Tree of life + kalam pen -->
+ <path d="M16 26V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+ <path d="M16 20c-3-1.5-5-4-5.5-7M16 20c3-1.5 5-4 5.5-7" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+ <path d="M16 16c-2.5-1-4-3-4.5-5.5M16 16c2.5-1 4-3 4.5-5.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+ <ellipse cx="16" cy="9" rx="5" ry="3.8" stroke="currentColor" stroke-width="1.3"/>
+ <circle cx="16" cy="8.5" r="1.3" fill="currentColor" opacity="0.7"/>
+ <path d="M21 22l5.5-5.5 2 2L23 24l-2.5.6L21 22z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+ <path d="M22 23l2.2 2.2" stroke="#a63d3d" stroke-width="1.2" stroke-linecap="round"/>
+ </svg>
+ </span>
+ <span class="sh-text">The soul of <em>Kalamkari</em></span>
+ </h2>
+ <p>
+ Kalamkari is a centuries-old Indian art of hand-painting - from <em>kalam</em> (pen) and <em>kari</em> (craftsmanship). Outlines drawn freehand. Colour layered with patience. Stories from temple, myth, and earth.
+ </p>
+ <p>
+ At The Painted Heritage we work from the sacred corridor of <strong>Tirupati - Sri Kalahasti</strong>, bringing that living tradition to canvas art for modern homes.
+ </p>
+
+ <div class="craft__defs">
+ <div class="craft__def">
+ <strong>Kalam</strong>
+ <span>The pen that draws the line</span>
+ </div>
+ <div class="craft__def">
+ <strong>Kari</strong>
+ <span>The craft of patient colour</span>
+ </div>
+ </div>
+
+ <ul class="craft__list">
+ <li>Hand-painted on canvas - not printed</li>
+ <li>Traditional line, colour, and narrative spirit</li>
+ <li>Rooted in Tirupati - Sri Kalahasti</li>
+ <li>Ready works and custom commissions</li>
+ </ul>
+
+ <div class="craft__marks" aria-hidden="true">
+ <span class="craft__mark">
+ <svg viewBox="0 0 40 40" width="28" height="28" fill="none"><path d="M14 8v18c0 4 2.5 6.5 6 6.5s6-2.5 6-6.5V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 10v18" stroke="#a63d3d" stroke-width="1.1" stroke-linecap="round"/><circle cx="20" cy="30" r="1.4" fill="#a63d3d"/></svg>
+ <small>Tirupati</small>
+ </span>
+ <span class="craft__mark">
+ <svg viewBox="0 0 40 40" width="28" height="28" fill="none"><path d="M10 14h20M9 20h22M10 26h20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="20" cy="20" r="1.5" fill="#a63d3d"/></svg>
+ <small>Kalahasti</small>
+ </span>
+ <span class="craft__mark">
+ <svg viewBox="0 0 40 40" width="28" height="28" fill="none"><path d="M12 28c4-8 8-12 8-12s4 4 8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M20 10v8" stroke="currentColor" stroke-width="1.3"/><circle cx="20" cy="9" r="2" stroke="currentColor" stroke-width="1.2"/></svg>
+ <small>Tree of life</small>
+ </span>
+ </div>
+ </div>
+ <div class="craft__panel craft__panel--photo reveal">
+ <div class="craft__photo-frame">
+ <img
+ src="assets/gallery/08-beauty-of-line.jpg"
+ alt="Close detail of hand-painted Kalamkari line work on canvas"
+ width="640"
+ height="800"
+ loading="lazy"
+ decoding="async"
+ />
+ <div class="craft__photo-caption">
+ <span>Studio detail</span>
+ <strong>Beauty of the line</strong>
+ <em>Freehand kalam | Canvas</em>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="stories reveal">
+ <div class="stories__head">
+ <p class="eyebrow">Heritage stories</p>
+ <h3 class="stories__title">
+ <span class="sh-ico sh-ico--lg" aria-hidden="true"><svg viewBox="0 0 28 28" width="26" height="26" fill="none"><path d="M6 5h12a3 3 0 0 1 3 3v14H9a3 3 0 0 0-3 3V5z" stroke="currentColor" stroke-width="1.5"/><path d="M6 22a3 3 0 0 1 3-3h14" stroke="currentColor" stroke-width="1.5"/><path d="M10 10h8M10 14h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+ <span class="sh-text">Stories of Tirupati and Sri Kalahasti</span>
+ </h3>
+ <p class="stories__sub">Temple towns, sacred marks, and the pen craft that still shapes our paintings.</p>
+ </div>
+ <div class="stories__viewport">
+ <button type="button" class="stories__nav stories__nav--prev" id="stories-prev" aria-label="Previous story">
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </button>
+ <div class="stories__track" id="stories-track">
+ <article class="story-card">
+ <div class="story-card__badge">Tirupati</div>
+ <h4>Temple hills and namas</h4>
+ <p>Tirupati's sacred landscape inspires devotion - white namas on green hills, colour, and quiet grandeur.</p>
+ </article>
+ <article class="story-card">
+ <div class="story-card__badge">Tirupati</div>
+ <h4>Srinivasa on canvas</h4>
+ <p>Divine wedding themes and Vaishnava stories painted for modern homes that keep faith close.</p>
+ </article>
+ <article class="story-card">
+ <div class="story-card__badge">Sri Kalahasti</div>
+ <h4>Srikalahasti pen craft</h4>
+ <p>Freehand kalam lines - the classic Kalahasti tradition of narrative cloth and fine black outline.</p>
+ </article>
+ <article class="story-card">
+ <div class="story-card__badge">Sri Kalahasti</div>
+ <h4>Shiva's sacred air</h4>
+ <p>Tripundra spirit and temple rhythm - earth dyes, patience, and art made for quiet worship spaces.</p>
+ </article>
+ <article class="story-card">
+ <div class="story-card__badge">Both lands</div>
+ <h4>One painted corridor</h4>
+ <p>From Tirupati to Sri Kalahasti - two sacred towns, one atelier language of hand and heritage.</p>
+ </article>
+ <article class="story-card">
+ <div class="story-card__badge">Studio</div>
+ <h4>Your wall, our kalam</h4>
+ <p>Custom commissions carry this lineage forward - story, size, and colour chosen with you.</p>
+ </article>
+ </div>
+ <button type="button" class="stories__nav stories__nav--next" id="stories-next" aria-label="Next story">
+ <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </button>
+ </div>
+ <div class="stories__dots" id="stories-dots" aria-hidden="true"></div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Landscape finale dashboard -->
+ <section class="section site-end site-end--compact" id="contact">
+ <div class="site-end__veil" aria-hidden="true"></div>
+ <div class="container site-end__inner site-end__inner--wide reveal">
+ <div class="finale finale--landscape finale--slim">
+ <div class="finale__row">
+ <div class="finale__icon-wrap" aria-hidden="true">
+ <img
+ class="finale__hello"
+ src="assets/kalamkari-hello.svg"
+ alt=""
+ width="56"
+ height="56"
+ decoding="async"
+ />
+ </div>
+
+ <div class="finale__copy">
+ <p class="finale__eyebrow">The Painted Heritage</p>
+ <h2 class="finale__title">Let us paint for you</h2>
+ <p class="finale__lead">
+ Buy a painting, request custom art, or ask about shipping - we reply personally.
+ <span class="finale__place" id="shipping">Tirupati - Sri Kalahasti | Ships worldwide</span>
+ </p>
+ </div>
+
+ <div class="finale__actions">
+ <a class="finale__btn finale__btn--wa" id="contact-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+ <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.5-1.9-.1-.3 0-.4.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3z"/><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.2 15 3.8 13.5 3.8 12 3.8 7.5 7.5 3.8 12 3.8S20.2 7.5 20.2 12 16.5 20.2 12 20.2z"/></svg>
+ <span>
+ <small>WhatsApp</small>
+ <strong id="whatsapp-display">+91 93814 35570</strong>
+ </span>
+ </a>
+ <a class="finale__btn finale__btn--ig" id="contact-instagram" href="#" target="_blank" rel="noopener noreferrer">
+ <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9C2.4 3.9 4 2.3 7.2 2.2 8.5 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.8.1-2.2.1-3.2 1.1-3.3 3.3-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 2.2 1.1 3.2 3.3 3.3 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c2.2-.1 3.2-1.1 3.3-3.3.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-2.2-1.1-3.2-3.3-3.3-1.3-.1-1.6-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm6.4-2.1a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+ <span>
+ <small>Instagram</small>
+ <strong id="contact-ig-label">@thepaintedheritage</strong>
+ </span>
+ </a>
+ </div>
+ </div>
+
+ <div class="finale__bar">
+ <nav class="finale__nav" aria-label="Page links">
+ <a href="#gallery">Gallery</a>
+ <a href="#why">Why buy</a>
+ <a href="#custom">Custom</a>
+ <a href="#journey">Shipping</a>
+ <a href="#top">Top</a>
+ </nav>
+ <p class="finale__sign">Hand-painted Kalamkari canvas | With care from our atelier</p>
+ </div>
+ </div>
+ </div>
+ </section>
+ </main>
+
+ <footer class="site-footer site-footer--dark site-footer--slim">
+ <div class="container footer-inner footer-inner--slim">
+ <span id="footer-brand">The Painted Heritage</span>
+ <span class="footer-dot" aria-hidden="true">|</span>
+ <span>Tirupati - Sri Kalahasti</span>
+ </div>
+ </footer>
+
+ <!-- Right-side contact bubbles -->
+ <div class="float-dock" id="float-dock" aria-label="Quick contact">
+ <a class="float-dock__btn float-dock__btn--wa" id="float-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 93814 35570" title="WhatsApp">
+ <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.5-1.9-.1-.3 0-.4.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3z"/><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.2 15 3.8 13.5 3.8 12 3.8 7.5 7.5 3.8 12 3.8S20.2 7.5 20.2 12 16.5 20.2 12 20.2z"/></svg>
+ <span class="float-dock__tip">WhatsApp</span>
+ </a>
+ <a class="float-dock__btn float-dock__btn--ig" id="float-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram @thepaintedheritage" title="Instagram">
+ <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9C2.4 3.9 4 2.3 7.2 2.2 8.5 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.8.1-2.2.1-3.2 1.1-3.3 3.3-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 2.2 1.1 3.2 3.3 3.3 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c2.2-.1 3.2-1.1 3.3-3.3.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-2.2-1.1-3.2-3.3-3.3-1.3-.1-1.6-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm6.4-2.1a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+ <span class="float-dock__tip">Instagram</span>
+ </a>
+ </div>
+
+ <!-- Detail modal -->
+ <div class="modal" id="work-modal" hidden>
+ <div class="modal__backdrop" data-close-modal></div>
+ <div
+ class="modal__dialog"
+ role="dialog"
+ aria-modal="true"
+ aria-labelledby="modal-title"
+ >
+ <button class="modal__close" type="button" data-close-modal aria-label="Close">
+ x
+ </button>
+ <div class="modal__media" id="modal-media"></div>
+ <div class="modal__body">
+ <p class="eyebrow" id="modal-meta"></p>
+ <h3 id="modal-title"></h3>
+ <p id="modal-description"></p>
+ <dl class="modal__facts">
+ <div>
+ <dt>Size</dt>
+ <dd id="modal-size"></dd>
+ </div>
+ <div>
+ <dt>Medium</dt>
+ <dd id="modal-medium"></dd>
+ </div>
+ </dl>
+ <p class="modal__custom-note">
+ Want a different size or colours? Ask us for a custom painting.
+ </p>
+ <div class="modal__actions">
+ <a
+ class="btn btn--whatsapp btn--block"
+ id="modal-whatsapp"
+ href="#"
+ target="_blank"
+ rel="noopener noreferrer"
+ >
+ I want this painting - WhatsApp
+ </a>
+ <a
+ class="btn btn--instagram btn--block"
+ id="modal-instagram"
+ href="#"
+ target="_blank"
+ rel="noopener noreferrer"
+ >
+ Message on Instagram
+ </a>
+ <a
+ class="btn btn--ghost btn--block"
+ id="modal-custom"
+ href="#"
+ target="_blank"
+ rel="noopener noreferrer"
+ >
+ Request a custom version
+ </a>
+ <a
+ class="btn btn--text btn--block modal__ig-post"
+ id="modal-post"
+ href="#"
+ target="_blank"
+ rel="noopener noreferrer"
+ hidden
+ >
+ See on Instagram >
+ </a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <script src="js/config.js"></script>
+ <script src="js/data.js"></script>
+ <script src="js/app.js"></script>
+ </body>
+</html>
+
