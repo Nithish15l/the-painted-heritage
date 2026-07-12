@@ -32,7 +32,7 @@ window.KALAMKARI_WORKS = [
     size: "Detail study",
     medium: "Hand-painted canvas",
     description:
-      "Close view of a finished Srinivasa canvas - texture, dye, and living kalam line.",
+      "Close view of a finished Srinivasa canvas — texture, dye, and freehand kalam line.",
     tags: ["srinivasa", "studio", "landscape"],
     instagramUrl: "https://www.instagram.com/p/DZ7nzYwjSlw/",
     objectPosition: "center center",
@@ -62,7 +62,7 @@ window.KALAMKARI_WORKS = [
     size: "Custom wall work",
     medium: "Hand-painted Kalamkari canvas",
     description:
-      "Full ceremonial composition on cloth - customized for the collector's wall.",
+      "Full ceremonial composition on cloth — tailored for the collector's wall.",
     tags: ["srinivasa", "custom", "landscape"],
     instagramUrl: "https://www.instagram.com/reel/Dao48bnRnDz/",
     objectPosition: "center center",
@@ -199,7 +199,7 @@ window.KALAMKARI_WORKS = [
     size: "Custom commission",
     medium: "Hand-painted Kalamkari canvas",
     description:
-      "Customized Srinivasa Kalyanam - made to the collector's wall, size, and devotion.",
+      "Custom Srinivasa Kalyanam — made to the collector's wall, size, and devotion.",
     tags: ["srinivasa", "custom", "mythic"],
     instagramUrl: "https://www.instagram.com/reel/Dao48bnRnDz/",
     objectPosition: "center 18%",

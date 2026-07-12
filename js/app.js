@@ -198,10 +198,24 @@
  let portScrollRaf = 0;
 
  function isPortraitSliderMode() {
- // Prefer CSS layout mode: narrow screens + common mobile phones
- const narrow = window.matchMedia("(max-width: 900px)").matches;
- const coarse = window.matchMedia("(pointer: coarse)").matches && window.innerWidth <= 1024;
- return narrow || coarse;
+ return window.matchMedia("(max-width: 900px)").matches;
+ }
+
+ function scrollTrackToIndex(track, itemSelector, index) {
+ if (!track) return;
+ const items = Array.from(track.querySelectorAll(itemSelector));
+ if (!items.length) return;
+ const i = ((index % items.length) + items.length) % items.length;
+ const target = items[i];
+ if (!target) return;
+ const trackRect = track.getBoundingClientRect();
+ const itemRect = target.getBoundingClientRect();
+ const delta =
+ itemRect.left -
+ trackRect.left -
+ (trackRect.width - itemRect.width) / 2;
+ const left = Math.max(0, track.scrollLeft + delta);
+ track.scrollTo({ left: left, behavior: "smooth" });
  }
 
  function isLandscape(work) {
@@ -548,11 +562,8 @@
  b.className = "portrait-slider__dot";
  b.setAttribute("aria-label", "Go to painting " + (i + 1));
  b.addEventListener("click", () => {
- const cardsNow = grid.querySelectorAll(".card");
- const target = cardsNow[i];
- if (target) {
- target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
- }
+ scrollTrackToIndex(grid, ".card", i);
+ softPausePort();
  });
  portDots.appendChild(b);
  }
@@ -571,33 +582,64 @@
  return;
  }
  if (portSlider) portSlider.classList.add("is-slider");
- const maxScroll = Math.max(grid.scrollWidth - grid.clientWidth - 4, 0);
- const atStart = grid.scrollLeft <= 4;
- const atEnd = grid.scrollLeft >= maxScroll;
  if (portPrev) {
  portPrev.hidden = false;
- portPrev.disabled = atStart;
+ portPrev.disabled = false;
  }
  if (portNext) {
  portNext.hidden = false;
- portNext.disabled = atEnd || maxScroll <= 0;
+ portNext.disabled = false;
  }
  updatePortDots(getActivePortIndex());
  }
 
  function scrollPortBy(dir) {
  if (!grid || !isPortraitSliderMode()) return;
- const step = getCardStep();
- grid.scrollBy({ left: dir * step, behavior: "smooth" });
+ const n = grid.querySelectorAll(".card").length;
+ if (!n) return;
+ scrollTrackToIndex(grid, ".card", getActivePortIndex() + dir);
+ }
+
+ let portTimer = null;
+ let portPauseUntil = 0;
+ let portInView = true;
+
+ function softPausePort() {
+ portPauseUntil = Date.now() + 6500;
+ }
+
+ function stopPortAuto() {
+ if (portTimer) {
+ clearInterval(portTimer);
+ portTimer = null;
+ }
+ }
+
+ function startPortAuto() {
+ stopPortAuto();
+ updatePortNav();
+ if (!isPortraitSliderMode() || !grid || !portInView) return;
+ portTimer = window.setInterval(() => {
+ if (Date.now() < portPauseUntil || document.hidden || !portInView) return;
+ const n = grid.querySelectorAll(".card").length;
+ if (n < 2) return;
+ scrollTrackToIndex(grid, ".card", getActivePortIndex() + 1);
+ }, 5000);
  }
 
  function bindPortraitSlider() {
  if (!grid) return;
  if (portPrev) {
- portPrev.addEventListener("click", () => scrollPortBy(-1));
+ portPrev.addEventListener("click", () => {
+ scrollPortBy(-1);
+ softPausePort();
+ });
  }
  if (portNext) {
- portNext.addEventListener("click", () => scrollPortBy(1));
+ portNext.addEventListener("click", () => {
+ scrollPortBy(1);
+ softPausePort();
+ });
  }
  grid.addEventListener(
  "scroll",
@@ -608,25 +650,46 @@
  },
  { passive: true }
  );
+ grid.addEventListener("touchstart", softPausePort, { passive: true });
 
+ let lastMode = isPortraitSliderMode();
  let resizeTimer = 0;
  const onViewportChange = () => {
  clearTimeout(resizeTimer);
  resizeTimer = setTimeout(() => {
- const wasSlider = portSlider && portSlider.classList.contains("is-slider");
  const nowSlider = isPortraitSliderMode();
  document.documentElement.classList.toggle("is-port-slider", nowSlider);
- renderGallery(!wasSlider && nowSlider);
+ if (nowSlider !== lastMode) {
+ lastMode = nowSlider;
+ renderGallery(true);
  requestAnimationFrame(() => {
- if (grid && nowSlider && !wasSlider) grid.scrollLeft = 0;
- updatePortNav();
+ if (grid && nowSlider) grid.scrollLeft = 0;
+ startPortAuto();
  });
- }, 120);
+ } else {
+ updatePortNav();
+ }
+ }, 140);
  };
  window.addEventListener("resize", onViewportChange);
  window.addEventListener("orientationchange", onViewportChange);
+
+ if (portSlider && "IntersectionObserver" in window) {
+ const io = new IntersectionObserver(
+ (entries) => {
+ entries.forEach((entry) => {
+ portInView = entry.isIntersecting && entry.intersectionRatio > 0.2;
+ if (portInView) startPortAuto();
+ else stopPortAuto();
+ });
+ },
+ { threshold: [0, 0.2, 0.5] }
+ );
+ io.observe(portSlider);
+ }
+
  document.documentElement.classList.toggle("is-port-slider", isPortraitSliderMode());
- updatePortNav();
+ startPortAuto();
  }
 
  function renderGallery(resetPage) {
@@ -939,7 +1002,7 @@
 
  const tip = document.createElement("p");
  tip.className = "modal__zoom-tip";
- tip.textContent = "Pinch or use + / − to explore detail";
+ tip.textContent = "Pinch or use + / − to explore the detail";
 
  viewport.appendChild(img);
  modalMedia.appendChild(viewport);
@@ -1343,15 +1406,13 @@
  return;
  }
  shell.classList.add("is-slider");
- const list = cards();
- const i = activeIndex();
  if (prev) {
  prev.hidden = false;
- prev.disabled = i <= 0;
+ prev.disabled = false;
  }
  if (next) {
  next.hidden = false;
- next.disabled = i >= list.length - 1;
+ next.disabled = false;
  }
  paintDots();
  }
@@ -1359,9 +1420,8 @@
  function goTo(index) {
  const list = cards();
  if (!list.length) return;
- const target = list[Math.max(0, Math.min(index, list.length - 1))];
- if (!target) return;
- target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+ const i = ((index % list.length) + list.length) % list.length;
+ scrollTrackToIndex(track, ".why-card", i);
  window.setTimeout(updateNav, 320);
  }
 
