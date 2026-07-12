@@ -1292,6 +1292,16 @@ h3 {
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 2.25rem;
+  /* Stable anchor so filter clicks do not jump the section */
+  scroll-margin-top: 5.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+#gallery-grid {
+  /* Prevent brief height collapse when filter swaps cards */
+  min-height: 12rem;
+  contain: layout;
 }
 
 .filter {
@@ -1304,8 +1314,10 @@ h3 {
   border: 1px solid var(--border);
   background: rgba(255, 253, 248, 0.8);
   border-radius: 999px;
-  transition: all 0.25s var(--ease);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   backdrop-filter: blur(4px);
+  /* Avoid layout shift on press */
+  transform: none !important;
 }
 
 .filter:hover {

@@ -210,8 +210,9 @@
  const i = ((index % items.length) + items.length) % items.length;
  const target = items[i];
  if (!target) return;
- // Center item inside the scroll track (works with padding + snap)
+ // Center item inside the scroll track only (never scrolls the page)
  const maxLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+ if (maxLeft <= 0) return;
  const left = Math.max(
  0,
  Math.min(
@@ -219,6 +220,11 @@
  maxLeft
  )
  );
+ // Prefer direct assignment for instant centering (avoids smooth page jank)
+ if (behavior === "auto") {
+ track.scrollLeft = left;
+ return;
+ }
  if (typeof track.scrollTo === "function") {
  track.scrollTo({ left: left, behavior: behavior });
  } else {
@@ -262,16 +268,21 @@
  </svg>`;
  }
 
- function createCard(work, index) {
+ function createCard(work, index, opts) {
+ const options = opts || {};
+ const animate = options.animate !== false;
  const isVideo = work.type === "video";
  const isFeatured = !!work.featured;
  const btn = document.createElement("button");
  btn.type = "button";
  btn.className =
- "card card--enter card--portrait" +
+ "card card--portrait" +
+ (animate ? " card--enter" : " is-in") +
  (isFeatured ? " card--featured" : "") +
  (work.highRes ? " card--hires" : "");
- btn.style.setProperty("--enter-delay", `${Math.min(index, 8) * 55}ms`);
+ if (animate) {
+ btn.style.setProperty("--enter-delay", `${Math.min(index, 8) * 40}ms`);
+ }
  btn.dataset.id = work.id;
  btn.setAttribute("aria-label", `View ${work.title}`);
 
@@ -304,7 +315,9 @@
  `;
 
  btn.addEventListener("click", () => openModal(work));
+ if (animate) {
  requestAnimationFrame(() => btn.classList.add("is-in"));
+ }
  return btn;
  }
 
@@ -714,8 +727,12 @@
  startPortAuto();
  }
 
- function renderGallery(resetPage) {
+ function renderGallery(resetPage, opts) {
  if (!grid) return;
+ const options = opts || {};
+ const animate = options.animate !== false;
+ const lockScroll = !!options.lockScroll;
+ const scrollY = lockScroll ? window.scrollY : 0;
 
  const filtered = getPortraitWorks();
  const sliderMode = isPortraitSliderMode();
@@ -729,23 +746,48 @@
  }
 
  const slice = filtered.slice(0, visibleCount);
+
+ // Keep grid height while swapping cards so the page does not jump
+ const prevHeight = grid.offsetHeight;
+ if (prevHeight > 0) {
+ grid.style.minHeight = prevHeight + "px";
+ }
+
  grid.innerHTML = "";
- slice.forEach((work, i) => grid.appendChild(createCard(work, i)));
+ slice.forEach((work, i) =>
+ grid.appendChild(createCard(work, i, { animate: animate }))
+ );
  if (empty) empty.hidden = filtered.length > 0;
  updateMoreUI(filtered.length, slice.length);
- requestAnimationFrame(() => {
+
+ const finish = () => {
  if (sliderMode) {
- if (resetPage) centerTrackStart(grid, ".card");
- else updatePortNav();
+ // Instant center only — never smooth-scroll the page
+ scrollTrackToIndex(grid, ".card", 0, { behavior: "auto" });
+ updatePortNav();
  } else {
  updatePortNav();
  }
+ grid.style.minHeight = "";
+ if (lockScroll) {
+ window.scrollTo(0, scrollY);
+ }
+ };
+
+ // Double rAF: wait for DOM + layout, then unlock height and restore scroll
+ requestAnimationFrame(() => {
+ requestAnimationFrame(() => {
+ finish();
+ if (lockScroll) {
+ window.setTimeout(() => window.scrollTo(0, scrollY), 0);
+ }
+ });
  });
  }
 
  function renderAllGallery(resetPage) {
  renderLandscapeSlider();
- renderGallery(resetPage);
+ renderGallery(resetPage, { animate: true, lockScroll: false });
  startLandAuto();
  }
 
@@ -754,36 +796,42 @@
  const filtered = getPortraitWorks();
  const total = filtered.length;
  const mode = moreBtn.dataset.mode || "more";
+ const scrollY = window.scrollY;
 
  if (mode === "less" || visibleCount >= total) {
  visibleCount = PAGE_SIZE;
- renderGallery(false);
- const ph = document.querySelector(".portrait-head");
- if (ph) ph.scrollIntoView({ behavior: "smooth", block: "start" });
+ renderGallery(false, { animate: false, lockScroll: true });
  moreBtn.focus({ preventScroll: true });
+ // Soft scroll only if user is far below the filters
+ const filtersEl = document.querySelector(".filters");
+ if (filtersEl) {
+ const top = filtersEl.getBoundingClientRect().top + window.scrollY - 80;
+ if (scrollY > top + 120) {
+ window.scrollTo({ top: top, behavior: "smooth" });
+ }
+ }
  return;
  }
 
  visibleCount = total;
- renderGallery(false);
+ renderGallery(false, { animate: false, lockScroll: true });
  moreBtn.focus({ preventScroll: true });
- const cards = grid ? grid.querySelectorAll(".card") : [];
- if (cards.length > PAGE_SIZE) {
- const firstNew = cards[PAGE_SIZE];
- if (firstNew) firstNew.scrollIntoView({ behavior: "smooth", block: "nearest" });
- }
  });
  }
 
  document.querySelectorAll(".filter").forEach((btn) => {
- btn.addEventListener("click", () => {
+ btn.addEventListener("click", (e) => {
+ e.preventDefault();
+ // Filters apply only to Canvas paintings (portrait grid), not wall slider
  activeFilter = btn.dataset.filter || "all";
  document.querySelectorAll(".filter").forEach((b) => {
  const on = b === btn;
  b.classList.toggle("is-active", on);
  b.setAttribute("aria-selected", String(on));
  });
- renderAllGallery(true);
+ // Re-render portraits only — no landscape rebuild, no enter animation, lock scroll
+ renderGallery(true, { animate: false, lockScroll: true });
+ btn.focus({ preventScroll: true });
  });
  });
 
