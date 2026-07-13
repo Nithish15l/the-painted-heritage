@@ -41,7 +41,6 @@
  }
 
  setText("brand-name", brand);
- setText("footer-brand", brand);
  setText("hero-tagline", tagline);
  setText("instagram-label", instagramLabel);
  setText("contact-ig-label", instagramLabel);
@@ -50,6 +49,84 @@
  setText("footer-wa-num", waDisplay);
  setText("whatsapp-btn-label", "WhatsApp " + waDisplay);
  document.title = `${brand} - Hand-Painted Kalamkari Canvas`;
+
+ // Footer: always one line on mobile + desktop (immune to CSS flex stacking)
+ (function renderFooterLine() {
+ const place = String(config.location || "Tirupati - Sri Kalahasti").replace(/\s*[–—]\s*/g, " - ");
+ const line = brand + " | " + place;
+ const footer = document.getElementById("site-footer");
+ const inner = document.getElementById("footer-inner");
+ let lineEl = document.getElementById("footer-line");
+
+ if (!lineEl && inner) {
+ lineEl = document.createElement("p");
+ lineEl.id = "footer-line";
+ lineEl.className = "footer-line";
+ inner.innerHTML = "";
+ inner.appendChild(lineEl);
+ }
+
+ if (lineEl) {
+ // Plain text only — no child spans that CSS can stack
+ lineEl.textContent = line;
+ lineEl.setAttribute("aria-label", line);
+ lineEl.style.cssText = [
+ "display:block",
+ "width:100%",
+ "max-width:100%",
+ "margin:0",
+ "padding:0.15rem 0.6rem",
+ "box-sizing:border-box",
+ "text-align:center",
+ "white-space:nowrap",
+ "overflow:hidden",
+ "text-overflow:ellipsis",
+ "line-height:1.45",
+ "letter-spacing:0.04em",
+ "color:rgba(255,250,242,0.55)",
+ "font-size:clamp(0.68rem, 2.6vw, 0.9rem)",
+ "font-family:inherit",
+ ].join(";");
+ }
+
+ if (inner) {
+ inner.style.cssText = [
+ "display:block",
+ "width:100%",
+ "margin:0 auto",
+ "padding:0",
+ "text-align:center",
+ "flex-direction:unset",
+ "flex-wrap:unset",
+ "gap:0",
+ ].join(";");
+ }
+
+ if (footer) {
+ footer.style.cssText = [
+ footer.getAttribute("style") || "",
+ "text-align:center",
+ ].filter(Boolean).join(";");
+ }
+
+ // Re-apply on resize so mobile/desktop switches stay correct
+ function syncFooterLayout() {
+ if (!lineEl) return;
+ const narrow = window.matchMedia("(max-width: 680px)").matches;
+ lineEl.style.fontSize = narrow
+ ? "clamp(0.64rem, 3.1vw, 0.78rem)"
+ : "clamp(0.78rem, 1.2vw, 0.92rem)";
+ lineEl.style.whiteSpace = "nowrap";
+ lineEl.style.display = "block";
+ lineEl.style.textAlign = "center";
+ if (inner) {
+ inner.style.display = "block";
+ inner.style.flexDirection = "unset";
+ }
+ }
+ syncFooterLayout();
+ window.addEventListener("resize", syncFooterLayout, { passive: true });
+ })();
 
  function bindExternal(selector, href) {
  document.querySelectorAll(selector).forEach((el) => {

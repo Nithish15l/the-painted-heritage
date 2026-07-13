@@ -1,6 +1,6 @@
 /* =========================================================
    Premium Kalamkari Canvas Experience
-   Loaded after styles.css Ã¢â‚¬â€ refined craft UI layer
+   Loaded after styles.css ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â refined craft UI layer
    ========================================================= */
 
 :root {
@@ -151,7 +151,7 @@ body::before {
   min-height: var(--ribbon-h, 38px) !important;
   padding: 0.5rem 1.25rem !important;
   overflow: hidden;
-  /* Rich madder Ã‚Â· gold Ã‚Â· indigo ribbon */
+  /* Rich madder Ãƒâ€šÃ‚Â· gold Ãƒâ€šÃ‚Â· indigo ribbon */
   background:
     linear-gradient(
       100deg,
@@ -359,7 +359,7 @@ body::before {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22) !important;
 }
 
-/* Glossy shining float bubbles Ã¢â‚¬â€ base in float-dock block below */
+/* Glossy shining float bubbles ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â base in float-dock block below */
 
 /* ----- Hero ----- */
 .hero__content {
@@ -463,7 +463,7 @@ body::before {
   letter-spacing: 0.1em !important;
 }
 
-/* ----- Section heads Ã¢â‚¬â€ single-line fluid titles ----- */
+/* ----- Section heads ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â single-line fluid titles ----- */
 .section-head {
   background: rgba(255, 250, 242, 0.94) !important;
   border: 1px solid var(--pk-line) !important;
@@ -506,7 +506,7 @@ body::before {
   margin-top: clamp(0.55rem, 1.2vw, 0.9rem) !important;
 }
 
-/* Shared section header icons Ã¢â‚¬â€ fluid size */
+/* Shared section header icons ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â fluid size */
 .sh-ico {
   display: inline-flex;
   align-items: center;
@@ -820,7 +820,7 @@ body::before {
   }
 }
 
-/* Remove View more Ã¢â‚¬â€ Canvas paintings is auto-slide only */
+/* Remove View more ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Canvas paintings is auto-slide only */
 .gallery-more {
   display: none !important;
 }
@@ -869,7 +869,7 @@ body::before {
   aspect-ratio: 3 / 4 !important;
 }
 
-/* Landscape masterpiece Ã¢â‚¬â€ full row, centered */
+/* Landscape masterpiece ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â full row, centered */
 .gallery-grid .card--landscape,
 .card--landscape.card--featured {
   grid-column: 1 / -1 !important;
@@ -927,7 +927,7 @@ body::before {
   transform: scale(1.04) !important;
 }
 
-/* Landscape sliding gallery Ã¢â‚¬â€ premium craft */
+/* Landscape sliding gallery ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â premium craft */
 .land-slider {
   margin: 0 0 1.75rem;
   padding: 1.1rem 1rem 1.2rem;
@@ -1314,7 +1314,7 @@ body::before {
   color: var(--pk-madder);
 }
 
-/* Stories nav Ã¢â‚¬â€ SVG chevrons */
+/* Stories nav ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â SVG chevrons */
 .stories__nav {
   display: grid !important;
   place-items: center !important;
@@ -1974,47 +1974,24 @@ body::before {
   letter-spacing: 0.02em;
 }
 
+/* Base slim footer (final single-line rules also at end of file + JS) */
 .site-footer--slim {
   padding: 0.55rem 0 0.75rem !important;
   background: #0a101c !important;
   border-top: 1px solid rgba(196, 163, 90, 0.12) !important;
+  text-align: center !important;
 }
 
 .footer-inner--slim {
   display: block !important;
   text-align: center !important;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  color: rgba(255, 250, 242, 0.45) !important;
 }
 
-/* Single continuous line: Brand | Place */
 .footer-line {
   display: block !important;
   margin: 0 !important;
-  padding: 0 !important;
   text-align: center !important;
   white-space: nowrap !important;
-  line-height: 1.4 !important;
-  color: rgba(255, 250, 242, 0.5) !important;
-  font-size: inherit !important;
-}
-
-.footer-line #footer-brand {
-  font-family: var(--pk-display) !important;
-  font-size: 0.95rem !important;
-  color: rgba(255, 250, 242, 0.72) !important;
-  letter-spacing: 0.04em !important;
-}
-
-.footer-line .footer-dot {
-  opacity: 0.55 !important;
-  font-weight: 400 !important;
-  color: rgba(255, 250, 242, 0.4) !important;
-}
-
-.footer-line .footer-place {
-  color: rgba(255, 250, 242, 0.5) !important;
 }
 
 /* Hide removed journey note if cached markup remains */
@@ -2091,7 +2068,7 @@ body::before {
 }
 
 /* =========================================================
-   MODAL Ã¢â‚¬â€ fully fluid painting viewer (PC + mobile)
+   MODAL ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â fully fluid painting viewer (PC + mobile)
    Desktop: side-by-side. Mobile: stacked, whole sheet scrolls
    so every detail and button is always reachable.
    ========================================================= */
@@ -2177,7 +2154,7 @@ body.modal-open {
   line-height: 1.55 !important;
 }
 
-/* Size: Medium  /  Medium: Hand-paintedâ€¦  (one line each, not headers) */
+/* Size: Medium  /  Medium: Hand-paintedÃ¢â‚¬Â¦  (one line each, not headers) */
 .modal__meta-list {
   margin: 0.5rem 0 1rem !important;
   padding: 0.65rem 0.85rem !important;
@@ -2545,7 +2522,7 @@ body.modal-open {
 .custom-card:nth-child(4) .custom-card__icon { animation-delay: 1.2s; }
 
 /* =========================================================
-   WHY BUY Ã¢â‚¬â€ centered lead + tight filled dashboard
+   WHY BUY ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â centered lead + tight filled dashboard
    ========================================================= */
 .section.why-buy {
   padding-top: clamp(1.15rem, 2.4vw, 1.65rem) !important;
@@ -2779,7 +2756,7 @@ body.modal-open {
   }
 }
 
-/* Equal centered cards Ã¢â‚¬â€ 3 columns x 2 rows */
+/* Equal centered cards ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 3 columns x 2 rows */
 .why-buy__grid {
   position: relative;
   z-index: 1;
@@ -2911,7 +2888,7 @@ body.modal-open {
 }
 
 /* =========================================================
-   CUSTOM COMMISSION Ã¢â‚¬â€ landscape compact dashboard
+   CUSTOM COMMISSION ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â landscape compact dashboard
    ========================================================= */
 .section.custom {
   padding-top: clamp(1.6rem, 3.2vw, 2.4rem) !important;
@@ -2966,7 +2943,7 @@ body.modal-open {
   z-index: 1;
 }
 
-/* ===== Dashboard header Ã¢â‚¬â€ matches site section panels ===== */
+/* ===== Dashboard header ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â matches site section panels ===== */
 .commission__head {
   position: relative;
   text-align: center;
@@ -3005,7 +2982,7 @@ body.modal-open {
   z-index: 2;
 }
 
-/* Light Kalamkari doodle — Bespoke atelier order panel only
+/* Light Kalamkari doodle â€” Bespoke atelier order panel only
    (final conflict-safe rules also at end of this file) */
 .commission__head-doodle {
   display: block;
@@ -3109,7 +3086,7 @@ body.modal-open {
   text-align: center;
 }
 
-/* Motto tag under lead — does not affect other layout */
+/* Motto tag under lead â€” does not affect other layout */
 .commission__motto-tag {
   position: relative;
   z-index: 1;
@@ -3177,7 +3154,7 @@ body.modal-open {
   /* kept for safety if old markup appears */
 }
 
-/* Promise strip Ã¢â‚¬â€ light elegant cards */
+/* Promise strip ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â light elegant cards */
 .commission__promise {
   list-style: none;
   margin: 0;
@@ -3258,7 +3235,7 @@ body.modal-open {
   box-shadow: 0 3px 8px rgba(166, 61, 61, 0.25);
 }
 
-/* Theme cards Ã¢â‚¬â€ refined */
+/* Theme cards ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â refined */
 .theme-card {
   padding: 0.9rem 0.95rem !important;
   border-radius: 14px !important;
@@ -3959,7 +3936,7 @@ a.wa-link:hover,
 /* (commission steps/footer/theme mobile rules defined earlier in this file) */
 
 /* =========================================================
-   CRAFT Ã¢â‚¬â€ real painting photo frame
+   CRAFT ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â real painting photo frame
    ========================================================= */
 .craft__panel--photo {
   background: transparent !important;
@@ -4199,7 +4176,7 @@ a.wa-link:hover,
 }
 
 /* =========================================================
-   JOURNEY Ã¢â‚¬â€ compact landscape strip
+   JOURNEY ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â compact landscape strip
    ========================================================= */
 .section.journey {
   padding-top: clamp(1.5rem, 3vw, 2.2rem) !important;
@@ -4359,7 +4336,7 @@ a.wa-link:hover,
   }
 }
 
-/* Craft list icons Ã¢â‚¬â€ keep icon and text side by side (no overlap) */
+/* Craft list icons ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â keep icon and text side by side (no overlap) */
 .craft__list {
   list-style: none !important;
   padding: 0 !important;
@@ -4398,7 +4375,7 @@ a.wa-link:hover,
 }
 
 /* =========================================================
-   FLUID PANELS Ã¢â‚¬â€ auto best-fit to any screen
+   FLUID PANELS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â auto best-fit to any screen
    ========================================================= */
 /* Desktop / tablet landscape: responsive grid */
 /* Canvas paintings track: always one-by-one horizontal slider */
@@ -4435,7 +4412,7 @@ a.wa-link:hover,
 
 #gallery-grid .card,
 .portrait-slider .gallery-grid > .card {
-  /* Single fixed card size Ã¢â‚¬â€ one painting at a time */
+  /* Single fixed card size ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â one painting at a time */
   flex: 0 0 min(22rem, calc(100vw - 6.5rem)) !important;
   width: min(22rem, calc(100vw - 6.5rem)) !important;
   min-width: min(22rem, calc(100vw - 6.5rem)) !important;
@@ -4773,7 +4750,7 @@ body {
 }
 
 /* =========================================================
-   ORDER SECTION â€” unified mobile (single source of truth)
+   ORDER SECTION Ã¢â‚¬â€ unified mobile (single source of truth)
    Resolves all prior theme-slider / commission conflicts
    ========================================================= */
 
@@ -5088,7 +5065,7 @@ body {
 }
 
 /* =========================================================
-   ORDER SECTION MOBILE â€” center + eyebrow dot (final)
+   ORDER SECTION MOBILE Ã¢â‚¬â€ center + eyebrow dot (final)
    ========================================================= */
 .commission__head .eyebrow {
   display: inline-flex !important;
@@ -5248,7 +5225,7 @@ body {
 }
 
 /* =========================================================
-   Float dock — single Contact bubble + elegant expand menu
+   Float dock â€” single Contact bubble + elegant expand menu
    ========================================================= */
 .float-dock {
   position: fixed !important;
@@ -5555,7 +5532,7 @@ body.modal-open .float-dock {
   }
 }
 /* =========================================================
-   Bespoke atelier order � force-visible Kalamkari doodle
+   Bespoke atelier order ï¿½ force-visible Kalamkari doodle
    (wins over later mobile / layout overrides)
    ========================================================= */
 .commission.commission--dash > .commission__head,
@@ -5624,15 +5601,32 @@ body.modal-open .float-dock {
 }
 
 /* =========================================================
-   Slim footer � ONE line on all viewports (conflict-safe)
-   The Painted Heritage | Tirupati - Sri Kalahasti
+   Site footer — single dynamic line (mobile + desktop)
+   Text is plain (no child spans): "Brand | Place"
    ========================================================= */
-.site-footer.site-footer--slim,
-.site-footer.site-footer--slim .container.footer-inner,
-.site-footer.site-footer--slim .footer-inner.footer-inner--slim {
+.site-footer.site-footer--slim {
+  padding: 0.6rem 0 0.85rem !important;
+  background: #0a101c !important;
+  border-top: 1px solid rgba(196, 163, 90, 0.12) !important;
+  text-align: center !important;
+}
+
+.site-footer.site-footer--slim .container,
+.site-footer.site-footer--slim .footer-inner,
+.site-footer.site-footer--slim .footer-inner--slim,
+#footer-inner {
   display: block !important;
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+  padding: 0 0.75rem !important;
+  box-sizing: border-box !important;
+  flex: none !important;
   flex-direction: unset !important;
   flex-wrap: unset !important;
+  align-items: unset !important;
+  justify-content: center !important;
+  gap: 0 !important;
   text-align: center !important;
 }
 
@@ -5640,55 +5634,31 @@ body.modal-open .float-dock {
 #footer-line {
   display: block !important;
   width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 auto !important;
-  padding: 0 0.5rem !important;
+  margin: 0 !important;
+  padding: 0.1rem 0 !important;
   text-align: center !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   line-height: 1.45 !important;
-  font-size: 0.78rem !important;
-  letter-spacing: 0.05em !important;
-  color: rgba(255, 250, 242, 0.5) !important;
-}
-
-.site-footer.site-footer--slim .footer-line #footer-brand,
-#footer-line #footer-brand {
-  display: inline !important;
-  font-family: var(--pk-display, Georgia, serif) !important;
-  font-size: 0.92rem !important;
-  color: rgba(255, 250, 242, 0.72) !important;
-  white-space: nowrap !important;
-}
-
-.site-footer.site-footer--slim .footer-line .footer-dot,
-.site-footer.site-footer--slim .footer-line .footer-place,
-#footer-line .footer-dot,
-#footer-line .footer-place {
-  display: inline !important;
-  white-space: nowrap !important;
+  letter-spacing: 0.04em !important;
+  color: rgba(255, 250, 242, 0.55) !important;
+  font-size: clamp(0.68rem, 2.6vw, 0.9rem) !important;
+  font-family: var(--pk-display, "Cormorant Garamond", Georgia, serif) !important;
 }
 
 @media (max-width: 680px) {
-  .site-footer.site-footer--slim .footer-inner.footer-inner--slim,
-  .site-footer.site-footer--slim .container.footer-inner {
+  .site-footer.site-footer--slim .container,
+  .site-footer.site-footer--slim .footer-inner,
+  #footer-inner {
     display: block !important;
     flex-direction: unset !important;
-    gap: 0 !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding: 0 0.65rem !important;
   }
 
   .site-footer.site-footer--slim .footer-line,
   #footer-line {
     white-space: nowrap !important;
-    font-size: 0.68rem !important;
-    letter-spacing: 0.03em !important;
-  }
-
-  .site-footer.site-footer--slim .footer-line #footer-brand,
-  #footer-line #footer-brand {
-    font-size: 0.76rem !important;
+    font-size: clamp(0.62rem, 3.2vw, 0.78rem) !important;
   }
 }
