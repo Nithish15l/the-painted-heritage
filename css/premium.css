@@ -5541,7 +5541,7 @@ body.modal-open .float-dock {
   }
 }
 /* =========================================================
-   Bespoke atelier order — force-visible Kalamkari doodle
+   Bespoke atelier order ï¿½ force-visible Kalamkari doodle
    (wins over later mobile / layout overrides)
    ========================================================= */
 .commission.commission--dash > .commission__head,
@@ -5549,17 +5549,22 @@ body.modal-open .float-dock {
   position: relative !important;
   overflow: hidden !important;
   isolation: isolate !important;
-  background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.8), rgba(251, 246, 238, 0.76)),
-    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(196, 163, 90, 0.12), transparent 60%),
-    #f6efe3 !important;
+  background: #f4ecdf !important;
+  background-image:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.72), rgba(251, 246, 238, 0.68)),
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(196, 163, 90, 0.14), transparent 60%),
+    url("../assets/kalamkari-doodle.svg") !important;
+  background-size: auto, auto, 160px auto !important;
+  background-repeat: no-repeat, no-repeat, repeat !important;
+  background-position: center, center, center !important;
 }
 
+/* Dedicated layer for stronger, conflict-safe doodle visibility */
 .commission.commission--dash > .commission__head .commission__head-doodle,
 #custom .commission__head-doodle {
   display: block !important;
   visibility: visible !important;
-  opacity: 0.52 !important;
+  opacity: 0.62 !important;
   position: absolute !important;
   inset: 0 !important;
   top: 0 !important;
@@ -5577,11 +5582,11 @@ body.modal-open .float-dock {
   pointer-events: none !important;
   background-color: transparent !important;
   background-image: url("../assets/kalamkari-doodle.svg") !important;
-  background-size: 170px auto !important;
+  background-size: 150px auto !important;
   background-repeat: repeat !important;
   background-position: center center !important;
   mix-blend-mode: multiply !important;
-  filter: contrast(1.4) saturate(1.08) !important;
+  filter: contrast(1.55) saturate(1.15) brightness(0.92) !important;
   -webkit-mask-image: none !important;
   mask-image: none !important;
   -webkit-mask: none !important;
