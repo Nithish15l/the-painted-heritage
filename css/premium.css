@@ -3064,6 +3064,39 @@ body.modal-open {
   text-align: center;
 }
 
+/* Motto tag under lead — does not affect other layout */
+.commission__motto-tag {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.45rem;
+  margin: 0.45rem auto 0.15rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 163, 90, 0.38);
+  background: linear-gradient(145deg, rgba(255, 250, 242, 0.9), rgba(248, 240, 224, 0.85));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pk-indigo, #152238);
+  line-height: 1.2;
+}
+
+.commission__motto-tag > span:not(.commission__motto-dot) {
+  white-space: nowrap;
+}
+
+.commission__motto-dot {
+  color: rgba(196, 163, 90, 0.95);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
 .commission__head .section-head__rule {
   margin-top: 0.65rem !important;
   margin-bottom: 0.85rem !important;
