@@ -2470,17 +2470,17 @@ h3 {
   box-shadow: 0 16px 36px rgba(225, 48, 108, 0.32);
 }
 
-/* ─── Floating contact dock ─── */
+/* ─── Floating contact dock (visuals/sizes in premium.css) ─── */
 .float-dock {
   position: fixed;
   right: 1rem;
-  bottom: 1.15rem;
+  bottom: 1.2rem;
   z-index: 90;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  align-items: center;
+  gap: 0.75rem;
   transition: opacity 0.25s ease;
-  align-items: flex-end;
 }
 
 .float-dock__btn {
@@ -2488,50 +2488,20 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
-  min-width: 3.25rem;
+  width: 3.4rem;
+  height: 3.4rem;
   padding: 0;
   border-radius: 50%;
-  overflow: hidden;
-  color: #e8d48b;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
+  color: #f0d78a;
+  text-decoration: none;
 }
 
 .float-dock__btn .float-dock__label {
   display: none;
 }
 
-.float-dock__btn:hover {
-  transform: scale(1.05) translateY(-2px);
-}
-
-.float-dock__btn--wa {
-  background: linear-gradient(160deg, #2a3f34, #14201a);
-}
-
-.float-dock__btn--ig {
-  background: linear-gradient(160deg, #3a2a34, #1a1218);
-}
-
 .float-dock__pulse {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(37, 211, 102, 0.7);
-  animation: dock-pulse 2.2s ease-out infinite;
-}
-
-@keyframes dock-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1.55);
-    opacity: 0;
-  }
+  display: none;
 }
 
 /* ─── Shipping ─── */
@@ -3429,70 +3399,14 @@ h3 {
   color: #5c5348;
 }
 
-/* ===== Right contact bubbles ===== */
-.float-dock {
-  position: fixed;
-  right: 1rem;
-  bottom: 1.25rem;
-  z-index: 90;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.float-dock__btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 50%;
-  overflow: hidden;
-  color: #e8d48b;
-  text-decoration: none;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.float-dock__btn:hover {
-  transform: scale(1.05) translateY(-2px);
-}
-
-.float-dock__btn--wa {
-  background: linear-gradient(160deg, #2a3f34, #14201a);
-}
-
-.float-dock__btn--ig {
-  background: linear-gradient(160deg, #3a2a34, #1a1218);
-}
-
-.float-dock__icon {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
+/* Contact tip base (appearance overridden in premium.css) */
 .float-dock__tip {
   position: absolute;
   right: calc(100% + 0.55rem);
   top: 50%;
   transform: translateY(-50%);
-  padding: 0.35rem 0.65rem;
-  border-radius: 8px;
-  background: #1b2a4a;
-  color: #fffdf8;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
   white-space: nowrap;
-  opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-.float-dock__btn:hover .float-dock__tip {
-  opacity: 1;
 }
 
 body.modal-open .float-dock {
@@ -3717,16 +3631,9 @@ body.modal-open .float-dock {
   flex-shrink: 0;
 }
 
-/* Float dock icon svg */
+/* Float dock icon sizing lives only in premium.css (single source) */
 .float-dock__btn svg {
   display: block;
-}
-
-.float-dock__btn {
-  width: 3.5rem !important;
-  height: 3.5rem !important;
-  border-radius: 50% !important;
-  padding: 0 !important;
 }
 
 @media (max-width: 680px) {
