@@ -2965,9 +2965,11 @@ body.modal-open {
   padding: clamp(1rem, 2.2vw, 1.35rem) clamp(0.85rem, 2vw, 1.25rem) clamp(1.05rem, 2vw, 1.3rem);
   border-radius: 14px;
   border: 1px solid rgba(196, 163, 90, 0.38);
+  /* Slightly open cream so the doodle layer can show through */
   background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(251, 246, 238, 0.94)),
-    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(196, 163, 90, 0.1), transparent 60%);
+    linear-gradient(180deg, rgba(255, 253, 248, 0.82), rgba(251, 246, 238, 0.78)),
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(196, 163, 90, 0.12), transparent 60%),
+    #f7f0e4;
   box-shadow:
     inset 0 0 0 1px rgba(255, 253, 248, 0.8),
     0 10px 28px rgba(16, 28, 51, 0.05);
@@ -2983,32 +2985,30 @@ body.modal-open {
   z-index: 1;
 }
 
-/* Light Kalamkari doodle frame — only this Bespoke header panel */
+/* Keep text/buttons above the doodle layer */
+.commission__head > *:not(.commission__head-doodle):not(.commission__head-corner) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Light Kalamkari doodle — Bespoke atelier order panel only
+   (final conflict-safe rules also at end of this file) */
 .commission__head-doodle {
+  display: block;
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
   border-radius: inherit;
   pointer-events: none;
   background-image: url("../assets/kalamkari-doodle.svg");
-  background-size: 240px;
+  background-size: 180px;
   background-repeat: repeat;
   background-position: center;
-  opacity: 0.15;
+  opacity: 0.5;
   mix-blend-mode: multiply;
-  /* Keep doodle strongest along the frame edge */
-  -webkit-mask-image: radial-gradient(
-    ellipse 72% 68% at 50% 50%,
-    transparent 42%,
-    rgba(0, 0, 0, 0.45) 68%,
-    #000 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 72% 68% at 50% 50%,
-    transparent 42%,
-    rgba(0, 0, 0, 0.45) 68%,
-    #000 100%
-  );
+  filter: contrast(1.35) saturate(1.05);
 }
 
 .commission__head-corner {
@@ -5539,4 +5539,67 @@ body.modal-open .float-dock {
   .float-dock .float-dock__main-ico {
     transition: none !important;
   }
+}
+/* =========================================================
+   Bespoke atelier order � force-visible Kalamkari doodle
+   (wins over later mobile / layout overrides)
+   ========================================================= */
+.commission.commission--dash > .commission__head,
+#custom .commission__head {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.8), rgba(251, 246, 238, 0.76)),
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(196, 163, 90, 0.12), transparent 60%),
+    #f6efe3 !important;
+}
+
+.commission.commission--dash > .commission__head .commission__head-doodle,
+#custom .commission__head-doodle {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.52 !important;
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  background-color: transparent !important;
+  background-image: url("../assets/kalamkari-doodle.svg") !important;
+  background-size: 170px auto !important;
+  background-repeat: repeat !important;
+  background-position: center center !important;
+  mix-blend-mode: multiply !important;
+  filter: contrast(1.4) saturate(1.08) !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+.commission.commission--dash > .commission__head > *:not(.commission__head-doodle):not(.commission__head-corner),
+#custom .commission__head > *:not(.commission__head-doodle):not(.commission__head-corner) {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.commission.commission--dash > .commission__head .commission__head-corner,
+#custom .commission__head-corner {
+  z-index: 3 !important;
+}
+
+.commission.commission--dash > .commission__head::before,
+#custom .commission__head::before {
+  z-index: 1 !important;
 }
