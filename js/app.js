@@ -1104,7 +1104,7 @@
  modalCustom.addEventListener("click", () => {
  const title = modalCustom.dataset.work;
  const text = title
- ? `Hi! I'd love a custom version inspired by "${title}". ${customInquiryMessage}`
+ ? `Hi, I'm interested in buying a custom Kalamkari painting inspired by "${title}". Theme / Size / Colours:`
  : customInquiryMessage;
  copyInquiry(text);
  });
