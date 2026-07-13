@@ -3041,13 +3041,17 @@ h3 {
     text-align: center;
   }
 
-  /* Slim footer stays one line on mobile */
+  /* Slim footer: single text line (not stacked flex children) */
   .footer-inner.footer-inner--slim {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    flex-direction: unset;
+  }
+
+  .footer-inner--slim .footer-line {
+    display: block;
     white-space: nowrap;
+    text-align: center;
+    margin: 0;
   }
 
   .hero__actions,

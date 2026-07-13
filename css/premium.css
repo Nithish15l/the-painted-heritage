@@ -1981,55 +1981,40 @@ body::before {
 }
 
 .footer-inner--slim {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.4rem 0.5rem !important;
+  display: block !important;
   text-align: center !important;
   font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: rgba(255, 250, 242, 0.45) !important;
-  white-space: nowrap !important;
 }
 
-.footer-inner--slim #footer-brand {
+/* Single continuous line: Brand | Place */
+.footer-line {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  line-height: 1.4 !important;
+  color: rgba(255, 250, 242, 0.5) !important;
+  font-size: inherit !important;
+}
+
+.footer-line #footer-brand {
   font-family: var(--pk-display) !important;
-  font-size: 0.95rem;
-  color: rgba(255, 250, 242, 0.7);
-  letter-spacing: 0.04em;
-  white-space: nowrap !important;
+  font-size: 0.95rem !important;
+  color: rgba(255, 250, 242, 0.72) !important;
+  letter-spacing: 0.04em !important;
 }
 
-.footer-inner--slim > span {
-  display: inline !important;
-  white-space: nowrap !important;
+.footer-line .footer-dot {
+  opacity: 0.55 !important;
+  font-weight: 400 !important;
+  color: rgba(255, 250, 242, 0.4) !important;
 }
 
-.footer-dot {
-  opacity: 0.5;
-  flex-shrink: 0 !important;
-}
-
-/* Mobile: keep one line â€” The Painted Heritage | Tirupati - Sri Kalahasti */
-@media (max-width: 680px) {
-  .footer-inner.footer-inner--slim,
-  .site-footer--slim .footer-inner--slim {
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 0.35rem 0.4rem !important;
-    white-space: nowrap !important;
-    font-size: 0.7rem !important;
-    letter-spacing: 0.04em !important;
-    padding: 0 0.35rem !important;
-  }
-
-  .site-footer--slim .footer-inner--slim #footer-brand {
-    font-size: 0.78rem !important;
-  }
+.footer-line .footer-place {
+  color: rgba(255, 250, 242, 0.5) !important;
 }
 
 /* Hide removed journey note if cached markup remains */
@@ -5636,4 +5621,74 @@ body.modal-open .float-dock {
 .commission.commission--dash > .commission__head::before,
 #custom .commission__head::before {
   z-index: 1 !important;
+}
+
+/* =========================================================
+   Slim footer — ONE line on all viewports (conflict-safe)
+   The Painted Heritage | Tirupati - Sri Kalahasti
+   ========================================================= */
+.site-footer.site-footer--slim,
+.site-footer.site-footer--slim .container.footer-inner,
+.site-footer.site-footer--slim .footer-inner.footer-inner--slim {
+  display: block !important;
+  flex-direction: unset !important;
+  flex-wrap: unset !important;
+  text-align: center !important;
+}
+
+.site-footer.site-footer--slim .footer-line,
+#footer-line {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 0.5rem !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.45 !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.05em !important;
+  color: rgba(255, 250, 242, 0.5) !important;
+}
+
+.site-footer.site-footer--slim .footer-line #footer-brand,
+#footer-line #footer-brand {
+  display: inline !important;
+  font-family: var(--pk-display, Georgia, serif) !important;
+  font-size: 0.92rem !important;
+  color: rgba(255, 250, 242, 0.72) !important;
+  white-space: nowrap !important;
+}
+
+.site-footer.site-footer--slim .footer-line .footer-dot,
+.site-footer.site-footer--slim .footer-line .footer-place,
+#footer-line .footer-dot,
+#footer-line .footer-place {
+  display: inline !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 680px) {
+  .site-footer.site-footer--slim .footer-inner.footer-inner--slim,
+  .site-footer.site-footer--slim .container.footer-inner {
+    display: block !important;
+    flex-direction: unset !important;
+    gap: 0 !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .site-footer.site-footer--slim .footer-line,
+  #footer-line {
+    white-space: nowrap !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .site-footer.site-footer--slim .footer-line #footer-brand,
+  #footer-line #footer-brand {
+    font-size: 0.76rem !important;
+  }
 }
