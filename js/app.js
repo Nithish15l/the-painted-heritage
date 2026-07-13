@@ -1029,7 +1029,7 @@
  viewport.setAttribute("role", "img");
  viewport.setAttribute(
  "aria-label",
- work.title + " — drag to move, scroll or pinch to zoom"
+ work.title + ". Drag to move, scroll or pinch to zoom"
  );
 
  const img = document.createElement("img");
