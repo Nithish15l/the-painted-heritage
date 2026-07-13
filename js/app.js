@@ -78,6 +78,73 @@
  bindInstagramLinks();
  bindWhatsAppLinks(inquiryMessage);
 
+ // --- Single contact FAB: expands to WhatsApp + Instagram ---
+ (function initFloatContactDock() {
+ const dock = document.getElementById("float-dock");
+ const toggle = document.getElementById("float-contact-toggle");
+ const panel = document.getElementById("float-panel");
+ if (!dock || !toggle || !panel) return;
+
+ var closeTimer = null;
+
+ function setOpen(open) {
+ toggle.setAttribute("aria-expanded", open ? "true" : "false");
+ if (closeTimer) {
+ window.clearTimeout(closeTimer);
+ closeTimer = null;
+ }
+
+ if (open) {
+ panel.hidden = false;
+ // Next frame so CSS enter transition can run
+ requestAnimationFrame(function () {
+ dock.classList.add("is-open");
+ });
+ } else {
+ dock.classList.remove("is-open");
+ closeTimer = window.setTimeout(function () {
+ if (toggle.getAttribute("aria-expanded") !== "true") {
+ panel.hidden = true;
+ }
+ closeTimer = null;
+ }, 300);
+ }
+ }
+
+ function closeDock() {
+ setOpen(false);
+ }
+
+ function toggleDock() {
+ var open = toggle.getAttribute("aria-expanded") === "true";
+ setOpen(!open);
+ }
+
+ toggle.addEventListener("click", function (e) {
+ e.preventDefault();
+ e.stopPropagation();
+ toggleDock();
+ });
+
+ panel.querySelectorAll("a.float-dock__action").forEach(function (link) {
+ link.addEventListener("click", function () {
+ window.setTimeout(closeDock, 160);
+ });
+ });
+
+ document.addEventListener("click", function (e) {
+ if (!dock.classList.contains("is-open")) return;
+ if (!dock.contains(e.target)) closeDock();
+ });
+
+ document.addEventListener("keydown", function (e) {
+ if (e.key === "Escape" && dock.classList.contains("is-open")) {
+ closeDock();
+ toggle.focus();
+ }
+ });
+ })();
+
  function copyInquiry(text) {
  if (navigator.clipboard && navigator.clipboard.writeText) {
  navigator.clipboard.writeText(text).catch(function () {});

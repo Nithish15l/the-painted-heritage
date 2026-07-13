@@ -2470,7 +2470,7 @@ h3 {
   box-shadow: 0 16px 36px rgba(225, 48, 108, 0.32);
 }
 
-/* ─── Floating contact dock (visuals/sizes in premium.css) ─── */
+/* ─── Floating contact dock (expand UI in premium.css) ─── */
 .float-dock {
   position: fixed;
   right: 1rem;
@@ -2478,26 +2478,9 @@ h3 {
   z-index: 90;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: flex-end;
+  gap: 0.65rem;
   transition: opacity 0.25s ease;
-}
-
-.float-dock__btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.4rem;
-  height: 3.4rem;
-  padding: 0;
-  border-radius: 50%;
-  color: #f0d78a;
-  text-decoration: none;
-}
-
-.float-dock__btn .float-dock__label {
-  display: none;
 }
 
 .float-dock__pulse {
@@ -3399,16 +3382,6 @@ h3 {
   color: #5c5348;
 }
 
-/* Contact tip base (appearance overridden in premium.css) */
-.float-dock__tip {
-  position: absolute;
-  right: calc(100% + 0.55rem);
-  top: 50%;
-  transform: translateY(-50%);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
 body.modal-open .float-dock {
   opacity: 0;
   pointer-events: none;
@@ -3631,10 +3604,7 @@ body.modal-open .float-dock {
   flex-shrink: 0;
 }
 
-/* Float dock icon sizing lives only in premium.css (single source) */
-.float-dock__btn svg {
-  display: block;
-}
+
 
 @media (max-width: 680px) {
   .contact-simple__row {

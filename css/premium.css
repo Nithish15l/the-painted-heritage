@@ -1,6 +1,6 @@
 /* =========================================================
    Premium Kalamkari Canvas Experience
-   Loaded after styles.css â€” refined craft UI layer
+   Loaded after styles.css Ã¢â‚¬â€ refined craft UI layer
    ========================================================= */
 
 :root {
@@ -151,7 +151,7 @@ body::before {
   min-height: var(--ribbon-h, 38px) !important;
   padding: 0.5rem 1.25rem !important;
   overflow: hidden;
-  /* Rich madder Â· gold Â· indigo ribbon */
+  /* Rich madder Ã‚Â· gold Ã‚Â· indigo ribbon */
   background:
     linear-gradient(
       100deg,
@@ -359,7 +359,7 @@ body::before {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22) !important;
 }
 
-/* Glossy shining float bubbles â€” base in float-dock block below */
+/* Glossy shining float bubbles Ã¢â‚¬â€ base in float-dock block below */
 
 /* ----- Hero ----- */
 .hero__content {
@@ -463,7 +463,7 @@ body::before {
   letter-spacing: 0.1em !important;
 }
 
-/* ----- Section heads â€” single-line fluid titles ----- */
+/* ----- Section heads Ã¢â‚¬â€ single-line fluid titles ----- */
 .section-head {
   background: rgba(255, 250, 242, 0.94) !important;
   border: 1px solid var(--pk-line) !important;
@@ -506,7 +506,7 @@ body::before {
   margin-top: clamp(0.55rem, 1.2vw, 0.9rem) !important;
 }
 
-/* Shared section header icons â€” fluid size */
+/* Shared section header icons Ã¢â‚¬â€ fluid size */
 .sh-ico {
   display: inline-flex;
   align-items: center;
@@ -820,7 +820,7 @@ body::before {
   }
 }
 
-/* Remove View more â€” Canvas paintings is auto-slide only */
+/* Remove View more Ã¢â‚¬â€ Canvas paintings is auto-slide only */
 .gallery-more {
   display: none !important;
 }
@@ -869,7 +869,7 @@ body::before {
   aspect-ratio: 3 / 4 !important;
 }
 
-/* Landscape masterpiece â€” full row, centered */
+/* Landscape masterpiece Ã¢â‚¬â€ full row, centered */
 .gallery-grid .card--landscape,
 .card--landscape.card--featured {
   grid-column: 1 / -1 !important;
@@ -927,7 +927,7 @@ body::before {
   transform: scale(1.04) !important;
 }
 
-/* Landscape sliding gallery â€” premium craft */
+/* Landscape sliding gallery Ã¢â‚¬â€ premium craft */
 .land-slider {
   margin: 0 0 1.75rem;
   padding: 1.1rem 1rem 1.2rem;
@@ -1314,7 +1314,7 @@ body::before {
   color: var(--pk-madder);
 }
 
-/* Stories nav â€” SVG chevrons */
+/* Stories nav Ã¢â‚¬â€ SVG chevrons */
 .stories__nav {
   display: grid !important;
   place-items: center !important;
@@ -2077,7 +2077,7 @@ body::before {
 }
 
 /* =========================================================
-   MODAL â€” fully fluid painting viewer (PC + mobile)
+   MODAL Ã¢â‚¬â€ fully fluid painting viewer (PC + mobile)
    Desktop: side-by-side. Mobile: stacked, whole sheet scrolls
    so every detail and button is always reachable.
    ========================================================= */
@@ -2163,7 +2163,7 @@ body.modal-open {
   line-height: 1.55 !important;
 }
 
-/* Size: Medium  /  Medium: Hand-painted…  (one line each, not headers) */
+/* Size: Medium  /  Medium: Hand-paintedâ€¦  (one line each, not headers) */
 .modal__meta-list {
   margin: 0.5rem 0 1rem !important;
   padding: 0.65rem 0.85rem !important;
@@ -2531,7 +2531,7 @@ body.modal-open {
 .custom-card:nth-child(4) .custom-card__icon { animation-delay: 1.2s; }
 
 /* =========================================================
-   WHY BUY â€” centered lead + tight filled dashboard
+   WHY BUY Ã¢â‚¬â€ centered lead + tight filled dashboard
    ========================================================= */
 .section.why-buy {
   padding-top: clamp(1.15rem, 2.4vw, 1.65rem) !important;
@@ -2765,7 +2765,7 @@ body.modal-open {
   }
 }
 
-/* Equal centered cards â€” 3 columns x 2 rows */
+/* Equal centered cards Ã¢â‚¬â€ 3 columns x 2 rows */
 .why-buy__grid {
   position: relative;
   z-index: 1;
@@ -2897,7 +2897,7 @@ body.modal-open {
 }
 
 /* =========================================================
-   CUSTOM COMMISSION â€” landscape compact dashboard
+   CUSTOM COMMISSION Ã¢â‚¬â€ landscape compact dashboard
    ========================================================= */
 .section.custom {
   padding-top: clamp(1.6rem, 3.2vw, 2.4rem) !important;
@@ -2952,7 +2952,7 @@ body.modal-open {
   z-index: 1;
 }
 
-/* ===== Dashboard header â€” matches site section panels ===== */
+/* ===== Dashboard header Ã¢â‚¬â€ matches site section panels ===== */
 .commission__head {
   position: relative;
   text-align: center;
@@ -3099,7 +3099,7 @@ body.modal-open {
   /* kept for safety if old markup appears */
 }
 
-/* Promise strip â€” light elegant cards */
+/* Promise strip Ã¢â‚¬â€ light elegant cards */
 .commission__promise {
   list-style: none;
   margin: 0;
@@ -3180,7 +3180,7 @@ body.modal-open {
   box-shadow: 0 3px 8px rgba(166, 61, 61, 0.25);
 }
 
-/* Theme cards â€” refined */
+/* Theme cards Ã¢â‚¬â€ refined */
 .theme-card {
   padding: 0.9rem 0.95rem !important;
   border-radius: 14px !important;
@@ -3881,7 +3881,7 @@ a.wa-link:hover,
 /* (commission steps/footer/theme mobile rules defined earlier in this file) */
 
 /* =========================================================
-   CRAFT â€” real painting photo frame
+   CRAFT Ã¢â‚¬â€ real painting photo frame
    ========================================================= */
 .craft__panel--photo {
   background: transparent !important;
@@ -4121,7 +4121,7 @@ a.wa-link:hover,
 }
 
 /* =========================================================
-   JOURNEY â€” compact landscape strip
+   JOURNEY Ã¢â‚¬â€ compact landscape strip
    ========================================================= */
 .section.journey {
   padding-top: clamp(1.5rem, 3vw, 2.2rem) !important;
@@ -4281,7 +4281,7 @@ a.wa-link:hover,
   }
 }
 
-/* Craft list icons â€” keep icon and text side by side (no overlap) */
+/* Craft list icons Ã¢â‚¬â€ keep icon and text side by side (no overlap) */
 .craft__list {
   list-style: none !important;
   padding: 0 !important;
@@ -4320,7 +4320,7 @@ a.wa-link:hover,
 }
 
 /* =========================================================
-   FLUID PANELS â€” auto best-fit to any screen
+   FLUID PANELS Ã¢â‚¬â€ auto best-fit to any screen
    ========================================================= */
 /* Desktop / tablet landscape: responsive grid */
 /* Canvas paintings track: always one-by-one horizontal slider */
@@ -4357,7 +4357,7 @@ a.wa-link:hover,
 
 #gallery-grid .card,
 .portrait-slider .gallery-grid > .card {
-  /* Single fixed card size â€” one painting at a time */
+  /* Single fixed card size Ã¢â‚¬â€ one painting at a time */
   flex: 0 0 min(22rem, calc(100vw - 6.5rem)) !important;
   width: min(22rem, calc(100vw - 6.5rem)) !important;
   min-width: min(22rem, calc(100vw - 6.5rem)) !important;
@@ -4695,7 +4695,7 @@ body {
 }
 
 /* =========================================================
-   ORDER SECTION — unified mobile (single source of truth)
+   ORDER SECTION â€” unified mobile (single source of truth)
    Resolves all prior theme-slider / commission conflicts
    ========================================================= */
 
@@ -5010,7 +5010,7 @@ body {
 }
 
 /* =========================================================
-   ORDER SECTION MOBILE — center + eyebrow dot (final)
+   ORDER SECTION MOBILE â€” center + eyebrow dot (final)
    ========================================================= */
 .commission__head .eyebrow {
   display: inline-flex !important;
@@ -5170,8 +5170,7 @@ body {
 }
 
 /* =========================================================
-   Float dock — ONE design for desktop + mobile
-   Same icons, same button size, same gold craft look
+   Float dock — single Contact bubble + elegant expand menu
    ========================================================= */
 .float-dock {
   position: fixed !important;
@@ -5180,8 +5179,8 @@ body {
   z-index: 95 !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
-  gap: 0.75rem !important;
+  align-items: flex-end !important;
+  gap: 0.65rem !important;
   width: auto !important;
   height: auto !important;
   margin: 0 !important;
@@ -5195,172 +5194,285 @@ body.modal-open .float-dock {
   pointer-events: none !important;
 }
 
-.float-dock .float-dock__btn,
-.float-dock a.float-dock__btn {
+/* Main Contact bubble */
+.float-dock .float-dock__main {
   pointer-events: auto !important;
   position: relative !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex: 0 0 3.4rem !important;
-  width: 3.4rem !important;
-  height: 3.4rem !important;
-  min-width: 3.4rem !important;
-  max-width: 3.4rem !important;
-  min-height: 3.4rem !important;
-  max-height: 3.4rem !important;
+  width: 3.55rem !important;
+  height: 3.55rem !important;
+  min-width: 3.55rem !important;
+  min-height: 3.55rem !important;
   padding: 0 !important;
   margin: 0 !important;
-  gap: 0 !important;
+  border: 1.5px solid rgba(232, 212, 139, 0.58) !important;
   border-radius: 50% !important;
-  overflow: visible !important;
-  box-sizing: border-box !important;
-  text-decoration: none !important;
-  line-height: 0 !important;
+  cursor: pointer !important;
   color: #f0d78a !important;
-  border: 1.5px solid rgba(232, 212, 139, 0.55) !important;
-  background: linear-gradient(155deg, #2f2924 0%, #171310 100%) !important;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 245, 210, 0.14) 0%, transparent 48%),
+    linear-gradient(155deg, #3a2f28 0%, #1a1512 55%, #120f0d 100%) !important;
   box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.34),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset,
-    0 0 0 1px rgba(196, 163, 90, 0.12) !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease !important;
+    0 12px 28px rgba(0, 0, 0, 0.36),
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 0 0 1px rgba(196, 163, 90, 0.14),
+    0 0 18px rgba(196, 163, 90, 0.12) !important;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.25s ease,
+    background 0.3s ease !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.float-dock .float-dock__btn::before,
-.float-dock .float-dock__btn::after {
-  content: none !important;
-  display: none !important;
-  animation: none !important;
+.float-dock .float-dock__main:hover,
+.float-dock .float-dock__main:focus-visible {
+  transform: translateY(-2px) scale(1.04) !important;
+  border-color: rgba(245, 228, 170, 0.85) !important;
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.26) inset,
+    0 0 22px rgba(196, 163, 90, 0.28) !important;
+  outline: none !important;
 }
 
-.float-dock .float-dock__btn--wa {
-  background: linear-gradient(155deg, #2f4a3c 0%, #15261e 100%) !important;
-  border-color: rgba(232, 212, 139, 0.55) !important;
-  color: #f0d78a !important;
+.float-dock .float-dock__main-ico {
+  display: grid !important;
+  place-items: center !important;
+  line-height: 0 !important;
+  transition: opacity 0.22s ease, transform 0.28s ease !important;
 }
 
-.float-dock .float-dock__btn--ig {
-  background: linear-gradient(155deg, #3d2a36 0%, #181218 100%) !important;
-  border-color: rgba(232, 212, 139, 0.55) !important;
-  color: #f0d78a !important;
-}
-
-/* Icons: fixed identical size on every viewport */
-.float-dock .float-dock__ico,
-.float-dock .float-dock__btn svg,
-.float-dock a.float-dock__btn svg {
+.float-dock .float-dock__main-ico svg {
   display: block !important;
-  width: 1.4rem !important;
-  height: 1.4rem !important;
-  min-width: 1.4rem !important;
-  min-height: 1.4rem !important;
-  max-width: 1.4rem !important;
-  max-height: 1.4rem !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  flex: none !important;
-  position: static !important;
+  width: 1.35rem !important;
+  height: 1.35rem !important;
   color: #f0d78a !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3)) !important;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+
+.float-dock .float-dock__main-ico--close {
+  position: absolute !important;
+  opacity: 0 !important;
+  transform: rotate(-75deg) scale(0.7) !important;
   pointer-events: none !important;
 }
 
-/* Filled WhatsApp glyph */
-.float-dock .float-dock__btn--wa svg,
-.float-dock .float-dock__btn--wa .float-dock__ico {
+.float-dock .float-dock__main-label {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Open state: contact icon becomes close */
+.float-dock.is-open .float-dock__main {
+  border-color: rgba(245, 228, 170, 0.8) !important;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 245, 210, 0.12) 0%, transparent 48%),
+    linear-gradient(155deg, #4a3428 0%, #221812 100%) !important;
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(20, 17, 14, 0.35),
+    0 0 0 4px rgba(196, 163, 90, 0.28),
+    0 0 20px rgba(196, 163, 90, 0.22) !important;
+}
+
+.float-dock.is-open .float-dock__main-ico--contact {
+  opacity: 0 !important;
+  transform: rotate(70deg) scale(0.7) !important;
+}
+
+.float-dock.is-open .float-dock__main-ico--close {
+  opacity: 1 !important;
+  transform: rotate(0deg) scale(1) !important;
+}
+
+/* Expand panel */
+.float-dock .float-dock__panel {
+  pointer-events: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0.5rem !important;
+  min-width: 11.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  transform: translateY(12px) scale(0.94) !important;
+  transform-origin: bottom right !important;
+  transition:
+    opacity 0.28s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.float-dock .float-dock__panel[hidden] {
+  display: none !important;
+}
+
+.float-dock.is-open .float-dock__panel {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Action chips */
+.float-dock .float-dock__action {
+  pointer-events: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.7rem !important;
+  padding: 0.55rem 0.85rem 0.55rem 0.55rem !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  color: #fffaf2 !important;
+  border: 1px solid rgba(232, 212, 139, 0.38) !important;
+  background: linear-gradient(145deg, rgba(34, 28, 24, 0.96), rgba(16, 13, 11, 0.96)) !important;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.32),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease,
+    border-color 0.2s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease !important;
+}
+
+.float-dock.is-open .float-dock__action {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.float-dock.is-open .float-dock__action--wa {
+  transition-delay: 0.04s !important;
+}
+
+.float-dock.is-open .float-dock__action--ig {
+  transition-delay: 0.1s !important;
+}
+
+.float-dock .float-dock__action-ico {
+  display: grid !important;
+  place-items: center !important;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
+  min-width: 2.35rem !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(232, 212, 139, 0.35) !important;
+  color: #f0d78a !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset !important;
+}
+
+.float-dock .float-dock__action-ico svg {
+  display: block !important;
+  width: 1.15rem !important;
+  height: 1.15rem !important;
+}
+
+.float-dock .float-dock__action--wa .float-dock__action-ico {
+  background: linear-gradient(155deg, #2f4a3c, #15261e) !important;
+}
+
+.float-dock .float-dock__action--wa .float-dock__action-ico svg {
   fill: currentColor !important;
 }
 
-/* Stroke Instagram glyph — do not solid-fill shapes */
-.float-dock .float-dock__btn--ig svg,
-.float-dock .float-dock__btn--ig .float-dock__ico {
+.float-dock .float-dock__action--ig .float-dock__action-ico {
+  background: linear-gradient(155deg, #3d2a36, #181218) !important;
+}
+
+.float-dock .float-dock__action--ig .float-dock__action-ico svg {
   fill: none !important;
   stroke: currentColor !important;
 }
 
-.float-dock .float-dock__btn--ig svg circle:last-child,
-.float-dock .float-dock__btn--ig .float-dock__ico circle:last-child {
+.float-dock .float-dock__action--ig .float-dock__action-ico svg circle:last-child {
   fill: currentColor !important;
   stroke: none !important;
 }
 
-.float-dock .float-dock__btn:hover,
-.float-dock .float-dock__btn:focus-visible {
-  transform: translateY(-2px) scale(1.06) !important;
-  border-color: rgba(245, 228, 170, 0.8) !important;
+.float-dock .float-dock__action-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.05rem !important;
+  min-width: 0 !important;
+  padding-right: 0.2rem !important;
+}
+
+.float-dock .float-dock__action-text small {
+  font-size: 0.58rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: rgba(240, 215, 138, 0.72) !important;
+  line-height: 1.1 !important;
+}
+
+.float-dock .float-dock__action-text strong {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  color: #fffaf2 !important;
+  line-height: 1.15 !important;
+  font-family: inherit !important;
+}
+
+.float-dock .float-dock__action:hover,
+.float-dock .float-dock__action:focus-visible {
+  transform: translateY(-2px) scale(1.02) !important;
+  border-color: rgba(245, 228, 170, 0.65) !important;
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.38),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset,
-    0 0 16px rgba(196, 163, 90, 0.22) !important;
+    0 0 14px rgba(196, 163, 90, 0.16) !important;
   outline: none !important;
 }
 
-/* Tips: desktop hover only; same icons underneath */
-.float-dock .float-dock__tip {
-  display: none !important;
+.float-dock .float-dock__action--wa:hover {
+  background: linear-gradient(145deg, rgba(42, 56, 48, 0.98), rgba(18, 28, 22, 0.98)) !important;
 }
 
-@media (hover: hover) and (min-width: 681px) {
-  .float-dock .float-dock__tip {
-    display: block !important;
-    position: absolute !important;
-    right: calc(100% + 0.55rem) !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    padding: 0.32rem 0.6rem !important;
-    border-radius: 8px !important;
-    border: 1px solid rgba(196, 163, 90, 0.35) !important;
-    background: rgba(18, 15, 12, 0.95) !important;
-    color: #fffaf2 !important;
-    font-size: 0.7rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.04em !important;
-    white-space: nowrap !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25) !important;
-    transition: opacity 0.2s ease !important;
-    z-index: 2 !important;
-  }
-
-  .float-dock .float-dock__btn:hover .float-dock__tip,
-  .float-dock .float-dock__btn:focus-visible .float-dock__tip {
-    opacity: 1 !important;
-  }
+.float-dock .float-dock__action--ig:hover {
+  background: linear-gradient(145deg, rgba(52, 36, 46, 0.98), rgba(22, 16, 20, 0.98)) !important;
 }
 
-/* Mobile: same button + icon size; only position uses safe-area */
+/* Mobile: same elegant menu, safe-area only */
 @media (max-width: 680px) {
   .float-dock {
     right: 0.85rem !important;
-    bottom: max(1rem, calc(env(safe-area-inset-bottom, 0px) + 0.65rem)) !important;
-    gap: 0.75rem !important;
+    bottom: max(1rem, calc(env(safe-area-inset-bottom, 0px) + 0.7rem)) !important;
+    gap: 0.55rem !important;
   }
 
-  .float-dock .float-dock__btn,
-  .float-dock a.float-dock__btn {
-    flex: 0 0 3.4rem !important;
-    width: 3.4rem !important;
-    height: 3.4rem !important;
-    min-width: 3.4rem !important;
-    max-width: 3.4rem !important;
-    min-height: 3.4rem !important;
-    max-height: 3.4rem !important;
-    padding: 0 !important;
-    border-radius: 50% !important;
+  .float-dock .float-dock__main {
+    width: 3.45rem !important;
+    height: 3.45rem !important;
+    min-width: 3.45rem !important;
+    min-height: 3.45rem !important;
   }
 
-  .float-dock .float-dock__ico,
-  .float-dock .float-dock__btn svg,
-  .float-dock a.float-dock__btn svg {
-    width: 1.4rem !important;
-    height: 1.4rem !important;
-    min-width: 1.4rem !important;
-    min-height: 1.4rem !important;
-    max-width: 1.4rem !important;
-    max-height: 1.4rem !important;
+  .float-dock .float-dock__panel {
+    min-width: 11rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-dock .float-dock__main,
+  .float-dock .float-dock__panel,
+  .float-dock .float-dock__action,
+  .float-dock .float-dock__main-ico {
+    transition: none !important;
   }
 }
