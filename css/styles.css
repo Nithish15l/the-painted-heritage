@@ -3041,6 +3041,15 @@ h3 {
     text-align: center;
   }
 
+  /* Slim footer stays one line on mobile */
+  .footer-inner.footer-inner--slim {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+  }
+
   .hero__actions,
   .hero__actions .btn {
     width: 100%;

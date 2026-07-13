@@ -1982,14 +1982,16 @@ body::before {
 
 .footer-inner--slim {
   display: flex !important;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem 0.55rem;
-  text-align: center;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem 0.5rem !important;
+  text-align: center !important;
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   color: rgba(255, 250, 242, 0.45) !important;
+  white-space: nowrap !important;
 }
 
 .footer-inner--slim #footer-brand {
@@ -1997,10 +1999,37 @@ body::before {
   font-size: 0.95rem;
   color: rgba(255, 250, 242, 0.7);
   letter-spacing: 0.04em;
+  white-space: nowrap !important;
+}
+
+.footer-inner--slim > span {
+  display: inline !important;
+  white-space: nowrap !important;
 }
 
 .footer-dot {
   opacity: 0.5;
+  flex-shrink: 0 !important;
+}
+
+/* Mobile: keep one line — The Painted Heritage | Tirupati - Sri Kalahasti */
+@media (max-width: 680px) {
+  .footer-inner.footer-inner--slim,
+  .site-footer--slim .footer-inner--slim {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.35rem 0.4rem !important;
+    white-space: nowrap !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 0.35rem !important;
+  }
+
+  .site-footer--slim .footer-inner--slim #footer-brand {
+    font-size: 0.78rem !important;
+  }
 }
 
 /* Hide removed journey note if cached markup remains */
