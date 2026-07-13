@@ -12,6 +12,6 @@ window.KALAMKARI_CONFIG = {
  countryCode: "91",
  whatsappNumber: "9381435570",
  whatsappDisplay: "+91 93814 35570",
- inquiryMessage: "Hi! I am interested in buying custom craft work — a hand-painted Kalamkari canvas.",
- customInquiryMessage: "Hi! I am interested in buying custom craft work. Theme: __ / Size: __ / Colours: __",
+ inquiryMessage: "Hi, I'm interested in buying Kalamkari paintings. Please share details.",
+ customInquiryMessage: "Hi, I'm interested in buying a custom Kalamkari painting. Theme: __ / Size: __ / Colours: __",
 };

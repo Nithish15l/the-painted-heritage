@@ -11,10 +11,10 @@
  "Hand-painted Kalamkari canvas stories from the heart of India";
  const inquiryMessage =
  config.inquiryMessage ||
- "Hi! I am interested in buying custom craft work — a hand-painted Kalamkari canvas.";
+ "Hi, I'm interested in buying Kalamkari paintings. Please share details.";
  const customInquiryMessage =
  config.customInquiryMessage ||
- "Hi! I am interested in buying custom craft work. Theme: __ / Size: __ / Colours: __";
+ "Hi, I'm interested in buying a custom Kalamkari painting. Theme: __ / Size: __ / Colours: __";
 
  const countryCode = String(config.countryCode || "91").replace(/\D/g, "");
  let waDigits = String(config.whatsappNumber || "9381435570").replace(/\D/g, "");
@@ -1015,9 +1015,9 @@
  }
  }
 
- // General interest to buy custom craft work (with optional painting reference)
- const interestMsg = `Hi! I am interested in buying custom craft work. Painting: "${work.title}".`;
- const customMsg = `Hi! I am interested in buying custom craft work (inspired by "${work.title}"). Theme / Size / Colours:`;
+ // General interest (with optional painting reference)
+ const interestMsg = `Hi, I'm interested in buying the Kalamkari painting "${work.title}". Please share details.`;
+ const customMsg = `Hi, I'm interested in buying a custom Kalamkari painting inspired by "${work.title}". Theme / Size / Colours:`;
 
  if (modalIg) {
  modalIg.href = instagramProfileUrl;
@@ -1094,7 +1094,7 @@
  modalIg.addEventListener("click", () => {
  const title = modalIg.dataset.work;
  const text = title
- ? `Hi! I am interested in buying custom craft work. Painting: "${title}".`
+ ? `Hi, I'm interested in buying the Kalamkari painting "${title}". Please share details.`
  : inquiryMessage;
  copyInquiry(text);
  });
