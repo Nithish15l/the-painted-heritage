@@ -2478,200 +2478,154 @@ body.modal-open {
   }
 }
 
-/* Float bubbles — gold atelier medallion seals */
+/* Float bubbles — simple elegant gold circles (desktop + mobile) */
 .float-dock {
-  gap: 0.95rem !important;
-  right: 1.05rem !important;
-  bottom: 1.35rem !important;
+  position: fixed !important;
+  right: 0.95rem !important;
+  bottom: 1.15rem !important;
+  z-index: 90 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  pointer-events: none !important;
 }
 
 .float-dock__btn {
+  pointer-events: auto !important;
   position: relative !important;
-  display: grid !important;
-  place-items: center !important;
-  width: 3.75rem !important;
-  height: 3.75rem !important;
-  min-width: 3.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: 3.35rem !important;
+  height: 3.35rem !important;
+  min-width: 3.35rem !important;
+  max-width: 3.35rem !important;
   padding: 0 !important;
+  margin: 0 !important;
   border-radius: 50% !important;
-  overflow: visible !important;
-  isolation: isolate;
-  color: #f0d78a !important;
-  border: 1.5px solid rgba(232, 212, 139, 0.55) !important;
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255, 245, 210, 0.16) 0%, transparent 42%),
-    linear-gradient(155deg, #3a2f28 0%, #221c18 48%, #14110e 100%) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+  color: #e8d48b !important;
+  border: 1px solid rgba(232, 212, 139, 0.5) !important;
+  background: linear-gradient(160deg, #2c2520 0%, #171310 100%) !important;
   box-shadow:
-    0 0 0 3px rgba(20, 17, 14, 0.55),
-    0 0 0 4px rgba(196, 163, 90, 0.28),
-    0 12px 28px rgba(0, 0, 0, 0.38),
-    0 1px 0 rgba(255, 255, 255, 0.28) inset,
-    0 -8px 14px rgba(0, 0, 0, 0.4) inset,
-    0 0 22px rgba(196, 163, 90, 0.12) !important;
-  transition:
-    transform 0.35s var(--pk-ease),
-    box-shadow 0.35s ease,
-    border-color 0.3s ease,
-    filter 0.25s ease !important;
+    0 8px 20px rgba(0, 0, 0, 0.32),
+    0 1px 0 rgba(255, 255, 255, 0.12) inset !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease !important;
 }
 
-/* Soft top glass gloss */
-.float-dock__btn::before {
-  content: "" !important;
-  position: absolute !important;
-  left: 16% !important;
-  right: 16% !important;
-  top: 10% !important;
-  height: 38% !important;
-  border-radius: 999px 999px 70% 70% !important;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.58) 0%,
-    rgba(255, 255, 255, 0.16) 55%,
-    transparent 100%
-  ) !important;
-  pointer-events: none !important;
-  z-index: 2 !important;
-}
-
-/* Moving gold shine */
+.float-dock__btn::before,
 .float-dock__btn::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  border-radius: 50% !important;
-  pointer-events: none !important;
-  z-index: 3 !important;
-  background: linear-gradient(
-    115deg,
-    transparent 36%,
-    rgba(255, 245, 210, 0.1) 44%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 245, 210, 0.12) 56%,
-    transparent 64%
-  ) !important;
-  background-size: 230% 100% !important;
-  background-position: 140% 0 !important;
-  animation: bubble-gloss-sweep 4.2s ease-in-out infinite !important;
-  mix-blend-mode: soft-light;
+  content: none !important;
+  display: none !important;
+  animation: none !important;
 }
 
-/* Inner decorative seal ring */
 .float-dock__seal {
-  position: absolute !important;
-  inset: 5px !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(232, 212, 139, 0.22) !important;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
-    0 0 10px rgba(196, 163, 90, 0.08) inset !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
+  display: none !important;
 }
 
 .float-dock__ico,
 .float-dock__btn svg {
-  position: relative !important;
-  z-index: 4 !important;
+  display: block !important;
+  position: static !important;
   width: 1.35rem !important;
   height: 1.35rem !important;
-  color: #f0d78a !important;
-  filter:
-    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45))
-    drop-shadow(0 0 6px rgba(232, 212, 139, 0.25));
+  min-width: 1.35rem !important;
+  min-height: 1.35rem !important;
+  flex-shrink: 0 !important;
+  color: #e8d48b !important;
+  fill: currentColor;
+  filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* WhatsApp — deep forest enamel + gold mark */
 .float-dock__btn--wa {
-  background:
-    radial-gradient(circle at 32% 28%, rgba(200, 230, 210, 0.14) 0%, transparent 44%),
-    linear-gradient(155deg, #355244 0%, #1a2e24 48%, #0c1612 100%) !important;
-  border-color: rgba(232, 212, 139, 0.52) !important;
-  color: #f0d78a !important;
+  background: linear-gradient(160deg, #2a3f34 0%, #14201a 100%) !important;
+  border-color: rgba(232, 212, 139, 0.48) !important;
+  color: #e8d48b !important;
 }
 
-/* Instagram — deep plum enamel + gold mark */
 .float-dock__btn--ig {
-  background:
-    radial-gradient(circle at 32% 28%, rgba(235, 210, 230, 0.12) 0%, transparent 44%),
-    linear-gradient(155deg, #463040 0%, #241a22 48%, #120d12 100%) !important;
-  border-color: rgba(232, 212, 139, 0.52) !important;
-  color: #f0d78a !important;
+  background: linear-gradient(160deg, #3a2a34 0%, #1a1218 100%) !important;
+  border-color: rgba(232, 212, 139, 0.48) !important;
+  color: #e8d48b !important;
 }
 
-.float-dock__btn:hover {
-  transform: scale(1.09) translateY(-4px) !important;
-  filter: brightness(1.1);
-  border-color: rgba(245, 228, 170, 0.85) !important;
+.float-dock__btn:hover,
+.float-dock__btn:focus-visible {
+  transform: translateY(-2px) scale(1.05) !important;
+  border-color: rgba(245, 228, 170, 0.75) !important;
   box-shadow:
-    0 0 0 3px rgba(20, 17, 14, 0.5),
-    0 0 0 5px rgba(223, 192, 122, 0.4),
-    0 16px 34px rgba(0, 0, 0, 0.42),
-    0 1px 0 rgba(255, 255, 255, 0.35) inset,
-    0 -8px 14px rgba(0, 0, 0, 0.35) inset,
-    0 0 26px rgba(196, 163, 90, 0.32) !important;
-}
-
-.float-dock__btn:hover::after {
-  animation-duration: 1.8s !important;
-}
-
-.float-dock__btn:hover .float-dock__ico,
-.float-dock__btn:hover svg {
-  filter:
-    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4))
-    drop-shadow(0 0 8px rgba(245, 228, 170, 0.45));
+    0 12px 26px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(196, 163, 90, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.16) inset !important;
+  outline: none !important;
 }
 
 .float-dock__tip {
-  z-index: 6 !important;
-  border: 1px solid rgba(196, 163, 90, 0.38) !important;
-  background: linear-gradient(145deg, rgba(32, 26, 22, 0.96), rgba(18, 15, 12, 0.96)) !important;
-  color: #fffaf2 !important;
-  letter-spacing: 0.06em !important;
-  box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(196, 163, 90, 0.08) inset !important;
+  display: none !important;
 }
 
-@keyframes bubble-gloss-sweep {
-  0%,
-  55% {
-    background-position: 140% 0;
-    opacity: 0.4;
+@media (min-width: 681px) {
+  .float-dock__tip {
+    display: block !important;
+    position: absolute !important;
+    right: calc(100% + 0.55rem) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    padding: 0.32rem 0.6rem !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(196, 163, 90, 0.32) !important;
+    background: rgba(20, 17, 14, 0.94) !important;
+    color: #fffaf2 !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25) !important;
+    transition: opacity 0.2s ease !important;
   }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    background-position: -50% 0;
-    opacity: 0.45;
+
+  .float-dock__btn:hover .float-dock__tip,
+  .float-dock__btn:focus-visible .float-dock__tip {
+    opacity: 1 !important;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .float-dock__btn::after {
-    animation: none !important;
-  }
-}
-
+/* Mobile: same clean icons, slightly tighter */
 @media (max-width: 680px) {
   .float-dock {
-    right: 0.85rem !important;
-    bottom: 1.05rem !important;
-    gap: 0.8rem !important;
+    right: 0.75rem !important;
+    bottom: max(0.9rem, env(safe-area-inset-bottom, 0px)) !important;
+    gap: 0.65rem !important;
   }
 
   .float-dock__btn {
-    width: 3.45rem !important;
-    height: 3.45rem !important;
-    min-width: 3.45rem !important;
+    width: 3.15rem !important;
+    height: 3.15rem !important;
+    min-width: 3.15rem !important;
+    max-width: 3.15rem !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
   }
 
   .float-dock__ico,
   .float-dock__btn svg {
-    width: 1.25rem !important;
-    height: 1.25rem !important;
+    width: 1.3rem !important;
+    height: 1.3rem !important;
+    min-width: 1.3rem !important;
+    min-height: 1.3rem !important;
+  }
+
+  .float-dock__tip {
+    display: none !important;
   }
 }
 
@@ -5361,5 +5315,138 @@ body {
   .theme-slider__nav,
   .theme-slider__dots {
     display: none !important;
+  }
+}
+
+/* ===== Final float dock: simple elegant icons (all viewports) ===== */
+.float-dock {
+  position: fixed !important;
+  right: 0.9rem !important;
+  bottom: 1.1rem !important;
+  z-index: 95 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.7rem !important;
+  width: auto !important;
+  height: auto !important;
+  pointer-events: none !important;
+}
+
+.float-dock .float-dock__btn {
+  pointer-events: auto !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3.25rem !important;
+  height: 3.25rem !important;
+  min-width: 3.25rem !important;
+  max-width: 3.25rem !important;
+  min-height: 3.25rem !important;
+  max-height: 3.25rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+  line-height: 0 !important;
+  color: #e8d48b !important;
+  border: 1px solid rgba(232, 212, 139, 0.5) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+.float-dock .float-dock__btn::before,
+.float-dock .float-dock__btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+.float-dock .float-dock__btn--wa {
+  background: linear-gradient(160deg, #2a3f34, #14201a) !important;
+}
+
+.float-dock .float-dock__btn--ig {
+  background: linear-gradient(160deg, #3a2a34, #1a1218) !important;
+}
+
+.float-dock .float-dock__ico,
+.float-dock .float-dock__btn svg {
+  display: block !important;
+  width: 1.28rem !important;
+  height: 1.28rem !important;
+  min-width: 1.28rem !important;
+  min-height: 1.28rem !important;
+  max-width: 1.28rem !important;
+  max-height: 1.28rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #e8d48b !important;
+  fill: currentColor;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  position: static !important;
+  flex: none !important;
+}
+
+.float-dock .float-dock__tip {
+  display: none !important;
+}
+
+@media (max-width: 680px) {
+  .float-dock {
+    right: 0.7rem !important;
+    bottom: max(0.85rem, env(safe-area-inset-bottom, 0px)) !important;
+    gap: 0.6rem !important;
+  }
+
+  .float-dock .float-dock__btn {
+    width: 3.05rem !important;
+    height: 3.05rem !important;
+    min-width: 3.05rem !important;
+    max-width: 3.05rem !important;
+    min-height: 3.05rem !important;
+    max-height: 3.05rem !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  .float-dock .float-dock__ico,
+  .float-dock .float-dock__btn svg {
+    width: 1.22rem !important;
+    height: 1.22rem !important;
+    min-width: 1.22rem !important;
+    min-height: 1.22rem !important;
+    max-width: 1.22rem !important;
+    max-height: 1.22rem !important;
+  }
+}
+
+@media (min-width: 681px) {
+  .float-dock .float-dock__tip {
+    display: block !important;
+    position: absolute !important;
+    right: calc(100% + 0.5rem) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    padding: 0.3rem 0.55rem !important;
+    border-radius: 7px !important;
+    border: 1px solid rgba(196, 163, 90, 0.3) !important;
+    background: rgba(18, 15, 12, 0.95) !important;
+    color: #fffaf2 !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .float-dock .float-dock__btn:hover .float-dock__tip {
+    opacity: 1 !important;
   }
 }
