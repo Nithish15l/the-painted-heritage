@@ -2960,6 +2960,8 @@ body.modal-open {
   flex-direction: column;
   align-items: center;
   gap: 0;
+  overflow: hidden;
+  isolation: isolate;
   padding: clamp(1rem, 2.2vw, 1.35rem) clamp(0.85rem, 2vw, 1.25rem) clamp(1.05rem, 2vw, 1.3rem);
   border-radius: 14px;
   border: 1px solid rgba(196, 163, 90, 0.38);
@@ -2978,6 +2980,35 @@ body.modal-open {
   border: 1px solid rgba(196, 163, 90, 0.14);
   border-radius: 11px;
   pointer-events: none;
+  z-index: 1;
+}
+
+/* Light Kalamkari doodle frame — only this Bespoke header panel */
+.commission__head-doodle {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("../assets/kalamkari-doodle.svg");
+  background-size: 240px;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.15;
+  mix-blend-mode: multiply;
+  /* Keep doodle strongest along the frame edge */
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 68% at 50% 50%,
+    transparent 42%,
+    rgba(0, 0, 0, 0.45) 68%,
+    #000 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 72% 68% at 50% 50%,
+    transparent 42%,
+    rgba(0, 0, 0, 0.45) 68%,
+    #000 100%
+  );
 }
 
 .commission__head-corner {
